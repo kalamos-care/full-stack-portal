@@ -5,7 +5,8 @@ import { makeStyles } from '@material-ui/core/styles';
 // import Typography from '@material-ui/core/Typography';
 
 import { Admin } from './admin';
-import { Home, Login, SignUp, ProviderDash, PrivateRoute } from './views';
+import { Home, Login, SignUp, AboutUs } from './views';
+import { PrivateRoute, ProviderDash, UserSettings } from './protected_views';
 import { logout, isAuthenticated } from './utils/auth';
 
 export const Routes: FC = () => {
@@ -16,6 +17,7 @@ export const Routes: FC = () => {
       <Route path="/admin">
         <Admin />
       </Route>
+      <Route path="/about-us" component={AboutUs} />
       <Route path="/login" component={Login} />
       <Route path="/signup" component={SignUp} />
       <Route
@@ -27,6 +29,7 @@ export const Routes: FC = () => {
         }}
       />
       <PrivateRoute path="/provider-dashboard" component={ProviderDash} />
+      <PrivateRoute path="/settings" component={UserSettings} />
       <Route exact path="/" component={Home} />
     </Switch>
   );

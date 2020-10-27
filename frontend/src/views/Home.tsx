@@ -87,13 +87,17 @@ export const Home: FC = () => {
             <Grid container spacing={2} justify="center">
               <Grid item>
                 <Button variant="contained" color="primary">
-                  Create Your Account
-                  </Button>
+                  <a className={classes.link} href="/signup">
+                    Create Your Account
+                  </a>
+                </Button>
               </Grid>
               <Grid item>
                 <Button variant="outlined" color="primary">
-                  Read More About Us
-                  </Button>
+                  <a className={classes.link} href="/aboutus">
+                    Read More About Us
+                  </a>
+                </Button>
               </Grid>
             </Grid>
           </div>
@@ -104,11 +108,11 @@ export const Home: FC = () => {
         <Grid container spacing={4}>
           <Grid item xs={12} sm={6} md={4}>
             <Card className={classes.card}>
-            <CardMedia
-                    className={classes.cardMedia}
-                    image="https://source.unsplash.com/random"
-                    title="Image title"
-                  />
+              <CardMedia
+                className={classes.cardMedia}
+                image="https://source.unsplash.com/random"
+                title="Image title"
+              />
               <CardContent className={classes.cardContent}>
                 <Typography gutterBottom variant="h5" component="h2">Ping Backend</Typography>
                 <Typography variant="body2" color="textSecondary" component="p">Click me!</Typography>
@@ -137,11 +141,11 @@ export const Home: FC = () => {
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
             <Card className={classes.card}>
-            <CardMedia
-                    className={classes.cardMedia}
-                    image="https://source.unsplash.com/random"
-                    title="Image title"
-                  />
+              <CardMedia
+                className={classes.cardMedia}
+                image="https://source.unsplash.com/random"
+                title="Image title"
+              />
               <CardContent className={classes.cardContent}>
                 <Typography gutterBottom variant="h5" component="h2">
                   Admin Dashboard
@@ -160,11 +164,11 @@ export const Home: FC = () => {
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
             <Card className={classes.card}>
-            <CardMedia
-                    className={classes.cardMedia}
-                    image="https://source.unsplash.com/random"
-                    title="Image title"
-                  />
+              <CardMedia
+                className={classes.cardMedia}
+                image="https://source.unsplash.com/random"
+                title="Image title"
+              />
               <CardContent className={classes.cardContent}>
                 <Typography gutterBottom variant="h5" component="h2">
                   Provider Dashboard

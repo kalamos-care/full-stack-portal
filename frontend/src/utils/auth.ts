@@ -5,7 +5,7 @@ export const isAuthenticated = () => {
   if (!permissions) {
     return false;
   }
-  return permissions === 'user' || permissions === 'admin' ? true : false;
+  return permissions === 'user' || permissions === 'provider' || permissions === 'admin' ? true : false;
 };
 
 /**
@@ -58,6 +58,10 @@ export const login = async (email: string, password: string) => {
 /**
  * Sign up via backend and store JSON web token on success
  *
+ * @param firstName
+ * @param lastName
+ * @param NPI
+ * @param stateLicenses
  * @param email
  * @param password
  * @returns JSON data containing access token on success
@@ -111,6 +115,41 @@ export const signUp = async (
 
   return data;
 };
+
+
+/**
+ * Add provider registration needs here
+ */
+export const mtlRegister = async (
+  email: string,
+  firstName: string,
+  lastName: string,
+  NPI: string,
+  stateLicenses: Array<string>,
+) => {
+  // Error checking
+  if (!(email.length > 0)) {
+    throw new Error('Email was not provided');
+  }
+  if (!(firstName.length > 0)) {
+    throw new Error('First name was not provided');
+  }
+  if (!(lastName.length > 0)) {
+    throw new Error('Last name was not provided');
+  }
+  if (!(NPI.length > 0)) {
+    throw new Error('NPI was not provided');
+  }
+  if (!(stateLicenses.length > 0)) {
+    throw new Error('State licensese were not provided');
+  }
+
+  const request = new Request('/api/register_provider', {
+
+  });
+
+};
+
 
 export const logout = () => {
   localStorage.removeItem('token');

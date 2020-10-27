@@ -30,6 +30,7 @@ def create_user(db: Session, user: schemas.UserCreate):
         last_name=user.last_name,
         email=user.email,
         is_active=user.is_active,
+        is_provider=user.is_provider,
         is_superuser=user.is_superuser,
         hashed_password=hashed_password,
     )

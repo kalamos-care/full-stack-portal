@@ -5,6 +5,7 @@ import typing as t
 class UserBase(BaseModel):
     email: str
     is_active: bool = True
+    is_provider: bool = False
     is_superuser: bool = False
     first_name: str = None
     last_name: str = None

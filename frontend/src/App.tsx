@@ -47,7 +47,7 @@ const App: FC = () => {
             <body className={classes.body}>
                 <Body />
             </body>
-            <footer>
+            <footer className={classes.footer}>
                 <Footer />
             </footer>
         </Box>

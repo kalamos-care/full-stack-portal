@@ -99,8 +99,8 @@ const Header: FC = () => {
                             open={open}
                             onClose={handleClose}
                         >
-                            <MenuItem onClick={handleClose}>Profile</MenuItem>
-                            <MenuItem onClick={handleClose}>My account</MenuItem>
+                            <MenuItem onClick={handleClose}><a href="/settings">Settings</a></MenuItem>
+                            <MenuItem onClick={handleClose}><a href="/logout">Logout</a></MenuItem>
                         </Menu>
                     </div>
                 )}
