@@ -1,18 +1,13 @@
 import React, { FC } from 'react';
 import { Routes } from './Routes';
 import { makeStyles } from '@material-ui/core/styles';
-import Box from '@material-ui/core/Box'
-import Typography from '@material-ui/core/Typography'
-import MuiLink from '@material-ui/core/Link';
 
-import { isAuthenticated } from './utils/auth';
-
-import Header from './layout/Header';
-import Body from './layout/Body';
-import Footer from './layout/Footer'
+// Should I check for authentication here and route the user accordingly?
+// import { isAuthenticated } from './utils/auth';
 
 const useStyles = makeStyles((theme) => ({
-    app: {
+    /**
+     app: {
         textAlign: 'center',
         display: 'flex',
         flexDirection: 'column',
@@ -22,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         alignItems: 'center',
     },
-    body: {
+    main: {
         display: 'flex',
         flexGrow: 1,
         justifyContent: 'center',
@@ -34,23 +29,33 @@ const useStyles = makeStyles((theme) => ({
         position: 'sticky',
         bottom: 0,
     },
+    **/
 }));
 
 const App: FC = () => {
     const classes = useStyles();
 
+    {/** {/** 
+        If logged in - see the clinic view
+        If not logged in - see the marketing view
+        Must manually navigate to admin to login
+    **/}
+
     return (
+        <Routes />
+        /** 
         <Box className={classes.app}>
             <header className={classes.header}>
                 <Header />
             </header>
-            <body className={classes.body}>
-                <Body />
-            </body>
+            <main className={classes.main}>
+                <Main />
+            </main>
             <footer className={classes.footer}>
                 <Footer />
             </footer>
         </Box>
+        **/
     );
 };
 

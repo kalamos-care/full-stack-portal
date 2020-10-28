@@ -1,12 +1,11 @@
 import React, { FC } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { useHistory } from 'react-router';
-import { makeStyles } from '@material-ui/core/styles';
-// import Typography from '@material-ui/core/Typography';
+// import { makeStyles } from '@material-ui/core/styles';
 
 import { Admin } from './admin';
-import { Home, Login, SignUp, AboutUs } from './views';
-import { PrivateRoute, ProviderDash, UserSettings } from './protected_views';
+import { Home, AboutUs, Login, SignUp } from './marketing';
+import { PrivateRoute, ProviderDash, UserSettings } from './clinic';
 import { logout, isAuthenticated } from './utils/auth';
 
 export const Routes: FC = () => {
@@ -17,7 +16,6 @@ export const Routes: FC = () => {
       <Route path="/admin">
         <Admin />
       </Route>
-      <Route path="/about-us" component={AboutUs} />
       <Route path="/login" component={Login} />
       <Route path="/signup" component={SignUp} />
       <Route
@@ -28,8 +26,7 @@ export const Routes: FC = () => {
           return null;
         }}
       />
-      <PrivateRoute path="/provider-dashboard" component={ProviderDash} />
-      <PrivateRoute path="/settings" component={UserSettings} />
+      <PrivateRoute path="/clinic" component={ProviderDash} />
       <Route exact path="/" component={Home} />
     </Switch>
   );
