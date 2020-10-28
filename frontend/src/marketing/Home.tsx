@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export const Home: FC = () => {
+export const Home: FC = ( { children } ) => {
   const classes = useStyles();
 
   return (
@@ -84,7 +84,7 @@ export const Home: FC = () => {
         </AppBar>
       </header>
       <main className={classes.main}>
-        <LandingPage />
+        { children }
       </main>
       <footer className={classes.footer}>
         <Box className={classes.copyright}>

@@ -173,7 +173,7 @@ const LandingPage: FC = () => {
               </CardContent>
               <CardActions>
                 <Button size="small" color="primary">
-                  <a className={classes.link} href="/provider-dashboard">
+                  <a className={classes.link} href="/clinic">
                     Protected Route
       </a>
                 </Button>

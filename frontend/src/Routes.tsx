@@ -4,8 +4,9 @@ import { useHistory } from 'react-router';
 // import { makeStyles } from '@material-ui/core/styles';
 
 import { Admin } from './admin';
-import { Home, AboutUs, Login, SignUp } from './marketing';
-import { PrivateRoute, ProviderDash, UserSettings } from './clinic';
+import { Home, LandingPage, Login, SignUp } from './marketing';
+import Dashboard from './clinic_app';
+import PrivateRoute from './';
 import { logout, isAuthenticated } from './utils/auth';
 
 export const Routes: FC = () => {
@@ -26,7 +27,7 @@ export const Routes: FC = () => {
           return null;
         }}
       />
-      <PrivateRoute path="/clinic" component={ProviderDash} />
+      <PrivateRoute path="/clinic" component={Dashboard} />
       <Route exact path="/" component={Home} />
     </Switch>
   );
