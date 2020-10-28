@@ -15,6 +15,9 @@ import {
   AccountCircle, Chat, Folder, Notifications
 } from '@material-ui/icons/';
 
+//import Notifications from './Notifications';
+//import Patients, PatientDetail from './Patients';
+
 // import Header from './layout/Header';
 // import Main from './layout/Main';
 // import Footer from './layout/Footer';
@@ -32,6 +35,27 @@ function Child() {
   );
 };
 */}
+
+
+{/*
+const routes = [
+  {
+    path: "/clinic/notifications",
+    component: Notifications,
+  },
+  {
+    path: "/clinic/patients",
+    component: Patients,
+    routes: [
+      {
+        path: "/patients/{patient_id}",
+        component: PatientDetail,
+      }
+    ]
+  }
+];
+*/}
+
 
 const useStyles = makeStyles((theme) => ({
   app: {
