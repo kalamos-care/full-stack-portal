@@ -43,7 +43,7 @@ export const Login: FC = () => {
       const data = await login(email, password);
 
       if (data) {
-        history.push('/');
+        history.push('/clinic');
       }
     } catch (err) {
       if (err instanceof Error) {

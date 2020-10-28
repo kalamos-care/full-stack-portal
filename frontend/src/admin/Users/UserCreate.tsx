@@ -14,6 +14,7 @@ export const UserCreate: FC = (props) => (
       <TextInput source="first_name" />
       <TextInput source="last_name" />
       <PasswordInput source="password" />
+      <BooleanInput source="is_provider" />
       <BooleanInput source="is_superuser" />
       <BooleanInput source="is_active" />
     </SimpleForm>

@@ -16,6 +16,7 @@ export const UserEdit: FC = (props) => (
       <TextInput source="last_name" />
       <PasswordInput source="password" />
       <BooleanInput source="is_active" />
+      <BooleanInput source="is_provider" />
       <BooleanInput source="is_superuser" />
     </SimpleForm>
   </Edit>

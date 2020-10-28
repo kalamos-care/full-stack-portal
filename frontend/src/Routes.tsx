@@ -4,10 +4,10 @@ import { useHistory } from 'react-router';
 // import { makeStyles } from '@material-ui/core/styles';
 
 import { Admin } from './admin';
-import { Home, LandingPage, Login, SignUp } from './marketing';
-import Dashboard from './clinic_app';
-import PrivateRoute from './';
-import { logout, isAuthenticated } from './utils/auth';
+import { Home, Login, SignUp } from './marketing';
+import { Dashboard } from './clinic-app';
+import { PrivateRoute } from './PrivateRoute';
+import { logout } from './utils/auth';
 
 export const Routes: FC = () => {
   const history = useHistory();

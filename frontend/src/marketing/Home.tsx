@@ -84,6 +84,7 @@ export const Home: FC = ( { children } ) => {
         </AppBar>
       </header>
       <main className={classes.main}>
+        <LandingPage />
         { children }
       </main>
       <footer className={classes.footer}>
