@@ -1,9 +1,10 @@
 import React, { FC, useState } from 'react';
+
 import { makeStyles } from '@material-ui/core/styles';
+
 import Box from '@material-ui/core/Box';
-// import Container from '@material-ui/core/Container';
-// import Grid from '@material-ui/core/Grid';
-// import Card from '@material-ui/core/Card';
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
 // import CardActions from '@material-ui/core/CardActions';
 // import CardContent from '@material-ui/core/CardContent';
 // import CardMedia from '@material-ui/core/CardMedia';
@@ -23,6 +24,13 @@ import LandingPage from './LandingPage';
 
 
 const useStyles = makeStyles((theme) => ({
+  '@global': {
+    ul: {
+      margin: 0,
+      padding: 0,
+      listStyle: 'none',
+    },
+  },
   marketing: {
     textAlign: 'center',
     display: 'flex',
@@ -41,9 +49,14 @@ const useStyles = makeStyles((theme) => ({
     //color: 'white',
   },
   footer: {
-    display: 'flex',
-    position: 'sticky',
-    bottom: 0,
+    borderTop: `1px solid ${theme.palette.divider}`,
+    marginTop: theme.spacing(8),
+    paddingTop: theme.spacing(3),
+    paddingBottom: theme.spacing(3),
+    [theme.breakpoints.up('sm')]: {
+      paddingTop: theme.spacing(6),
+      paddingBottom: theme.spacing(6),
+    },
   },
   copyright: {
     alignItems: 'center',
@@ -55,8 +68,43 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+function Copyright() {
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {'Copyright © '}
+      <Link color="inherit" href="https://kalamos.care/">
+        Kalamos Care
+      </Link>
+      {' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
 
-export const Home: FC = ( { children } ) => {
+
+const footers = [
+  {
+    title: 'Company',
+    description: ['Team', 'History', 'Contact us', 'Locations'],
+  },
+  {
+    title: 'Features',
+    description: ['Cool stuff', 'Random feature', 'Team feature', 'Developer stuff', 'Another one'],
+  },
+  {
+    title: 'Resources',
+    description: ['Resource', 'Resource name', 'Another resource', 'Final resource'],
+  },
+  {
+    title: 'Legal',
+    description: ['Privacy policy', 'Terms of use'],
+  },
+];
+
+
+
+export const Home: FC = ({ children }) => {
   const classes = useStyles();
 
   return (
@@ -72,11 +120,11 @@ export const Home: FC = ( { children } ) => {
             >
               Kalamos Care
         </Typography>
-        <ButtonGroup color="inherit">
-            <Button href="/login">
+            <ButtonGroup color="inherit">
+              <Button href="/login">
                 Login
             </Button>
-            <Button href="/signup">
+              <Button href="/signup">
                 Sign Up
             </Button>
             </ButtonGroup>
@@ -85,19 +133,32 @@ export const Home: FC = ( { children } ) => {
       </header>
       <main className={classes.main}>
         <LandingPage />
-        { children }
+        {children}
       </main>
-      <footer className={classes.footer}>
-        <Box className={classes.copyright}>
-          <Typography variant="body2" color="textSecondary" align="center">
-            {'Copyright © '}
-            <Link color="inherit" href="https://kalamos.care/">
-              Kalamos Care
-                    </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-          </Typography>
+      <footer>
+      <Container maxWidth="md" component="footer" className={classes.footer}>
+        <Grid container spacing={4} justify="space-evenly">
+          {footers.map((footer) => (
+            <Grid item xs={6} sm={3} key={footer.title}>
+              <Typography variant="h6" color="textPrimary" gutterBottom>
+                {footer.title}
+              </Typography>
+              <ul>
+                {footer.description.map((item) => (
+                  <li key={item}>
+                    <Link href="#" variant="subtitle1" color="textSecondary">
+                      {item}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </Grid>
+          ))}
+        </Grid>
+        <Box mt={5}>
+          <Copyright />
         </Box>
+      </Container>
       </footer>
     </Box>
   );

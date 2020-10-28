@@ -117,7 +117,7 @@ const LandingPage: FC = () => {
                   <Button size="small" color="primary">
 
                     <a className={classes.link} href="#" onClick={() => queryBackend()}>
-                      Click to make request to backend
+                      Call the backend
                     </a>
                   </Button>
                 )}
