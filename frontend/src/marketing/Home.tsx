@@ -13,9 +13,10 @@ import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Button from '@material-ui/core/Button';
 
-import LandingPage from './LandingPage'
+import LandingPage from './LandingPage';
 
 
 // import { isAuthenticated } from '../utils/auth';
@@ -71,16 +72,14 @@ export const Home: FC = () => {
             >
               Kalamos Care
         </Typography>
-            <Button color="inherit">
-              <a href="/login">
+        <ButtonGroup color="inherit">
+            <Button href="/login">
                 Login
-                            </a>
             </Button>
-            <Button color="inherit">
-              <a href="/signup">
+            <Button href="/signup">
                 Sign Up
-                            </a>
             </Button>
+            </ButtonGroup>
           </Toolbar>
         </AppBar>
       </header>

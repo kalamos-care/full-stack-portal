@@ -85,17 +85,13 @@ const LandingPage: FC = () => {
           <div className={classes.heroButtons}>
             <Grid container spacing={2} justify="center">
               <Grid item>
-                <Button variant="contained" color="primary">
-                  <a className={classes.link} href="/signup">
+                <Button variant="contained" color="primary" href="/signup">
                     Create Your Account
-                  </a>
                 </Button>
               </Grid>
               <Grid item>
-                <Button variant="outlined" color="primary">
-                  <a className={classes.link} href="/aboutus">
+                <Button variant="outlined" color="primary" href="/aboutus">
                     Read More About Us
-                  </a>
                 </Button>
               </Grid>
             </Grid>
