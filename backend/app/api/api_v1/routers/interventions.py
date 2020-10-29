@@ -1,7 +1,6 @@
-# Allow providers to create/join practices
+# Manage CDC-approved interventions
 
 from fastapi import APIRouter, Request, Depends, Response, encoders
 import typing as t
 
-practices_router = r = APIRouter()
-
+interventions_router = r = APIRouter()

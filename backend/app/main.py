@@ -4,6 +4,8 @@ import uvicorn
 
 from app.api.api_v1.routers.users import users_router
 from app.api.api_v1.routers.auth import auth_router
+from app.api.api_v1.routers.patients import patients_router
+
 from app.core import config
 from app.db.session import SessionLocal
 from app.core.auth import get_current_active_user
