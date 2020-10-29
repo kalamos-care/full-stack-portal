@@ -1,0 +1,9 @@
+Immediate to-dos
+1. Write out schemas/models/crud for Patients, Providers, Lab_Orders, and Kits
+2. Rename Users to Providers
+3. Hook up HelloWorks
+
+
+Long-term/harder to-dos
+1. Map relecent databases to FHIR data structure
+2. Allow for the connecting of EMRs through industry standard
