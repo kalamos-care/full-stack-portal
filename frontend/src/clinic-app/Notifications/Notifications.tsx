@@ -10,7 +10,7 @@ export const Notifications: FC = () => {
     
     return (
         <div>
-            <h1>List notifications here!</h1>
+            <p>Beep Boop</p>
         </div>
     );
 };

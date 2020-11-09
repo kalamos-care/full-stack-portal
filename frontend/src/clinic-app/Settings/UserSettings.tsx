@@ -9,26 +9,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const UserSettings: FC = () => {
-  {/** 
-  const [message, setMessage] = useState<string>('');
-  const [error, setError] = useState<string>('');
-  **/}
   const classes = useStyles();
-{/**  
-  const queryBackend = async () => {
-    try {
-      const message = await getUserInfo();
-      setMessage(message);
-    } catch (err) {
-      setError(err);
-    }
-  };
-**/}
+
+
+
   return (
     <>
       <p>List user settings here:</p>
         <p>
-          <code>{/* getUserInfo() */}</code>
+          <code>Replace this page with a dropdown and insert user info here</code>
         </p>
     </>
   );

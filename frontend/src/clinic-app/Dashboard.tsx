@@ -3,58 +3,29 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  useParams
+  useParams,
+  Link
 } from "react-router-dom";
 import { useHistory } from 'react-router';
 import { makeStyles } from '@material-ui/core/styles';
 
 import {
-  AppBar, BottomNavigation, BottomNavigationAction, Box, Container, IconButton, Link, Menu, MenuItem, Toolbar, Typography
+  BottomNavigation, BottomNavigationAction, Box, Container, Menu, MenuItem, Typography
 } from '@material-ui/core/';
+// import Link from '@material-ui/core'
 import {
   AccountCircle, Chat, Folder, Notifications
 } from '@material-ui/icons/';
 
-//import Notifications from './Notifications';
-//import Patients, PatientDetail from './Patients';
+import { NotificationsList } from './Notifications/NotificationsList';
+import { Patients } from './Patients/Patients';
+import { Messages } from './Messages/Messages';
+import { UserSettings } from './Settings/UserSettings'
 
-// import Header from './layout/Header';
+import Header from './layout/Header';
+
 // import Main from './layout/Main';
 // import Footer from './layout/Footer';
-
-{/*
-function Child() {
-  // We can use the `useParams` hook here to access
-  // the dynamic pieces of the URL.
-  let { id } = useParams();
-
-  return (
-    <div>
-      <h3>ID: {id}</h3>
-    </div>
-  );
-};
-*/}
-
-
-{/*
-const routes = [
-  {
-    path: "/clinic/notifications",
-    component: Notifications,
-  },
-  {
-    path: "/clinic/patients",
-    component: Patients,
-    routes: [
-      {
-        path: "/patients/{patient_id}",
-        component: PatientDetail,
-      }
-    ]
-  }
-];
-*/}
 
 
 const useStyles = makeStyles((theme) => ({
@@ -73,7 +44,6 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     justifyContent: 'center',
     fontSize: 'calc(10px + 2vmin)',
-    //color: 'white',
   },
   footer: {
     display: 'flex',
@@ -98,23 +68,7 @@ export const Dashboard: FC = ({ children }) => {
   const classes = useStyles();
   const history = useHistory();
 
-  const [auth, setAuth] = React.useState(true);
-
-  // I think this is meant to log the user out?
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setAuth(event.target.checked);
-  };
-
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
-
-  const handleAppBarMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleAppBarMenuClose = () => {
-    setAnchorEl(null);
-  };
+  // const [auth, setAuth] = React.useState(true);
 
   // Bottom Nav state management (I think)
   const [value, setValue] = React.useState('notifications');
@@ -126,93 +80,57 @@ export const Dashboard: FC = ({ children }) => {
   return (
     <Box className={classes.app}>
       <header className={classes.header}>
-        {/**<Header />**/}
-        <AppBar position="static">
-          <Toolbar>
-            <Typography
-              variant="h6"
-              className={classes.title}
-            // component={Link}
-            // to="/"
-            >
-              Kalamos Care
-                </Typography>
-            <IconButton
-              // aria-label="account of current user"
-              // aria-controls="menu-appbar"
-              // aria-haspopup="true"
-              onClick={handleAppBarMenu}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorEl}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={open}
-              onClose={handleAppBarMenuClose}
-            >
-              <MenuItem onClick={handleAppBarMenuClose}>
-                <a href="/clinic/settings">
-                  Settings
-                            </a>
-              </MenuItem>
-              <MenuItem onClick={handleAppBarMenuClose}>
-                <a href="/logout">
-                  Logout
-                            </a>
-              </MenuItem>
-            </Menu>
-          </Toolbar>
-        </AppBar>
+        <Header />
       </header>
-        <main className={classes.main}>
-          <Container>
-            {/*<Switch>
-              <Route path="/:id" children={<Child />} />
-            </Switch>*/}
-          </Container>
-        </main>
-        <footer className={classes.footer}>
-          {/**<Footer />**/}
-          <BottomNavigation
-            className={classes.bottom_nav}
-            value={value}
-            onChange={handleBottomNavChange}
-            showLabels
-          >
-            <BottomNavigationAction
-              component={Link}
-              //to="/notifications"
-              //onClick={changeMainItem&URL}
-              label="Notifications"
-              value="notifications"
-              icon={<Notifications />} />
-            <BottomNavigationAction
-              component={Link}
-              //to="/Patients"
-              //onClick={changeMainItem&URL}
-              label="Patients"
-              value="patients"
-              icon={<Folder />} />
-            <BottomNavigationAction
-              component={Link}
-              //to="Messages"
-              //onClick={changeMainItem&URL}
-              label="Messages"
-              value="messages"
-              icon={<Chat />} />
-          </BottomNavigation>
-        </footer>
+      <main className={classes.main}>
+        <Container>
+          <Switch>
+            <Route path="/clinic/notifications">
+              <NotificationsList />
+            </Route>
+            <Route path="/clinic/patients">
+              <Patients />
+            </Route>
+            <Route path="/clinic/messages">
+              <Messages />
+            </Route>
+            <Route path="/clinic/settings/">
+              <UserSettings />
+            </Route>
+          </Switch>
+        </Container>
+      </main>
+      <footer className={classes.footer}>
+        {/*<Footer />*/}
+        <BottomNavigation
+        className={classes.bottom_nav}
+        value={value}
+        onChange={handleBottomNavChange}
+        showLabels
+        >
+          <BottomNavigationAction
+            label="Notifications"
+            value="notifications"
+            icon={<Notifications />}
+            component={Link}
+            to="/clinic/notifications"
+          />
+          <BottomNavigationAction
+            label="Patients"
+            value="patients"
+            icon={<Folder />}
+            component={Link}
+            to="/clinic/patients"
+          />
+          <BottomNavigationAction
+            label="Messages"
+            value="messages"
+            icon={<Chat />}
+            component={Link}
+            to="/clinic/messages"
+          />
+      </BottomNavigation>
+      </footer>
     </Box>
   );
 };

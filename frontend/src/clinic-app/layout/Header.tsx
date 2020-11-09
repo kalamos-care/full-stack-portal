@@ -16,8 +16,6 @@ import IconButton from '@material-ui/core/IconButton';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-// import { PrivateRoute } from '../../PrivateRoute';
-// import { UserSettings } from '../Settings/UserSettings';
 
 const useStyles = makeStyles((theme) => ({
     link: {
@@ -34,6 +32,11 @@ const Header: FC = () => {
     const history = useHistory();
 
     const [auth, setAuth] = React.useState(true);
+
+    const [state, setState] = React.useState({
+        top: false
+      });
+
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
 
