@@ -1,12 +1,14 @@
 import React, { FC, useState } from 'react';
-
+import {
+    BrowserRouter as Router
+  } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import Link from '@material-ui/core/Link';
+import MaterialLink from '@material-ui/core/Link';
 
 const useStyles = makeStyles((theme) => ({
     '@global': {
@@ -37,9 +39,9 @@ function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
             {'Copyright © '}
-            <Link color="inherit" href="https://kalamos.care/">
+            <MaterialLink color="inherit" href="https://kalamos.care/">
                 Kalamos Care
-        </Link>
+            </MaterialLink>
             {' '}
             {new Date().getFullYear()}
             {'.'}
@@ -51,19 +53,55 @@ function Copyright() {
 const footers = [
     {
         title: 'Company',
-        description: ['Team', 'History', 'Contact us', 'Locations'],
+        subheaders: [
+            {
+                description: 'About Us',
+                url: '/company/about-us'
+            },
+            {
+                description: 'Blog',
+                url: '/company/blog'
+            },
+        ],
     },
     {
-        title: 'Features',
-        description: ['Cool stuff', 'Random feature', 'Team feature', 'Developer stuff', 'Another one'],
+        title: 'Product',
+        subheaders: [
+            {
+                description: 'Features',
+                url: '/product/features'
+            },
+            {
+                description: 'Pricing',
+                url: '/product/pricing'
+            },
+        ],
     },
     {
         title: 'Resources',
-        description: ['Resource', 'Resource name', 'Another resource', 'Final resource'],
+        subheaders: [
+            {
+                description: 'FAQ',
+                url: '#'
+            },
+            {
+                description: 'API Docs',
+                url: '/api/v1'
+            },
+        ],
     },
     {
         title: 'Legal',
-        description: ['Privacy policy', 'Terms of use'],
+        subheaders: [
+            {
+                description: 'Privacy policy',
+                url: '/legal/privacy-policy'
+            },
+            {
+                description: 'Terms of Use',
+                url: '/legal/terms-of-use'
+            },
+        ],
     },
 ];
 
@@ -74,22 +112,24 @@ const Footer: FC = () => {
     return (
         <Container maxWidth="md" component="footer" className={classes.footer}>
             <Grid container spacing={4} justify="space-evenly">
+                <Router>
                 {footers.map((footer) => (
                     <Grid item xs={6} sm={3} key={footer.title}>
                         <Typography variant="h6" color="textPrimary" gutterBottom>
                             {footer.title}
                         </Typography>
                         <ul>
-                            {footer.description.map((item) => (
-                                <li key={item}>
-                                    <Link href="#" variant="subtitle1" color="textSecondary">
-                                        {item}
-                                    </Link>
+                            {footer.subheaders.map((subheader) => (
+                                <li key={subheader.description}>
+                                    <MaterialLink href={subheader.url} variant="subtitle1" color="textSecondary">
+                                        {subheader.description}
+                                    </MaterialLink>
                                 </li>
                             ))}
                         </ul>
                     </Grid>
                 ))}
+                </Router>
             </Grid>
             <Box mt={5}>
                 <Copyright />

@@ -14,10 +14,11 @@ import {
 } from '@material-ui/core/';
 // import Link from '@material-ui/core'
 import {
-  AccountCircle, Chat, Folder, Notifications
+  AccountCircle, Chat, Folder
 } from '@material-ui/icons/';
+import NotificationsIcon from '@material-ui/icons/Notifications';
 
-import { NotificationsList } from './Notifications/NotificationsList';
+import { Notifications } from './Notifications/Notifications';
 import { Patients } from './Patients/Patients';
 import { Messages } from './Messages/Messages';
 import { UserSettings } from './Settings/UserSettings'
@@ -85,18 +86,10 @@ export const Dashboard: FC = ({ children }) => {
       <main className={classes.main}>
         <Container>
           <Switch>
-            <Route path="/clinic/notifications">
-              <NotificationsList />
-            </Route>
-            <Route path="/clinic/patients">
-              <Patients />
-            </Route>
-            <Route path="/clinic/messages">
-              <Messages />
-            </Route>
-            <Route path="/clinic/settings/">
-              <UserSettings />
-            </Route>
+            <Route path="/clinic/notifications" component={Notifications} />
+            <Route path="/clinic/patients" component={Patients} />
+            <Route path="/clinic/messages" component={Messages} />
+            <Route path="/clinic/settings/" component={UserSettings} />
           </Switch>
         </Container>
       </main>
@@ -111,7 +104,7 @@ export const Dashboard: FC = ({ children }) => {
           <BottomNavigationAction
             label="Notifications"
             value="notifications"
-            icon={<Notifications />}
+            icon={<NotificationsIcon />}
             component={Link}
             to="/clinic/notifications"
           />

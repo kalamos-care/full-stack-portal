@@ -90,7 +90,7 @@ const LandingPage: FC = () => {
                 </Button>
               </Grid>
               <Grid item>
-                <Button variant="outlined" color="primary" href="/aboutus">
+                <Button variant="outlined" color="primary" href="/company/about-us">
                     Read More About Us
                 </Button>
               </Grid>
