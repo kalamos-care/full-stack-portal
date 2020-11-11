@@ -4,23 +4,29 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
-  LinkProps
+  Link as RouterLink, 
+  LinkProps as RouterLinkProps
 } from "react-router-dom";
 
 import { makeStyles } from '@material-ui/core/styles';
 
 import Box from '@material-ui/core/Box';
-// import Link from '@material-ui/core/Link';
 
 import Header from './layout/Header';
-import LandingPage from './LandingPage';
 import Footer from './layout/Footer';
 
-import { AboutUs } from './company/AboutUs';
-import { Legal } from './legal/Legal';
+import { SignUp } from './SignUp';
+import { Login } from './Login';
 
-// import { isAuthenticated } from '../utils/auth';
+import LandingPage from './LandingPage';
+import AboutUs from './company/AboutUs';
+import { Blog } from './company/blog/Blog';
+import { Features } from './product/Features';
+import { Pricing } from './product/Pricing';
+import { FAQ } from './resources/FAQ';
+import { ApiDocs } from './resources/ApiDocs';
+import { PrivacyPolicy } from './legal/PrivacyPolicy';
+import { TermsOfUse } from './legal/TermsOfUse';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -39,29 +45,14 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     justifyContent: 'center',
     fontSize: 'calc(10px + 2vmin)',
-    //color: 'white',
+  },
+  footer: {
+
   },
 }));
 
-{/*
-function About() {
-  return (
-    <div>
-      <h2>About</h2>
-    </div>
-  );
-}
 
-function Dashboard() {
-  return (
-    <div>
-      <h2>Dashboard</h2>
-    </div>
-  );
-}
-*/}
-
-export const Home: FC = ({ children }) => {
+export const Home: FC = () => {
   const classes = useStyles();
 
   return (
@@ -70,7 +61,7 @@ export const Home: FC = ({ children }) => {
         <Header />
       </header>
       <main className={classes.main}>
-        <Router>
+      <Box>
           {/*
           A <Switch> looks through all its children <Route>
           elements and renders the first one whose path
@@ -82,34 +73,40 @@ export const Home: FC = ({ children }) => {
             <Route exact path="/">
               <LandingPage />
             </Route>
-            <Route path="/company/about-us">
-              <h2>About Us</h2>
-              {/*<AboutUs />*/}
+            <Route exact path="/signup">
+              <SignUp />
             </Route>
-            <Route path="/company/blog">
-              <h2>Blog</h2>
+            <Route exact path="/login">
+              <Login />
             </Route>
-            <Route path="/product/features">
-              <h2>Features</h2>
+            <Route exact path="/company/about-us">
+              <AboutUs />
             </Route>
-            <Route path="/product/pricing">
-              <h2>Pricing</h2>
+            <Route exact path="/company/blog">
+              <Blog />
             </Route>
-            <Route path="/resources/faq">
-              <h2>FAQ</h2>
+            <Route exact path="/product/features">
+              <Features />
             </Route>
-            <Route path="/resources/api">
-              <h2>API Documentation</h2>
+            <Route exact path="/product/pricing">
+              <Pricing />
             </Route>
-            <Route path="/legal">
-              <Legal />
+            <Route exact path="/resources/faq">
+              <FAQ />
+            </Route>
+            <Route exact path="/resources/api">
+              <ApiDocs />
+            </Route>
+            <Route exact path="/legal/terms-of-use">
+              <TermsOfUse />
+            </Route>
+            <Route exact path="/legal/privacy-policy">
+              <PrivacyPolicy />
             </Route>
           </Switch>
-        </Router>
-        {/*<LandingPage />*/}
-        {/*{children}*/}
+    </Box>
       </main>
-      <footer>
+      <footer className={classes.footer}>
         <Footer />
       </footer>
     </Box>

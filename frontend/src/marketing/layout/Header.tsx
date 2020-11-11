@@ -1,4 +1,5 @@
 import React, { FC, useState } from 'react';
+import { Link as RouterLink } from "react-router-dom";
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -11,14 +12,10 @@ import Typography from '@material-ui/core/Typography';
 
 
 const useStyles = makeStyles((theme) => ({
-    header: {
-        display: 'flex',
-        alignItems: 'center',
-      },
-    title: {
-        flexGrow: 1,
-        textAlign: "left",
-      },
+  title: {
+    flexGrow: 1,
+    textAlign: "left",
+  },
 }));
 
 

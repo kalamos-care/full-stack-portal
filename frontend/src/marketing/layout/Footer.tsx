@@ -1,6 +1,10 @@
 import React, { FC, useState } from 'react';
 import {
-    BrowserRouter as Router
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link as RouterLink, 
+    LinkProps as RouterLinkProps
   } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -8,7 +12,7 @@ import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import MaterialLink from '@material-ui/core/Link';
+import Link from '@material-ui/core/Link';
 
 const useStyles = makeStyles((theme) => ({
     '@global': {
@@ -39,9 +43,9 @@ function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
             {'Copyright © '}
-            <MaterialLink color="inherit" href="https://kalamos.care/">
+            <Link color="inherit" component={RouterLink} to="/">
                 Kalamos Care
-            </MaterialLink>
+            </Link>
             {' '}
             {new Date().getFullYear()}
             {'.'}
@@ -82,11 +86,11 @@ const footers = [
         subheaders: [
             {
                 description: 'FAQ',
-                url: '#'
+                url: '/resources/faq'
             },
             {
                 description: 'API Docs',
-                url: '/api/v1'
+                url: '/resources/api'
             },
         ],
     },
@@ -112,7 +116,6 @@ const Footer: FC = () => {
     return (
         <Container maxWidth="md" component="footer" className={classes.footer}>
             <Grid container spacing={4} justify="space-evenly">
-                <Router>
                 {footers.map((footer) => (
                     <Grid item xs={6} sm={3} key={footer.title}>
                         <Typography variant="h6" color="textPrimary" gutterBottom>
@@ -121,15 +124,14 @@ const Footer: FC = () => {
                         <ul>
                             {footer.subheaders.map((subheader) => (
                                 <li key={subheader.description}>
-                                    <MaterialLink href={subheader.url} variant="subtitle1" color="textSecondary">
+                                    <Link to={subheader.url} component={RouterLink} variant="subtitle1" color="textSecondary">
                                         {subheader.description}
-                                    </MaterialLink>
+                                    </Link>
                                 </li>
                             ))}
                         </ul>
                     </Grid>
                 ))}
-                </Router>
             </Grid>
             <Box mt={5}>
                 <Copyright />

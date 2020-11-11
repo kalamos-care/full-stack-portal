@@ -40,7 +40,7 @@ export const SignUp: FC = () => {
         const data = await signUp(email, password, passwordConfirmation);
 
         if (data) {
-          history.push('/');
+          history.push('/clinic');
         }
       } catch (err) {
         if (err instanceof Error) {

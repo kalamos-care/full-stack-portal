@@ -5,7 +5,7 @@ import { useHistory } from 'react-router';
 
 import { Admin } from './admin';
 import { Home, Login, SignUp } from './marketing';
-import { Dashboard } from './clinic-app';
+import { ProviderDashboard } from './clinic-app';
 import { PrivateRoute } from './PrivateRoute';
 import { logout } from './utils/auth';
 
@@ -27,8 +27,12 @@ export const MainRoutes: FC = () => {
           return null;
         }}
       />
-      <PrivateRoute path="/clinic/" component={Dashboard} />
+      <PrivateRoute path="/clinic/" component={ProviderDashboard} />
       <Route exact path="/" component={Home} />
+      <Route path="/company" component={Home} />
+      <Route path="/product" component={Home} />
+      <Route path="/resources" component={Home} />
+      <Route path="/legal" component={Home} />
     </Switch>
   );
 };
