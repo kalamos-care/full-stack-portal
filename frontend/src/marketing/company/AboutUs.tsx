@@ -16,8 +16,8 @@ const AboutUs: FC = () => {
   const classes = useStyles();
 
   return (
-    <Container maxWidth="sm">
-      <Grid item xs={12}>
+    <Container maxWidth="md">
+      <Grid item xs={12} md={8}>
         <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>About Us</Typography>
       </Grid>
       <Grid item xs={12}>
