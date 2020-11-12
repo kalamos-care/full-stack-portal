@@ -6,7 +6,7 @@ import typing as t
 from app.core import security
 
 # Need to add authentication to routes
-# from app.core.auth import get_current_active_user, get_current_active_superuser
+from app.core.auth import get_current_active_user, get_current_active_superuser
 
 from app.db.session import get_db
 # Create crud functions for patients

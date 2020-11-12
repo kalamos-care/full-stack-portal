@@ -1,16 +1,16 @@
 import React, { FC, useState } from 'react';
 
 import {
-  BrowserRouter as Router,
   Switch,
   Route,
-  Link as RouterLink, 
-  LinkProps as RouterLinkProps
+  Link as RouterLink,
+  LinkProps as RouterLinkProps,
+  Redirect
 } from "react-router-dom";
 
 import { makeStyles } from '@material-ui/core/styles';
 
-import Box from '@material-ui/core/Box';
+import { Box, Container } from '@material-ui/core/';
 
 import Header from './layout/Header';
 import Footer from './layout/Footer';
@@ -27,11 +27,12 @@ import { FAQ } from './resources/FAQ';
 import { ApiDocs } from './resources/ApiDocs';
 import { PrivacyPolicy } from './legal/PrivacyPolicy';
 import { TermsOfUse } from './legal/TermsOfUse';
+import { Legal } from './legal/Legal';
 
 
 const useStyles = makeStyles((theme) => ({
   marketing: {
-    textAlign: 'center',
+    //textAlign: 'center',
     display: 'flex',
     flexDirection: 'column',
     height: '100vh',
@@ -45,9 +46,11 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     justifyContent: 'center',
     fontSize: 'calc(10px + 2vmin)',
+    paddingTop: theme.spacing(4),
   },
   footer: {
-
+    textAlign: 'center',
+    //backgroundColor: '#f4effc',
   },
 }));
 
@@ -61,7 +64,7 @@ export const Home: FC = () => {
         <Header />
       </header>
       <main className={classes.main}>
-      <Box>
+        <Container>
           {/*
           A <Switch> looks through all its children <Route>
           elements and renders the first one whose path
@@ -85,6 +88,10 @@ export const Home: FC = () => {
             <Route exact path="/company/blog">
               <Blog />
             </Route>
+            <Route exact path="/product/">
+              <Features />
+              <Pricing />
+            </Route>
             <Route exact path="/product/features">
               <Features />
             </Route>
@@ -95,7 +102,10 @@ export const Home: FC = () => {
               <FAQ />
             </Route>
             <Route exact path="/resources/api">
-              <ApiDocs />
+              <Redirect to="kalamos.care/api/docs" />
+            </Route>
+            <Route exact path="/legal">
+              <Legal />
             </Route>
             <Route exact path="/legal/terms-of-use">
               <TermsOfUse />
@@ -104,7 +114,7 @@ export const Home: FC = () => {
               <PrivacyPolicy />
             </Route>
           </Switch>
-    </Box>
+        </Container>
       </main>
       <footer className={classes.footer}>
         <Footer />

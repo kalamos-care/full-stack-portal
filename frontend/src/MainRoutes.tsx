@@ -17,8 +17,14 @@ export const MainRoutes: FC = () => {
       <Route path="/admin">
         <Admin />
       </Route>
-      <Route path="/login" component={Login} />
-      <Route path="/signup" component={SignUp} />
+      <PrivateRoute path="/clinic/" component={ProviderDashboard} />
+      <Route exact path="/" component={Home} />
+      <Route path="/company" component={Home} />
+      <Route path="/product" component={Home} />
+      <Route path="/resources" component={Home} />
+      <Route path="/legal" component={Home} />
+      <Route path="/login" component={Home} />
+      <Route path="/signup" component={Home} />
       <Route
         path="/logout"
         render={() => {
@@ -27,12 +33,6 @@ export const MainRoutes: FC = () => {
           return null;
         }}
       />
-      <PrivateRoute path="/clinic/" component={ProviderDashboard} />
-      <Route exact path="/" component={Home} />
-      <Route path="/company" component={Home} />
-      <Route path="/product" component={Home} />
-      <Route path="/resources" component={Home} />
-      <Route path="/legal" component={Home} />
     </Switch>
   );
 };

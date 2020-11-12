@@ -7,16 +7,13 @@ const useStyles = makeStyles((theme) => ({
     bodyText: {
         textAlign: 'left',
     },
-    top: {
-        padding: theme.spacing(8, 0, 6),
-    },
 }));
 
 export const Features: FC = () => {
     const classes = useStyles();
 
     return (
-        <Container maxWidth="md" className={classes.top}>
+        <Container maxWidth="md">
             <Grid>
             <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>Features</Typography>
             </Grid>

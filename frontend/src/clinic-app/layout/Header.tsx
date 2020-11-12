@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-// import { Switch, Route } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import { useHistory } from 'react-router';
 
 // import { logout } from '../../utils/auth';
@@ -35,7 +35,7 @@ const Header: FC = () => {
 
     const [state, setState] = React.useState({
         top: false
-      });
+    });
 
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
@@ -59,7 +59,7 @@ const Header: FC = () => {
                 <Typography
                     variant="h6"
                     className={classes.title}
-                // component={Link}
+                // component={RouterLink}
                 // to="/"
                 >
                     Kalamos Care
@@ -88,15 +88,11 @@ const Header: FC = () => {
                     open={open}
                     onClose={handleClose}
                 >
-                        <MenuItem onClick={handleClose}>
-                            <a href="/clinic/settings">
-                                Settings
-                            </a>
+                    <MenuItem onClick={handleClose} component={RouterLink} to="/clinic/settings">
+                        Settings
                         </MenuItem>
-                        <MenuItem onClick={handleClose}>
-                            <a href="/logout">
-                                Logout
-                            </a>
+                    <MenuItem onClick={handleClose} component={RouterLink} to="/logout">
+                        Logout
                         </MenuItem>
                 </Menu>
             </Toolbar>

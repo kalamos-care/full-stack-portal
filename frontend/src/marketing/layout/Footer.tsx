@@ -3,9 +3,9 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link as RouterLink, 
+    Link as RouterLink,
     LinkProps as RouterLinkProps
-  } from "react-router-dom";
+} from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 
 import Box from '@material-ui/core/Box';
@@ -13,6 +13,9 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
+
+import GitHubIcon from '@material-ui/icons/GitHub';
+import TwitterIcon from '@material-ui/icons/Twitter';
 
 const useStyles = makeStyles((theme) => ({
     '@global': {
@@ -38,6 +41,11 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+const social = [
+    { name: 'GitHub', icon: <GitHubIcon /> },
+    { name: 'Twitter', icon: <TwitterIcon /> },
+
+];
 
 function Copyright() {
     return (
@@ -114,7 +122,7 @@ const Footer: FC = () => {
     const classes = useStyles();
 
     return (
-        <Container maxWidth="md" component="footer" className={classes.footer}>
+        <Container component="footer" className={classes.footer}>
             <Grid container spacing={4} justify="space-evenly">
                 {footers.map((footer) => (
                     <Grid item xs={6} sm={3} key={footer.title}>
@@ -134,6 +142,14 @@ const Footer: FC = () => {
                 ))}
             </Grid>
             <Box mt={5}>
+                {/* This is broken
+                <ul>
+                    {social.icon.map((item) => (
+                        {item.icon}
+                    )
+                    )}
+                </ul>
+                */}
                 <Copyright />
             </Box>
         </Container>

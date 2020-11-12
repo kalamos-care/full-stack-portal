@@ -1,18 +1,13 @@
 import React, { FC, useState } from 'react';
 import {
     BrowserRouter as Router,
-    Switch,
-    Route,
-    useParams,
-    Link
+    Link as RouterLink
 } from "react-router-dom";
-import { useHistory } from 'react-router';
 import { makeStyles } from '@material-ui/core/styles';
 
 import {
     BottomNavigation, BottomNavigationAction, Typography, Box
 } from '@material-ui/core/'
-// import Link from '@material-ui/core'
 import {
     Chat, Folder, Notifications
 } from '@material-ui/icons/';
@@ -22,11 +17,11 @@ const useStyles = makeStyles((theme) => ({
     bottom_nav: {
         width: '100%',
     },
-    copyright: {
-        alignItems: 'center',
-    }
 }));
 
+
+const Footer: FC = () => {
+    const classes = useStyles();
 
   // Bottom Nav state management (I think)
   const [value, setValue] = React.useState('notifications');
@@ -34,16 +29,6 @@ const useStyles = makeStyles((theme) => ({
   function handleBottomNavChange(event: React.ChangeEvent<{}>, newValue: string) {
     setValue(newValue);
   }
-
-
-const Footer: FC = () => {
-    const classes = useStyles();
-
-    const [value, setValue] = React.useState('notifications');
-
-    function handleChange(event: React.ChangeEvent<{}>, newValue: string) {
-        setValue(newValue);
-    }
 
     return (
         <BottomNavigation
@@ -56,21 +41,21 @@ const Footer: FC = () => {
             label="Notifications"
             value="notifications"
             icon={<Notifications />}
-            component={Link}
-            to="/clinic/notificatoins"
+            component={RouterLink}
+            to="/clinic/notifications"
           />
           <BottomNavigationAction
             label="Patients"
             value="patients"
             icon={<Folder />}
-            component={Link}
+            component={RouterLink}
             to="/clinic/patients"
           />
           <BottomNavigationAction
             label="Messages"
             value="messages"
             icon={<Chat />}
-            component={Link}
+            component={RouterLink}
             to="/clinic/messages"
           />
       </BottomNavigation>

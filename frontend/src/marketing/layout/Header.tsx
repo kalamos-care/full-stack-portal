@@ -34,10 +34,10 @@ const Header: FC = () => {
               Kalamos Care
         </Typography>
             <ButtonGroup color="inherit">
-              <Button href="/login">
+              <Button component={RouterLink} to="/login">
                 Login
             </Button>
-              <Button href="/signup">
+              <Button component={RouterLink} to="/signup">
                 Sign Up
             </Button>
             </ButtonGroup>
