@@ -31,22 +31,22 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - node-v1-{{ .Branch }}-{{ checksum "package-lock.json" }}
+            - node-v1-{{ .Branch }}-{{ checksum "frontend/package-lock.json" }}
             - node-v1-{{ .Branch }}-
             - node-v1-
       - run:
           name: Install deps.
-          command: npm install
+          command: cd frontend && npm install
       - save_cache:
-          key: node-v1-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          key: node-v1-{{ .Branch }}-{{ checksum "frontend/package-lock.json" }}
           paths:
             - /project/frontend/node_modules
       - run:
           name: Lint
-          command: npm run lint
+          command: cd frontend && npm run lint
       - run:
           name: Test
-          command: npm run test
+          command: cd frontend && npm run test
 
 workflows:
   version: 2
