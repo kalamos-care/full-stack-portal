@@ -1,0 +1,56 @@
+version: 2
+
+jobs:
+  lint-and-test-backend:
+    working_directory: /project
+    docker:
+      - image: python:3.8-slim
+    steps:
+      - checkout
+      - run:
+          name: Install black.
+          command: pip install black
+      - run:
+          name: Lint
+          command: black --line-length 100 --diff --check .
+      - run:
+          name: Install system deps.
+          command: apt-get update -y && apt-get install -y libpq-dev
+      - run:
+          name: Install deps
+          command: pip install -r backend/requirements.txt
+      - run:
+          name: Run tests
+          command: pytest
+
+  lint-and-test-frontend:
+    working_directory: /project
+    docker:
+      - image: node:latest
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - node-v1-{{ .Branch }}-{{ checksum "package-lock.json" }}
+            - node-v1-{{ .Branch }}-
+            - node-v1-
+      - run:
+          name: Install deps.
+          command: npm install
+      - save_cache:
+          key: node-v1-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          paths:
+            - /project/frontend/node_modules
+      - run:
+          name: Lint
+          command: npm run lint
+      - run:
+          name: Test
+          command: npm run test
+
+workflows:
+  version: 2
+  lint-test-deploy:
+    jobs:
+      - lint-and-test-backend
+      - lint-and-test-frontend
