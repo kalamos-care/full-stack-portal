@@ -14,7 +14,7 @@ export const NewPatient: FC = () => {
     
     return (
         <Grid>
-            <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>Invite a patient to sign HIPAA Auth waivers</Typography>
+            <Typography component="h4" variant="h5" align="center" color="textPrimary" gutterBottom>Invite a patient to sign HIPAA Auth waivers</Typography>
         </Grid>
     );
 };

@@ -13,11 +13,9 @@ const useStyles = makeStyles((theme) => ({
 export const PatientDetail: FC = () => {
     const classes = useStyles();
 
-    
-
     return (
         <Grid>
-            <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>List patient <code>:id</code> details here!</Typography>
+            <Typography component="h4" variant="h5" gutterBottom>List patient <code>:id</code> details here!</Typography>
         </Grid>
     );
 };

@@ -6,9 +6,8 @@ import {
   } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 
-import { PatientList } from './PatientList';
-import { NewPatient } from './NewPatient';
-import { PatientDetail } from './PatientDetail';
+import { PatientList, NewPatient, PatientDetail } from './';
+import { NewOrder, OrderDetail } from './Orders'
 
 import Grid from '@material-ui/core/Grid';
 import SpeedDial, { SpeedDialProps } from '@material-ui/lab/SpeedDial';
@@ -60,7 +59,7 @@ export const Patients: FC = () => {
     return (
         <Grid>
             <Switch>
-                <Route exact path="/clinic/patients">
+                <Route exact path="/clinic/patients/">
                     <PatientList />
                 </Route>
                 <Route exact path="/clinic/patients/new">

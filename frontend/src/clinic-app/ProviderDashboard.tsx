@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexGrow: 1,
     justifyContent: 'center',
-    //fontSize: 'calc(10px + 2vmin)',
+    paddingTop: theme.spacing(2),
   },
   footer: {
     display: 'flex',

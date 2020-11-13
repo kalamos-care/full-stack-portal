@@ -21,7 +21,7 @@ function renderPatientRow(props: ListChildComponentProps) {
 
     return (
 
-        <ListItem button style={style} key={index} component={RouterLink} to={'/clinic/patients/'+index}>
+        <ListItem button style={style} key={index} component={RouterLink} to={'/clinic/patients/' + index}>
             <ListItemText primary={`Patient ${index + 1}`} />
         </ListItem>
     );
@@ -33,7 +33,10 @@ export const PatientList: FC = () => {
 
     return (
         <Grid>
-            <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>List patients here!</Typography>
+            <Grid>
+                <Typography component="h4" variant="h5" gutterBottom>Patients</Typography>
+                <Typography component="h5" variant="h6" gutterBottom>List patients here!</Typography>
+            </Grid>
             <Paper>
                 <FixedSizeList height={590} width={340} itemSize={46} itemCount={200}>
                     {renderPatientRow}
