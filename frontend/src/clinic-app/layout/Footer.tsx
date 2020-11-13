@@ -19,6 +19,26 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+const bottomNavs = [
+  {
+    label: 'Notifications',
+    value: 'notifications',
+    icon: <Notifications />,
+    url: '/clinic/notifications',
+  },
+  {
+    label: 'Patients',
+    value: 'patients',
+    icon: <Folder />,
+    url: '/clinic/patients',
+  },
+  {
+    label: 'Messages',
+    value: 'messages',
+    icon: <Chat />,
+    url: '/clinic/messages',
+  },
+];
 
 const Footer: FC = () => {
     const classes = useStyles();
@@ -37,27 +57,15 @@ const Footer: FC = () => {
         onChange={handleBottomNavChange}
         showLabels
         >
-          <BottomNavigationAction
-            label="Notifications"
-            value="notifications"
-            icon={<Notifications />}
-            component={RouterLink}
-            to="/clinic/notifications"
-          />
-          <BottomNavigationAction
-            label="Patients"
-            value="patients"
-            icon={<Folder />}
-            component={RouterLink}
-            to="/clinic/patients"
-          />
-          <BottomNavigationAction
-            label="Messages"
-            value="messages"
-            icon={<Chat />}
-            component={RouterLink}
-            to="/clinic/messages"
-          />
+          {bottomNavs.map((bottomNav) => (
+            <BottomNavigationAction
+              label={bottomNav.label}
+              value={bottomNav.value}
+              icon={bottomNav.icon}
+              component={RouterLink}
+              to={bottomNav.url}
+            />
+          ))}
       </BottomNavigation>
     );
 };

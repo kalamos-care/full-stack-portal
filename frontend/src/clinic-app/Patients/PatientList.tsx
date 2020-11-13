@@ -10,6 +10,8 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { FixedSizeList, ListChildComponentProps } from 'react-window';
 
+import { PatientSpeedDial } from './PatientSpeedDial';
+
 
 const useStyles = makeStyles((theme) => ({
 
@@ -22,7 +24,7 @@ function renderPatientRow(props: ListChildComponentProps) {
     return (
 
         <ListItem button style={style} key={index} component={RouterLink} to={'/clinic/patients/' + index}>
-            <ListItemText primary={`Patient ${index + 1}`} />
+            <ListItemText primary={`Patient ${index}`} />
         </ListItem>
     );
 }
@@ -42,6 +44,7 @@ export const PatientList: FC = () => {
                     {renderPatientRow}
                 </FixedSizeList>
             </Paper>
+            <PatientSpeedDial />
         </Grid>
     );
 };

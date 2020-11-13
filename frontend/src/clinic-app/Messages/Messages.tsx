@@ -10,6 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
 import { MessageList } from './MessageList';
+import { Conversation } from './Conversation';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -29,7 +30,7 @@ export const Messages: FC = () => {
                     {/* <NewMessage /> */}
                 </Route>
                 <Route path="/clinic/messages/:id">
-                    {/* <MessageDetail /> */}
+                    <Conversation />
                 </Route>
             </Switch>
         </Grid>

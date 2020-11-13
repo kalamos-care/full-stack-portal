@@ -69,6 +69,7 @@ export const ProviderDashboard: FC = () => {
             <Route exact path="/clinic/messages" component={Messages} />
             <Route exact path="/clinic/settings/" component={UserSettings} />
           </Switch>
+          {/* <InstallPWA /> */}
         </Container>
       </main>
       <footer className={classes.footer}>

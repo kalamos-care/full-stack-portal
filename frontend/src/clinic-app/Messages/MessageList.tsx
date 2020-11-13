@@ -1,4 +1,6 @@
 import React, { FC } from 'react';
+import { Link as RouterLink } from "react-router-dom";
+
 import { makeStyles } from '@material-ui/core/styles';
 
 import Grid from '@material-ui/core/Grid';
@@ -16,11 +18,50 @@ const useStyles = makeStyles((theme) => ({
         width: '100%',
         maxWidth: '36ch',
         backgroundColor: theme.palette.background.paper,
-      },
-      inline: {
+    },
+    inline: {
         display: 'inline',
-      },
+    },
 }));
+
+const conversations = [
+    {
+        id: 789,
+        avatar: {
+            alt: 'Marsha P Johnson',
+            src: 'https://source.unsplash.com/random',
+        },
+        preview: {
+            title: 'Brunch this weekend?',
+            participants: 'Marsha P Johnson',
+            text: " — I'll be in your neighborhood doing errands this…",
+        },
+    },
+    {
+        id: 456,
+        avatar: {
+            alt: 'Harvey Milk',
+            src: 'https://source.unsplash.com/random',
+        },
+        preview: {
+            title: 'Summer BBQ',
+            participants: 'Harvey Milk',
+            text: " — Wish I could come, but I'm out of town this…",
+        },
+    },
+    {
+        id: 123,
+        avatar: {
+            alt: 'Bayard Rustin',
+            src: 'https://source.unsplash.com/random',
+        },
+        preview: {
+            title: 'Oui Oui',
+            participants: 'Bayard Rustin',
+            text: " — Do you have Paris recommendations? Have you ever…",
+        },
+    },
+];
 
 export const MessageList: FC = () => {
     const classes = useStyles();
@@ -32,71 +73,32 @@ export const MessageList: FC = () => {
                 <Typography component="h5" variant="h6" gutterBottom>Sign up for a Pro plan to message your patients.</Typography>
             </Grid>
             <List className={classes.messageList}>
-                <ListItem alignItems="flex-start">
-                    <ListItemAvatar>
-                        <Avatar alt="Remy Sharp" src="https://source.unsplash.com/random" />
-                    </ListItemAvatar>
-                    <ListItemText
-                        primary="Brunch this weekend?"
-                        secondary={
-                            <React.Fragment>
-                                <Typography
-                                    component="span"
-                                    variant="body2"
-                                    className={classes.inline}
-                                    color="textPrimary"
-                                >
-                                    Ali Connors
-              </Typography>
-                                {" — I'll be in your neighborhood doing errands this…"}
-                            </React.Fragment>
-                        }
-                    />
-                </ListItem>
-                <Divider variant="inset" component="li" />
-                <ListItem alignItems="flex-start">
-                    <ListItemAvatar>
-                        <Avatar alt="Travis Howard" src="https://source.unsplash.com/random" />
-                    </ListItemAvatar>
-                    <ListItemText
-                        primary="Summer BBQ"
-                        secondary={
-                            <React.Fragment>
-                                <Typography
-                                    component="span"
-                                    variant="body2"
-                                    className={classes.inline}
-                                    color="textPrimary"
-                                >
-                                    to Scott, Alex, Jennifer
-              </Typography>
-                                {" — Wish I could come, but I'm out of town this…"}
-                            </React.Fragment>
-                        }
-                    />
-                </ListItem>
-                <Divider variant="inset" component="li" />
-                <ListItem alignItems="flex-start">
-                    <ListItemAvatar>
-                        <Avatar alt="Cindy Baker" src="https://source.unsplash.com/random" />
-                    </ListItemAvatar>
-                    <ListItemText
-                        primary="Oui Oui"
-                        secondary={
-                            <React.Fragment>
-                                <Typography
-                                    component="span"
-                                    variant="body2"
-                                    className={classes.inline}
-                                    color="textPrimary"
-                                >
-                                    Sandra Adams
-              </Typography>
-                                {' — Do you have Paris recommendations? Have you ever…'}
-                            </React.Fragment>
-                        }
-                    />
-                </ListItem>
+                {conversations.map((conversation) => (
+                    <>
+                        <ListItem alignItems="flex-start" component={RouterLink} to={'/clinic/messages/' + conversation.id}>
+                            <ListItemAvatar>
+                                <Avatar alt={conversation.avatar.alt} src={conversation.avatar.src} />
+                            </ListItemAvatar>
+                            <ListItemText
+                                primary={conversation.preview.title}
+                                secondary={
+                                    <React.Fragment>
+                                        <Typography
+                                            component="span"
+                                            variant="body2"
+                                            className={classes.inline}
+                                            color="textPrimary"
+                                        >
+                                            {conversation.preview.participants}
+                                        </Typography>
+                                        {conversation.preview.text}
+                                    </React.Fragment>
+                                }
+                            />
+                        </ListItem>
+                        <Divider variant="inset" component="li" />
+                    </>
+                ))}
             </List>
         </Grid>
     );

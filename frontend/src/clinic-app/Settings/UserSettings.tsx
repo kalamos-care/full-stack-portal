@@ -18,7 +18,8 @@ export const UserSettings: FC = () => {
 
   return (
     <Grid>
-      <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>List user settings here:</Typography>
+      <Typography component="h4" variant="h5" gutterBottom>User Settings</Typography>
+      <Typography component="h5" variant="h6">Manage your account here</Typography>
       <p>
         <code>Replace this page with a dropdown and insert user info here</code>
       </p>
