@@ -1,10 +1,9 @@
 import React, { FC } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { ThemeProvider } from '@material-ui/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
 
 import { MainRoutes } from './MainRoutes';
-
-import { createMuiTheme } from '@material-ui/core/styles';
-import { ThemeProvider } from '@material-ui/styles';
 
 const theme = createMuiTheme({
   palette: {

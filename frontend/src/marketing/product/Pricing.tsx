@@ -153,8 +153,8 @@ export const Pricing: FC = () => {
                   </ul>
                 </CardContent>
                 <CardActions>
-                  {/*Button variant was throwing an error for being undefined type*/}
-                  {/*variant={tier.buttonVariant}*/}
+                  {/* Button variant was throwing an error for being undefined type */}
+                  {/* variant={tier.buttonVariant} */}
                   <Button fullWidth color="primary" variant="outlined">
                     {tier.buttonText}
                   </Button>

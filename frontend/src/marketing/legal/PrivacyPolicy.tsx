@@ -22,7 +22,7 @@ export const PrivacyPolicy: FC = () => {
         </Typography>
       </Grid>
       <Grid>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           Kalamos Care, Inc. (“Kalamos,” “we,” or “us,”) is committed to
           protecting your privacy. This Privacy Policy (“Privacy Policy”) along
           with our{' '}
@@ -41,16 +41,16 @@ export const PrivacyPolicy: FC = () => {
           agree to these terms, you are prohibited from using or accessing the
           Services.
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           By using our Website or Services, you are consenting to have your
           personal information transferred to and processed in the United
           States.&nbsp;We make no assurances that the Website is suitable for
           use outside the United States.
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           <b>INFORMATION WE COLLECT</b>
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           In order to provide you with our Services, we may collect, store, and
           use personally identifiable information that can be used to identify
           you by itself or when it is combined with other information (“Personal
@@ -63,14 +63,14 @@ export const PrivacyPolicy: FC = () => {
           &nbsp;Personal Information includes Medical Information and Insurance
           Information, as defined below.
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           In order to use our Services, we may require you to complete intake
           forms which request Personal Information such as medical and
           demographic information (“Medical Information”) and/or insurance
           information (“Insurance Information”) for use by Kalamos and your
           physician or healthcare provider (the “Provider”). &nbsp;
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           You will be asked to provide Medical Information relating to you,
           which may include, but is not limited to, age, disease history,
           medical test results, and medical treatments. &nbsp;The Provider may
@@ -82,7 +82,7 @@ export const PrivacyPolicy: FC = () => {
           regarding his/her current electronic medical records (EMR) system in
           order to allow us to provide you our Services.
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           You may also be asked to provide Insurance Information, including the
           name of your insurance provider, your policy holder’s name, a Member
           ID number or personal insurance account number, and your relationship
@@ -91,35 +91,35 @@ export const PrivacyPolicy: FC = () => {
           information will be requested for both your primary and secondary
           insurance, as applicable.
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           You will also be asked to provide an email address so that we and/or
           the Provider may contact you with relevant reminders and updates about
           the Services.
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           Personal Information collected through the Service and submitted to
           the Provider may become part of your medical record (both paper and
           electronic) with the Provider and will be subject to applicable laws,
           rules, regulations, and guidelines relating to the handling of
           Personal Information and medical records.
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           Entry of Personal Information through the Services is completely
           voluntary and it is your choice to provide us with the Personal
           Information requested. &nbsp;Please be aware that failure to provide
           the requested Personal Information may prevent us from providing you
           Services.
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           From time to time, Kalamos may share aggregate, non-personal
           information about website usage with third parties, including
           government agencies and advertisers. &nbsp;Aggregate information does
           not contain any Personal Information about our users.
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           <b>HOW WE MAY COLLECT AND USE YOUR INFORMATION </b>
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           We do not collect any Personal Information about you unless you
           voluntarily provide it to us. We may use Personal Information we
           collect from you in the following ways:
@@ -148,15 +148,15 @@ export const PrivacyPolicy: FC = () => {
             </li>
           </ol>
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           We may combine your Personal Information with other information about
           you that is available to us, including information from other sources.
           &nbsp;
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           <b>HOW WE MAY DISCLOSE YOUR INFORMATION</b>
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           Kalamos will not use, disclose, or share your Personal Information;
           nor will we sell, trade, or rent your Personal Information to others,
           except as described in this Privacy Policy. We may share Personal
@@ -190,7 +190,7 @@ export const PrivacyPolicy: FC = () => {
             <li>As otherwise described in this Privacy Policy.</li>
           </ol>
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           We require our agents, vendors and service providers to limit their
           use of information but do not otherwise guarantee that any entity
           receiving such information in connection with one of these
@@ -200,7 +200,7 @@ export const PrivacyPolicy: FC = () => {
           security of such information. We may disclose aggregate, non-personal
           information to third parties for any purpose.
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           Please be advised that we may disclosure your Personal Information to
           Shopify, Inc. and its affiliates, including Shopify Data Processing
           (USA) Inc., Shopify Payments (USA) Inc., Shopify (USA) Inc., and
@@ -224,30 +224,30 @@ export const PrivacyPolicy: FC = () => {
           </a>{' '}
           (HelloSign).
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           Please read Shopify and HelloWork’s privacy policies carefully before
           agreeing to use the Services. &nbsp;Kalamos Care is not responsible
           for the privacy practices of Shopify or HelloSign.
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           <b>HOW LONG DO WE KEEP YOUR INFORMATION</b>
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           We keep your Personal Information only for as long as we continue to
           have a business purpose for it. &nbsp;We retain information we collect
           from you where we have an ongoing business need to do so (for example,
           to comply with applicable legal, tax or accounting requirements).
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           If you cease using the Services, we will keep your Personal
           Information in a form that allows identification of your Personal
           Information for no longer than is necessary for our business needs (or
           as otherwise required by law).
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           <b>UPDATES TO OR DELETION OF YOUR INFORMATION </b>
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           You may edit or delete any of your Personal Information in your
           account online at any time by linking to your account in accordance
           with instructions posted elsewhere on this Website. You may also
@@ -255,20 +255,20 @@ export const PrivacyPolicy: FC = () => {
           at privacy@kalamos.care. You may request that Kalamos deactivate your
           account at any time.
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           <b>
             CHOICES REGARDING COLLECTION, USE, AND DISTRIBUTION OF YOUR
             INFORMATION
           </b>
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           We may, from time to time, send you email regarding our Service and/or
           the Website. In addition, we may occasionally send you emails about
           other services that we feel may be of interest to you. Only Kalamos
           (or agents working on behalf of Kalamos and under confidentiality
           agreements) will send you these emails.
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           Kalamos email correspondence will include instructions on how to
           update your e-mail preferences or unsubscribe from our emails.
           &nbsp;Please follow the instructions in the emails to notify Kalamos
@@ -278,7 +278,7 @@ export const PrivacyPolicy: FC = () => {
           still be able to communicate with you about your account and your
           transactions with us. &nbsp;
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           You can choose to delete or block cookies by setting your browser to
           either reject all cookies or to allow cookies only from selected
           sites. &nbsp;If you block cookies, performance of the Website may be
@@ -286,10 +286,10 @@ export const PrivacyPolicy: FC = () => {
           entitled “Use of Cookies,” below, for more information on our use of
           cookies.
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           <b>THIRD PARTY LINKS </b>
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           This Website may contain links to third party websites. &nbsp;If you
           choose to click those links, you will leave the Website. &nbsp;Third
           party websites may have privacy practices that differ from ours.
@@ -297,10 +297,10 @@ export const PrivacyPolicy: FC = () => {
           sites and make no representations about, and are not responsible for,
           the privacy practices of such third party websites.
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           <b>CHANGES TO THIS PRIVACY POLICY </b>
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           Kalamos may update this Privacy Policy from time to time. &nbsp;If we
           decide to change our Privacy Policy, we will post those changes on
           this page and update the Privacy Policy modification date at the top
@@ -312,17 +312,17 @@ export const PrivacyPolicy: FC = () => {
           your: (i) acknowledgment of the modified Privacy Policy; and (ii)
           agreement to abide and be bound by the modified Privacy Policy.
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           <b>INFORMATION SECURITY</b>
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           Kalamos is committed to protecting the security and privacy of your
           information stored by us. &nbsp;We will take all steps reasonably
           necessary to restrict access to Personal Information to those of our
           employees, agents, contractors, or representatives who require access
           to such information to perform tasks assigned to them by us.
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           We use reasonable security efforts to protect the data in our
           possession. &nbsp;However, no method of transmission or storage of
           data is 100% secure and we will not be responsible for any damage that
@@ -334,10 +334,10 @@ export const PrivacyPolicy: FC = () => {
           Services, we cannot protect the security and privacy of the
           information contained in such copies.
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           <b>USE OF COOKIES</b>
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           When you use our Website we or our third-party vendors may store
           cookies on your computer in order to facilitate and customize your use
           of our Website. A cookie is a small data text file, which a website
@@ -348,7 +348,7 @@ export const PrivacyPolicy: FC = () => {
           visitors, save website preferences and to allow us to recognize visits
           from the same computer and browser.
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           There are several types of cookies. Cookies that are essential for the
           operation of our Site (“Essential Cookies”). These cookies enable
           services you have specifically asked for. &nbsp;These cookies remain
@@ -368,14 +368,14 @@ export const PrivacyPolicy: FC = () => {
           Functionality Cookies but the cookies themselves do not contain any of
           your Personal Information.
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           In general, the cookies on our Website make your use of the Website
           easier, makes the Website run more smoothly and help us to maintain a
           secure Website. You are always free to decline our cookies if your
           browser permits, but some parts of our Website may not work properly
           in that case.&nbsp;
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           Please be advised that our third-party vendors, including Shopify and
           HelloSign, may use cookies or similar technologies on our Website. By
           agreeing to use the Services, you are&nbsp;expressly agreeing to allow
@@ -387,10 +387,10 @@ export const PrivacyPolicy: FC = () => {
           https://www.hellosign.com/privacy. We recommend that you read these
           policies carefully before agreeing to these terms.
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           <b>MINORS</b>
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           This Website and our Services are directed towards adults. &nbsp;Our
           Services and any related content, including our public content, is not
           directed at or meant for individuals under the age of 18.
@@ -399,10 +399,10 @@ export const PrivacyPolicy: FC = () => {
           that we have collected any Personal Information from individuals under
           the age of 18, we will promptly delete such information.
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           <b>CALIFORNIA PRIVACY RIGHTS </b>
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           California Civil Code Section 1798.83, also known as the "Shine the
           Light" law, permits our customers who are California residents to
           request and obtain from us once a year, free of charge, information
@@ -415,10 +415,10 @@ export const PrivacyPolicy: FC = () => {
           included in our response. Under California law, businesses are only
           required to respond to a request once during any calendar year.
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           <b>OUTSIDE THE UNITED STATES</b>
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           Our Website is based in the United States and is intended for users
           residing in the U.S. If you are located outside of the United States,
           the information we collect may be transferred to and processed in the
@@ -426,20 +426,20 @@ export const PrivacyPolicy: FC = () => {
           the same as the laws where you reside and, in some cases, may not be
           as protective.
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           <b>“DO NOT TRACK”</b>
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           “Do Not Track” (“DNT”) is a privacy preference that you may set in
           certain web browsers. DNT provides you with a method of informing
           websites and services that you do not want certain information about
           your website visits collected. Please be advised that we do not
           respond to DNT signals.
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           <b>CONTACT INFORMATION</b>
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           The Website is owned and operated by Kalamos. You can contact us using
           the Contact Us page or by email via privacy@kalamos.com.
         </Typography>

@@ -1,14 +1,13 @@
+import Grid from '@material-ui/core/Grid';
+import NewOrderIcon from '@material-ui/icons/LocalHospital';
+import NewPatientIcon from '@material-ui/icons/PersonAdd';
 import React, { FC } from 'react';
 import { Switch, Route, Link as RouterLink } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 
-import { PatientList, NewPatient, PatientDetail } from './';
 import NewOrder from './Orders/NewOrder';
 
-import Grid from '@material-ui/core/Grid';
-
-import NewOrderIcon from '@material-ui/icons/LocalHospital';
-import NewPatientIcon from '@material-ui/icons/PersonAdd';
+import { PatientList, NewPatient, PatientDetail } from '.';
 
 const useStyles = makeStyles((theme) => ({
   speedDial: {

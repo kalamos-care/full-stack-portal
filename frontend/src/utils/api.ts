@@ -13,7 +13,7 @@ export const getMessage = async () => {
 };
 
 export const getUserInfo = async () => {
-  const response = await fetch(BACKEND_URL + '/users/me');
+  const response = await fetch(`${BACKEND_URL}/users/me`);
 
   const data = await response.json();
 

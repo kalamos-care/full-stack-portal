@@ -31,7 +31,7 @@ import { Legal } from './legal/Legal';
 
 const useStyles = makeStyles((theme) => ({
   marketing: {
-    //textAlign: 'center',
+    // textAlign: 'center',
     display: 'flex',
     flexDirection: 'column',
     height: '100vh',
@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
   },
   footer: {
     textAlign: 'center',
-    //backgroundColor: '#f4effc',
+    // backgroundColor: '#f4effc',
   },
 }));
 

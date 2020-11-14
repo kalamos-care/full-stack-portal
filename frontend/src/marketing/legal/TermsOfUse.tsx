@@ -22,10 +22,10 @@ export const TermsOfUse: FC = () => {
         </Typography>
       </Grid>
       <Grid>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           <b>Effective Date: 4/1/2019</b>
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           These Terms of Use (“Terms of Use” or “Terms”) along with our{' '}
           <a href="https://kalamos.care/pages/privacy-policy">Privacy Policy</a>{' '}
           constitute a valid and binding contract between you (“you” or the
@@ -46,7 +46,7 @@ export const TermsOfUse: FC = () => {
           through the Services are protected by applicable intellectual property
           laws.
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           We reserve the right to change these Terms of Use from time to time
           for any reason, which shall be effected by posting the updated Terms
           of Use here. &nbsp;If there are significant changes, we will notify
@@ -60,7 +60,7 @@ export const TermsOfUse: FC = () => {
           <Typography variant="body1">
             <li>
               <b>Your Use of the Services</b>
-              <Typography variant="body1" paragraph={true}>
+              <Typography variant="body1" paragraph>
                 You may have been invited by us to access the Service by
                 creating an account (“Account”), and may have received an email
                 with a link or a token, or may have been given a kit number or
@@ -69,7 +69,7 @@ export const TermsOfUse: FC = () => {
                 (“Access Information”) correctly, in accordance with these Terms
                 of Use, and for the exclusive purpose of accessing the Services.
               </Typography>
-              <Typography variant="body1" paragraph={true}>
+              <Typography variant="body1" paragraph>
                 You are also responsible for maintaining the confidentiality of
                 your username and password. We encourage you to use “strong”
                 passwords (e.g., passwords that use a combination of upper and
@@ -80,21 +80,21 @@ export const TermsOfUse: FC = () => {
                 immediately of any unauthorized use of your Account or any other
                 breach of security.
               </Typography>
-              <Typography variant="body1" paragraph={true}>
+              <Typography variant="body1" paragraph>
                 You acknowledge and understand that our Services are intended
                 for users residing in the U.S. only.
               </Typography>
             </li>
             <li>
               <b>Entry of Information</b>
-              <Typography variant="body1" paragraph={true}>
+              <Typography variant="body1" paragraph>
                 Please be advised that the Services may require the use of
                 intake forms which request personal information, such as medical
                 and demographic information (“Personal Information”). &nbsp;For
                 a description of how Kalamos collects, uses, secures, and shares
                 your Personal Information, please refer to our Privacy Policy.
               </Typography>
-              <Typography variant="body1" paragraph={true}>
+              <Typography variant="body1" paragraph>
                 We contract with JN Projects, Inc., d.b.a HelloSign
                 (“HelloSign”) to assist us in the creation, completion, and
                 management of intake forms and other forms necessary to perform
@@ -106,7 +106,7 @@ export const TermsOfUse: FC = () => {
             </li>
             <li>
               <b>Sample Collection Requirements</b>
-              <Typography variant="body1" paragraph={true}>
+              <Typography variant="body1" paragraph>
                 You may be required to provide a urine, saliva, blood or other
                 biological sample (collectively “Samples”) in order to use the
                 Services. &nbsp;All Samples must be collected in accordance with
@@ -122,7 +122,7 @@ export const TermsOfUse: FC = () => {
             </li>
             <li>
               <b>Access of Information</b>
-              <Typography variant="body1" paragraph={true}>
+              <Typography variant="body1" paragraph>
                 The Service is provided as an information entry resource only.
                 Any information you obtain from using the Service is not
                 intended to be used by you for any diagnostic or treatment
@@ -132,7 +132,7 @@ export const TermsOfUse: FC = () => {
                 &nbsp;Please consult your physician or healthcare provider (your
                 “Provider”) before making any healthcare decisions.
               </Typography>
-              <Typography variant="body1" paragraph={true}>
+              <Typography variant="body1" paragraph>
                 You agree not to access the Services from insecure mobile
                 devices, PCs or laptops, such as public internet kiosks found at
                 airports and public libraries. You agree that you are using and
@@ -150,7 +150,7 @@ export const TermsOfUse: FC = () => {
             </li>
             <li>
               <b>Age</b>
-              <Typography variant="body1" paragraph={true}>
+              <Typography variant="body1" paragraph>
                 Our Services and any related content, including our public
                 content, is not directed at or meant for individuals under the
                 age of 18. NO ONE UNDER THE AGE OF 18 IS PERMITTED TO USE OUR
@@ -160,7 +160,7 @@ export const TermsOfUse: FC = () => {
                 delete all information associated with that account from our
                 records.
               </Typography>
-              <Typography variant="body1" paragraph={true}>
+              <Typography variant="body1" paragraph>
                 Should anyone over the age of 18, including a parent or legal
                 guardian, assist anyone under the age of 18 to sign up for or
                 use our Services, Kalamos will immediately terminate any user
@@ -243,7 +243,7 @@ export const TermsOfUse: FC = () => {
             </li>
             <li>
               <b>Use of Your Personal Information</b>
-              <Typography variant="body1" paragraph={true}>
+              <Typography variant="body1" paragraph>
                 By creating an Account, you hereby grant and will grant Kalamos
                 Care and its affiliated companies a nonexclusive, worldwide,
                 royalty free, fully paid up, transferable, sublicenseable,
@@ -254,7 +254,7 @@ export const TermsOfUse: FC = () => {
                 marketing of the Services, in any form now known or later
                 developed. &nbsp;
               </Typography>
-              <Typography variant="body1" paragraph={true}>
+              <Typography variant="body1" paragraph>
                 You may have the option to use social media features, such as
                 private Facebook groups for Kalamos Care users. &nbsp;Social
                 media features may allow the social media provider, like
@@ -265,7 +265,7 @@ export const TermsOfUse: FC = () => {
                 governed by the privacy policy of the social media provider
                 offering them.
               </Typography>
-              <Typography variant="body1" paragraph={true}>
+              <Typography variant="body1" paragraph>
                 The Personal Information, and any other information you provide
                 through the Services, may be used by the Provider to evaluate
                 your medical status and/or administer any patient care you may
@@ -275,25 +275,25 @@ export const TermsOfUse: FC = () => {
             </li>
             <li>
               <b>Access and Interference</b>
-              <Typography variant="body1" paragraph={true}>
+              <Typography variant="body1" paragraph>
                 You agree that you will not use any robot, spider, other
                 automatic device, or manual process to monitor or copy our
                 Website pages or the content contained herein without our prior
                 express written permission.&nbsp;
               </Typography>
-              <Typography variant="body1" paragraph={true}>
+              <Typography variant="body1" paragraph>
                 You agree that you will not use any device, software or routine
                 to bypass any code which may be included to prevent you from
                 breaching the obligations in this paragraph or to interfere or
                 attempt to interfere with the proper working of our Website or
                 Services.&nbsp;
               </Typography>
-              <Typography variant="body1" paragraph={true}>
+              <Typography variant="body1" paragraph>
                 You agree that you will not take any action that imposes an
                 unreasonable or disproportionately large load on our or our
                 host’s infrastructure.
               </Typography>
-              <Typography variant="body1" paragraph={true}>
+              <Typography variant="body1" paragraph>
                 You may not engage in the practices of “screen scraping,”
                 “database scraping,” or any other practice or activity the
                 purpose of which is to obtain lists of users, portions of a
@@ -301,13 +301,13 @@ export const TermsOfUse: FC = () => {
                 Services, in any manner or in any quantities not authorized by
                 Kalamos.&nbsp;
               </Typography>
-              <Typography variant="body1" paragraph={true}>
+              <Typography variant="body1" paragraph>
                 You may not frame or utilize framing techniques to enclose any
                 trademark, logo, or other proprietary information (including
                 images, text, page layout, or form) of Kalamos without prior
                 express written consent.&nbsp;
               </Typography>
-              <Typography variant="body1" paragraph={true}>
+              <Typography variant="body1" paragraph>
                 You may not use meta tags or any other “hidden text” utilizing
                 Kalamos’ name or trademarks without the express written consent
                 of Kalamos.&nbsp;Systematic retrieval of data from our Website
@@ -319,7 +319,7 @@ export const TermsOfUse: FC = () => {
             </li>
             <li>
               <b>Intellectual Property</b>
-              <Typography variant="body1" paragraph={true}>
+              <Typography variant="body1" paragraph>
                 All materials and information available through the Services are
                 the sole and exclusive property of Kalamos Care and its
                 affiliates, suppliers or licensors (the “Kalamos Care
@@ -347,7 +347,7 @@ export const TermsOfUse: FC = () => {
             </li>
             <li>
               <b>Entry of Financial Information</b>
-              <Typography variant="body1" paragraph={true}>
+              <Typography variant="body1" paragraph>
                 You may be required to enter financial information in order to
                 access the Services. &nbsp;Financial information requested of
                 you may include payment data, (e.g., credit card numbers,
@@ -358,7 +358,7 @@ export const TermsOfUse: FC = () => {
                 employees or contracted third parties who provide services to
                 Kalamos Care.
               </Typography>
-              <Typography variant="body1" paragraph={true}>
+              <Typography variant="body1" paragraph>
                 We contract with Shopify, Inc. and its affiliates, including
                 Shopify Data Processing (USA) Inc., Shopify Payments (USA) Inc.,
                 Shopify (USA) Inc., and Shopify International Limited
@@ -374,7 +374,7 @@ export const TermsOfUse: FC = () => {
                 </a>
                 .
               </Typography>
-              <Typography variant="body1" paragraph={true}>
+              <Typography variant="body1" paragraph>
                 When you pay for Services by credit card, you represent and
                 warrant that you are authorized to use such credit card, and you
                 agree to pay all charges incurred by purchasing the Services.
@@ -386,7 +386,7 @@ export const TermsOfUse: FC = () => {
             </li>
             <li>
               <b>Refund Policy</b>
-              <Typography variant="body1" paragraph={true}>
+              <Typography variant="body1" paragraph>
                 ​Any&nbsp;refunds&nbsp;provided under this&nbsp;policy&nbsp;will
                 be issued to the credit card(s) used for the purchase and will
                 be processed within 30 business days. Your credit card will be
@@ -395,7 +395,7 @@ export const TermsOfUse: FC = () => {
             </li>
             <li>
               <b>Scope of Services</b>
-              <Typography variant="body1" paragraph={true}>
+              <Typography variant="body1" paragraph>
                 You are responsible for obtaining any equipment and Internet
                 service necessary to access the Services and for paying any fees
                 for the equipment and service you select. We may alter, suspend,
@@ -408,7 +408,7 @@ export const TermsOfUse: FC = () => {
             </li>
             <li>
               <b>Disclaimers</b>
-              <Typography variant="body1" paragraph={true}>
+              <Typography variant="body1" paragraph>
                 USE OF THE SERVICES IS VOLUNTARY. KALAMOS CARE AND THE SERVICES
                 ARE NOT OFFERING MEDICAL ADVICE AS PART OF YOUR USE OF THE
                 SERVICES. &nbsp;KALAMOS CARE DOES NOT PROVIDE ANY MEDICAL
@@ -420,7 +420,7 @@ export const TermsOfUse: FC = () => {
                 SERVICES. IF YOU HAVE ANY QUESTION RELATED TO YO<b>U</b>R
                 HEALTH, PLEASE CONTACT YOUR HEALTHCARE PROVIDER.
               </Typography>
-              <Typography variant="body1" paragraph={true}>
+              <Typography variant="body1" paragraph>
                 THE SERVICES AND THE MATERIALS AVAILABLE THROUGH THE SERVICE ARE
                 PROVIDED ON AN “AS IS” AND “AS AVAILABLE” BASIS AND USE OF THE
                 SERVICES IS AT YOUR OWN RISK AND, TO THE MAXIMUM EXTENT
@@ -431,7 +431,7 @@ export const TermsOfUse: FC = () => {
                 FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT OF
                 INTELLECTUAL PROPERTY OR ANY OTHER VIOLATION OF RIGHTS.
               </Typography>
-              <Typography variant="body1" paragraph={true}>
+              <Typography variant="body1" paragraph>
                 FURTHER, WITHOUT LIMITING THE FORGOING, KALAMOS CARE, AND THE
                 KALAMOS CARE ENTITIES DO NOT WARRANT OR MAKE ANY REPRESENTATIONS
                 CONCERNING THE ACCURACY, LIKELY RESULTS OF THE USE, OR
@@ -452,14 +452,14 @@ export const TermsOfUse: FC = () => {
                 SECURITY ASSOCIATED WITH THE TRANSMISSION OF PERSONAL
                 INFORMATION.
               </Typography>
-              <Typography variant="body1" paragraph={true}>
+              <Typography variant="body1" paragraph>
                 ALWAYS USE CAUTION WHEN GIVING OUT ANY PERSONALLY IDENTIFYING
                 INFORMATION.
               </Typography>
             </li>
             <li>
               <b>Limitations</b>
-              <Typography variant="body1" paragraph={true}>
+              <Typography variant="body1" paragraph>
                 IN NO EVENT SHALL KALAMOS CARE OR THE KALAMOS CARE ENTITIES BE
                 LIABLE FOR ANY INDIRECT, SPECIAL, INCIDENTAL, CONSEQUENTIAL OR
                 EXEMPLARY DAMAGES, INCLUDING, WITHOUT LIMITATION, DAMAGES FOR
@@ -481,7 +481,7 @@ export const TermsOfUse: FC = () => {
             </li>
             <li>
               <b>Release</b>
-              <Typography variant="body1" paragraph={true}>
+              <Typography variant="body1" paragraph>
                 By using the Services you agree to release, discharge and hold
                 harmless Kalamos Care and the Kalamos Care Entities from any and
                 all losses, damages, rights, claims, actions of any kind and
@@ -500,7 +500,7 @@ export const TermsOfUse: FC = () => {
             </li>
             <li>
               <b>Revisions and Errors</b>
-              <Typography variant="body1" paragraph={true}>
+              <Typography variant="body1" paragraph>
                 The materials available through the Services could include
                 technical, typographical, photographic errors, or other
                 inadvertent errors or inaccuracies. We reserve the right, but
@@ -513,7 +513,7 @@ export const TermsOfUse: FC = () => {
             </li>
             <li>
               <b>Communications with Us</b>
-              <Typography variant="body1" paragraph={true}>
+              <Typography variant="body1" paragraph>
                 We cannot guarantee the confidentiality of any communication or
                 material transmitted to us via the Services or e-mail.
                 Accordingly, we suggest that you use caution when transmitting
@@ -530,7 +530,7 @@ export const TermsOfUse: FC = () => {
             </li>
             <li>
               <b>Indemnification</b>
-              <Typography variant="body1" paragraph={true}>
+              <Typography variant="body1" paragraph>
                 By accessing or using the Services or any materials or
                 information available through the Services, you agree to
                 indemnify, hold harmless and defend Kalamos Care and the Kalamos
@@ -549,7 +549,7 @@ export const TermsOfUse: FC = () => {
             </li>
             <li>
               <b>International</b>
-              <Typography variant="body1" paragraph={true}>
+              <Typography variant="body1" paragraph>
                 We make no representation that information provided by the
                 Services is appropriate or available for use outside the United
                 States. Those who choose to access the Services from outside the
@@ -562,10 +562,10 @@ export const TermsOfUse: FC = () => {
             </li>
             <li>
               <b>Arbitration Agreement</b>
-              <Typography variant="body1" paragraph={true}>
+              <Typography variant="body1" paragraph>
                 PLEASE READ THIS SECTION CAREFULLY AS IT AFFECTS YOUR RIGHTS.
               </Typography>
-              <Typography variant="body1" paragraph={true}>
+              <Typography variant="body1" paragraph>
                 Most user concerns can be resolved quickly and to the user’s
                 satisfaction by emailing user support. In the unlikely event
                 that our user care team is unable to resolve a complaint you may
@@ -596,7 +596,7 @@ export const TermsOfUse: FC = () => {
                   Use.
                 </li>
               </ul>
-              <Typography variant="body1" paragraph={true}>
+              <Typography variant="body1" paragraph>
                 References to ‘Kalamos Care’, ‘you’, and ‘us’ include our
                 respective subsidiaries, affiliates, agents, employees,
                 predecessors in interest, successors, and assigns, as well as
@@ -616,7 +616,7 @@ export const TermsOfUse: FC = () => {
                 this provision. This arbitration provision shall survive
                 termination of these Terms of Use.
               </Typography>
-              <Typography variant="body1" paragraph={true}>
+              <Typography variant="body1" paragraph>
                 A party who intends to seek arbitration must first send to the
                 other, by certified mail, a written Notice of Dispute
                 (‘Notice’). &nbsp;The Notice to Kalamos Care should be addressed
@@ -632,7 +632,7 @@ export const TermsOfUse: FC = () => {
                 the arbitrator determines the amount, if any, to which you or
                 Kalamos Care is entitled.
               </Typography>
-              <Typography variant="body1" paragraph={true}>
+              <Typography variant="body1" paragraph>
                 The arbitration will be governed by the Commercial Arbitration
                 Rules and the Supplementary Procedures for Consumer Related
                 Disputes (collectively, ‘AAA Rules’) of the American Arbitration
@@ -664,13 +664,13 @@ export const TermsOfUse: FC = () => {
                 than $75,000 in damages, the payment of these fees will be
                 governed by the AAA Rules.
               </Typography>
-              <Typography variant="body1" paragraph={true}>
+              <Typography variant="body1" paragraph>
                 The arbitrator may make rulings and resolve disputes as to the
                 payment and reimbursement of fees and expenses at any time
                 during the proceeding and upon request from either party made
                 within 14 days of the arbitrator's ruling on the merits.
               </Typography>
-              <Typography variant="body1" paragraph={true}>
+              <Typography variant="body1" paragraph>
                 The arbitrator may award declaratory or injunctive relief only
                 in favor of the individual party seeking relief and only to the
                 extent necessary to provide relief warranted by that party's
@@ -685,7 +685,7 @@ export const TermsOfUse: FC = () => {
                 unenforceable, then the entirety of this arbitration provision
                 shall be null and void.
               </Typography>
-              <Typography variant="body1" paragraph={true}>
+              <Typography variant="body1" paragraph>
                 Notwithstanding any provision in these Terms to the contrary, we
                 agree that if Kalamos Care makes any future change to this
                 arbitration provision (other than a change to the Arbitration
@@ -699,7 +699,7 @@ export const TermsOfUse: FC = () => {
             </li>
             <li>
               <b>Governing Law</b>
-              <Typography variant="body1" paragraph={true}>
+              <Typography variant="body1" paragraph>
                 Any claim relating to the Services, or your interactions with us
                 through the Services, shall be governed by the laws of the State
                 of New York without giving effect to any of its provisions that
@@ -728,7 +728,7 @@ export const TermsOfUse: FC = () => {
             </li>
             <li>
               <b>Miscellaneous</b>
-              <Typography variant="body1" paragraph={true}>
+              <Typography variant="body1" paragraph>
                 You may not assign or transfer these Terms of Use in whole or in
                 part to any third party without the prior written consent of
                 Kalamos Care. &nbsp;These Terms of Use shall bind and inure to
@@ -764,11 +764,11 @@ export const TermsOfUse: FC = () => {
             </li>
           </Typography>
         </ol>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           If you have any questions about these Terms of Use, please contact
           support@kalamos.care.
         </Typography>
-        <Typography variant="body1" paragraph={true}>
+        <Typography variant="body1" paragraph>
           All Rights Reserved.
         </Typography>
       </Grid>

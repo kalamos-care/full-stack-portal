@@ -23,7 +23,7 @@ function renderPatientRow(props: ListChildComponentProps) {
       style={style}
       key={index}
       component={RouterLink}
-      to={'/clinic/patients/' + index}
+      to={`/clinic/patients/${index}`}
     >
       <ListItemText primary={`Patient ${index}`} />
     </ListItem>

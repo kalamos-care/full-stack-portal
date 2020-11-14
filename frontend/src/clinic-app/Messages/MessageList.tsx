@@ -81,7 +81,7 @@ export const MessageList: FC = () => {
             <ListItem
               alignItems="flex-start"
               component={RouterLink}
-              to={'/clinic/messages/' + conversation.id}
+              to={`/clinic/messages/${conversation.id}`}
             >
               <ListItemAvatar>
                 <Avatar
@@ -92,7 +92,7 @@ export const MessageList: FC = () => {
               <ListItemText
                 primary={conversation.preview.title}
                 secondary={
-                  <React.Fragment>
+                  <>
                     <Typography
                       component="span"
                       variant="body2"
@@ -102,7 +102,7 @@ export const MessageList: FC = () => {
                       {conversation.preview.participants}
                     </Typography>
                     {conversation.preview.text}
-                  </React.Fragment>
+                  </>
                 }
               />
             </ListItem>
