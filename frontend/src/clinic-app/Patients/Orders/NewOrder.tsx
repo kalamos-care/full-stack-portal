@@ -14,7 +14,6 @@ import AddressForm from './NewOrderComponents/AddressForm';
 import PaymentForm from './NewOrderComponents/PaymentForm';
 import Review from './NewOrderComponents/Review';
 
-
 const useStyles = makeStyles((theme) => ({
   layout: {
     width: 'auto',
@@ -98,8 +97,9 @@ export default function NewOrder() {
                   Thank you for your order.
                 </Typography>
                 <Typography variant="subtitle1">
-                  Your order number is #2001539. We have emailed your order confirmation, and will
-                  send you an update when your order has shipped.
+                  Your order number is #2001539. We have emailed your order
+                  confirmation, and will send you an update when your order has
+                  shipped.
                 </Typography>
               </React.Fragment>
             ) : (
@@ -127,4 +127,4 @@ export default function NewOrder() {
       </main>
     </React.Fragment>
   );
-};
+}

@@ -5,8 +5,8 @@ import {
   Route,
   Link as RouterLink,
   LinkProps as RouterLinkProps,
-  Redirect
-} from "react-router-dom";
+  Redirect,
+} from 'react-router-dom';
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -28,7 +28,6 @@ import { ApiDocs } from './resources/ApiDocs';
 import { PrivacyPolicy } from './legal/PrivacyPolicy';
 import { TermsOfUse } from './legal/TermsOfUse';
 import { Legal } from './legal/Legal';
-
 
 const useStyles = makeStyles((theme) => ({
   marketing: {
@@ -53,7 +52,6 @@ const useStyles = makeStyles((theme) => ({
     //backgroundColor: '#f4effc',
   },
 }));
-
 
 export const Home: FC = () => {
   const classes = useStyles();

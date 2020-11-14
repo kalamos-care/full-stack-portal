@@ -16,7 +16,6 @@ import Typography from '@material-ui/core/Typography';
 import { getMessage } from '../utils/api';
 // import { isAuthenticated } from '../utils/auth';
 
-
 const useStyles = makeStyles((theme) => ({
   link: {
     color: '#ff6e6c',
@@ -57,7 +56,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 const LandingPage: FC = () => {
   const [message, setMessage] = useState<string>('');
   const [error, setError] = useState<string>('');
@@ -77,24 +75,48 @@ const LandingPage: FC = () => {
       {/* Hero unit */}
       <div className={classes.heroContent}>
         <Container maxWidth="sm">
-          <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
+          <Typography
+            component="h1"
+            variant="h2"
+            align="center"
+            color="textPrimary"
+            gutterBottom
+          >
             Remote PrEP Patient Monitoring
-            </Typography>
-          <Typography variant="h5" align="center" color="textSecondary" paragraph>
-            Let us automate the logistics of PrEP prescribing, from testing to medication delivery to adherenece monitoring.
-              <br /><br />
-              You focus on building strong personal relationships with your patients.
-            </Typography>
+          </Typography>
+          <Typography
+            variant="h5"
+            align="center"
+            color="textSecondary"
+            paragraph
+          >
+            Let us automate the logistics of PrEP prescribing, from testing to
+            medication delivery to adherenece monitoring.
+            <br />
+            <br />
+            You focus on building strong personal relationships with your
+            patients.
+          </Typography>
           <div className={classes.heroButtons}>
             <Grid container spacing={2} justify="center">
               <Grid item>
-                <Button variant="contained" color="primary" component={RouterLink} to="/signup">
-                    Create Your Account
+                <Button
+                  variant="contained"
+                  color="primary"
+                  component={RouterLink}
+                  to="/signup"
+                >
+                  Create Your Account
                 </Button>
               </Grid>
               <Grid item>
-                <Button variant="outlined" color="primary" component={RouterLink} to="/company/about-us">
-                    Read More About Us
+                <Button
+                  variant="outlined"
+                  color="primary"
+                  component={RouterLink}
+                  to="/company/about-us"
+                >
+                  Read More About Us
                 </Button>
               </Grid>
             </Grid>
@@ -112,14 +134,21 @@ const LandingPage: FC = () => {
                 title="Image title"
               />
               <CardContent className={classes.cardContent}>
-                <Typography gutterBottom variant="h5" component="h2">Ping Backend</Typography>
-                <Typography variant="body2" color="textSecondary" component="p">Click me!</Typography>
+                <Typography gutterBottom variant="h5" component="h2">
+                  Ping Backend
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  Click me!
+                </Typography>
               </CardContent>
               <CardActions>
                 {!message && !error && (
                   <Button size="small" color="primary">
-
-                    <a className={classes.link} href="#" onClick={() => queryBackend()}>
+                    <a
+                      className={classes.link}
+                      href="#"
+                      onClick={() => queryBackend()}
+                    >
                       Call the backend
                     </a>
                   </Button>
@@ -147,15 +176,16 @@ const LandingPage: FC = () => {
               <CardContent className={classes.cardContent}>
                 <Typography gutterBottom variant="h5" component="h2">
                   Admin Dashboard
-    </Typography>
+                </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
-                  Monitor app users/usage</Typography>
+                  Monitor app users/usage
+                </Typography>
               </CardContent>
               <CardActions>
                 <Button size="small" color="primary">
                   <a className={classes.link} href="/admin">
                     Admin Dashboard
-          </a>
+                  </a>
                 </Button>
               </CardActions>
             </Card>
@@ -170,15 +200,16 @@ const LandingPage: FC = () => {
               <CardContent className={classes.cardContent}>
                 <Typography gutterBottom variant="h5" component="h2">
                   Provider Dashboard
-    </Typography>
+                </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
-                  Monitor your Patients!!!</Typography>
+                  Monitor your Patients!!!
+                </Typography>
               </CardContent>
               <CardActions>
                 <Button size="small" color="primary">
                   <a className={classes.link} href="/clinic">
                     Protected Route
-      </a>
+                  </a>
                 </Button>
               </CardActions>
             </Card>

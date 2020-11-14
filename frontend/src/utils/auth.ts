@@ -5,7 +5,11 @@ export const isAuthenticated = () => {
   if (!permissions) {
     return false;
   }
-  return permissions === 'user' || permissions === 'provider' || permissions === 'admin' ? true : false;
+  return permissions === 'user' ||
+    permissions === 'provider' ||
+    permissions === 'admin'
+    ? true
+    : false;
 };
 
 /**
@@ -116,7 +120,6 @@ export const signUp = async (
   return data;
 };
 
-
 /**
  * Add provider registration needs here
  */
@@ -125,7 +128,7 @@ export const mtlRegister = async (
   firstName: string,
   lastName: string,
   NPI: string,
-  stateLicenses: Array<string>,
+  stateLicenses: Array<string>
 ) => {
   // Error checking
   if (!(email.length > 0)) {
@@ -144,12 +147,8 @@ export const mtlRegister = async (
     throw new Error('State licensese were not provided');
   }
 
-  const request = new Request('/api/register_provider', {
-
-  });
-
+  const request = new Request('/api/register_provider', {});
 };
-
 
 export const logout = () => {
   localStorage.removeItem('token');
