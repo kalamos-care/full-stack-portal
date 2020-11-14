@@ -121,6 +121,8 @@ def test_superuser(test_db) -> models.User:
         email="fakeadmin@email.com",
         hashed_password=get_password_hash(),
         is_superuser=True,
+        first_name='Ralph',
+        last_name='McKenzie',
     )
     test_db.add(user)
     test_db.commit()

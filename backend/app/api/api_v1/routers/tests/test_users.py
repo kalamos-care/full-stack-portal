@@ -10,6 +10,9 @@ def test_get_users(client, test_superuser, superuser_token_headers):
             "email": test_superuser.email,
             "is_active": test_superuser.is_active,
             "is_superuser": test_superuser.is_superuser,
+            "first_name": test_superuser.first_name,
+            "last_name": test_superuser.last_name,
+            "is_provider": test_superuser.is_provider,
         }
     ]
 
@@ -30,6 +33,7 @@ def test_edit_user(client, test_superuser, superuser_token_headers):
         "email": "newemail@email.com",
         "is_active": False,
         "is_superuser": True,
+        "is_provider": False,
         "first_name": "Joe",
         "last_name": "Smith",
         "password": "new_password",
@@ -51,6 +55,7 @@ def test_edit_user_not_found(client, test_db, superuser_token_headers):
         "email": "newemail@email.com",
         "is_active": False,
         "is_superuser": False,
+        "is_provider": False,
         "password": "new_password",
     }
     response = client.put("/api/v1/users/1234", json=new_user, headers=superuser_token_headers)
@@ -69,6 +74,7 @@ def test_get_user(
         "email": test_user.email,
         "is_active": bool(test_user.is_active),
         "is_superuser": test_user.is_superuser,
+        "is_provider": False,
     }
 
 
