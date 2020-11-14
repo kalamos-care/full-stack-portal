@@ -1,5 +1,5 @@
 let rules = {
-  'max-len': ['error', 80, 2, { ignoreUrls: true }],
+  'max-len': ['error', 100, 2, { ignoreUrls: true }],
   'no-console': [0],
   'no-restricted-syntax': 'off',
   'no-continue': 'off',
