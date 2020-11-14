@@ -4,23 +4,20 @@ import {
   Switch,
   Route,
   Redirect,
-  Link as RouterLink
-} from "react-router-dom";
+  Link as RouterLink,
+} from 'react-router-dom';
 import { useHistory } from 'react-router';
 import { makeStyles } from '@material-ui/core/styles';
 
-import {
-  Box, Container
-} from '@material-ui/core/';
+import { Box, Container } from '@material-ui/core/';
 
 import { Notifications } from './Notifications/Notifications';
 import { Patients } from './Patients/Patients';
 import { Messages } from './Messages/Messages';
-import { UserSettings } from './Settings/UserSettings'
+import { UserSettings } from './Settings/UserSettings';
 
 import Header from './layout/Header';
 import Footer from './layout/Footer';
-
 
 const useStyles = makeStyles((theme) => ({
   app: {
@@ -45,13 +42,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 export const ProviderDashboard: FC = () => {
   const classes = useStyles();
   const history = useHistory();
 
   // const [auth, setAuth] = React.useState(true);
-
 
   return (
     <Box className={classes.app}>
@@ -64,7 +59,11 @@ export const ProviderDashboard: FC = () => {
             <Route exact path="/clinic">
               <Redirect to="/clinic/notifications" />
             </Route>
-            <Route exact path="/clinic/notifications" component={Notifications} />
+            <Route
+              exact
+              path="/clinic/notifications"
+              component={Notifications}
+            />
             <Route path="/clinic/patients" component={Patients} />
             <Route exact path="/clinic/messages" component={Messages} />
             <Route exact path="/clinic/settings/" component={UserSettings} />

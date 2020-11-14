@@ -5,8 +5,8 @@ import {
   Route,
   Link as RouterLink,
   LinkProps as RouterLinkProps,
-  Redirect
-} from "react-router-dom";
+  Redirect,
+} from 'react-router-dom';
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -29,10 +29,9 @@ import { PrivacyPolicy } from './legal/PrivacyPolicy';
 import { TermsOfUse } from './legal/TermsOfUse';
 import { Legal } from './legal/Legal';
 
-
 const useStyles = makeStyles((theme) => ({
   marketing: {
-    //textAlign: 'center',
+    // textAlign: 'center',
     display: 'flex',
     flexDirection: 'column',
     height: '100vh',
@@ -50,10 +49,9 @@ const useStyles = makeStyles((theme) => ({
   },
   footer: {
     textAlign: 'center',
-    //backgroundColor: '#f4effc',
+    // backgroundColor: '#f4effc',
   },
 }));
-
 
 export const Home: FC = () => {
   const classes = useStyles();

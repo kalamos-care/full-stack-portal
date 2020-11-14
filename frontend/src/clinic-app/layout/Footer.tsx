@@ -1,22 +1,19 @@
 import React, { FC, useState } from 'react';
-import {
-    BrowserRouter as Router,
-    Link as RouterLink
-} from "react-router-dom";
+import { BrowserRouter as Router, Link as RouterLink } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 
 import {
-    BottomNavigation, BottomNavigationAction, Typography, Box
-} from '@material-ui/core/'
-import {
-    Chat, Folder, Notifications
-} from '@material-ui/icons/';
-
+  BottomNavigation,
+  BottomNavigationAction,
+  Typography,
+  Box,
+} from '@material-ui/core/';
+import { Chat, Folder, Notifications } from '@material-ui/icons/';
 
 const useStyles = makeStyles((theme) => ({
-    bottom_nav: {
-        width: '100%',
-    },
+  bottom_nav: {
+    width: '100%',
+  },
 }));
 
 const bottomNavs = [
@@ -41,33 +38,36 @@ const bottomNavs = [
 ];
 
 const Footer: FC = () => {
-    const classes = useStyles();
+  const classes = useStyles();
 
   // Bottom Nav state management (I think)
   const [value, setValue] = React.useState('notifications');
 
-  function handleBottomNavChange(event: React.ChangeEvent<{}>, newValue: string) {
+  function handleBottomNavChange(
+    event: React.ChangeEvent<{}>,
+    newValue: string
+  ) {
     setValue(newValue);
   }
 
-    return (
-        <BottomNavigation
-        className={classes.bottom_nav}
-        value={value}
-        onChange={handleBottomNavChange}
-        showLabels
-        >
-          {bottomNavs.map((bottomNav) => (
-            <BottomNavigationAction
-              label={bottomNav.label}
-              value={bottomNav.value}
-              icon={bottomNav.icon}
-              component={RouterLink}
-              to={bottomNav.url}
-            />
-          ))}
-      </BottomNavigation>
-    );
+  return (
+    <BottomNavigation
+      className={classes.bottom_nav}
+      value={value}
+      onChange={handleBottomNavChange}
+      showLabels
+    >
+      {bottomNavs.map((bottomNav) => (
+        <BottomNavigationAction
+          label={bottomNav.label}
+          value={bottomNav.value}
+          icon={bottomNav.icon}
+          component={RouterLink}
+          to={bottomNav.url}
+        />
+      ))}
+    </BottomNavigation>
+  );
 };
 
 export default Footer;

@@ -6,16 +6,16 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 
-const useStyles = makeStyles((theme) => ({
-
-}));
+const useStyles = makeStyles((theme) => ({}));
 
 export const PatientDetail: FC = () => {
-    const classes = useStyles();
+  const classes = useStyles();
 
-    return (
-        <Grid>
-            <Typography component="h4" variant="h5" gutterBottom>List patient <code>:id</code> details here!</Typography>
-        </Grid>
-    );
+  return (
+    <Grid>
+      <Typography component="h4" variant="h5" gutterBottom>
+        List patient <code>:id</code> details here!
+      </Typography>
+    </Grid>
+  );
 };

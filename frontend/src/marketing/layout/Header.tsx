@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink } from 'react-router-dom';
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -9,41 +9,38 @@ import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-
-
 const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
-    textAlign: "left",
+    textAlign: 'left',
   },
 }));
 
-
 const Header: FC = () => {
-    const classes = useStyles();
+  const classes = useStyles();
 
-    return (
-        <AppBar position="static">
-          <Toolbar>
-            <Typography
-              variant="h6"
-              className={classes.title}
-            // component={Link}
-            // to="/"
-            >
-              Kalamos Care
+  return (
+    <AppBar position="static">
+      <Toolbar>
+        <Typography
+          variant="h6"
+          className={classes.title}
+          // component={Link}
+          // to="/"
+        >
+          Kalamos Care
         </Typography>
-            <ButtonGroup color="inherit">
-              <Button component={RouterLink} to="/login">
-                Login
-            </Button>
-              <Button component={RouterLink} to="/signup">
-                Sign Up
-            </Button>
-            </ButtonGroup>
-          </Toolbar>
-        </AppBar>
-    );
+        <ButtonGroup color="inherit">
+          <Button component={RouterLink} to="/login">
+            Login
+          </Button>
+          <Button component={RouterLink} to="/signup">
+            Sign Up
+          </Button>
+        </ButtonGroup>
+      </Toolbar>
+    </AppBar>
+  );
 };
 
 export default Header;

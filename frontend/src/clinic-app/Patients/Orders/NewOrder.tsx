@@ -14,7 +14,6 @@ import AddressForm from './NewOrderComponents/AddressForm';
 import PaymentForm from './NewOrderComponents/PaymentForm';
 import Review from './NewOrderComponents/Review';
 
-
 const useStyles = makeStyles((theme) => ({
   layout: {
     width: 'auto',
@@ -77,7 +76,7 @@ export default function NewOrder() {
   };
 
   return (
-    <React.Fragment>
+    <>
       <CssBaseline />
       <main className={classes.layout}>
         <Paper className={classes.paper}>
@@ -91,19 +90,20 @@ export default function NewOrder() {
               </Step>
             ))}
           </Stepper>
-          <React.Fragment>
+          <>
             {activeStep === steps.length ? (
-              <React.Fragment>
+              <>
                 <Typography variant="h5" gutterBottom>
                   Thank you for your order.
                 </Typography>
                 <Typography variant="subtitle1">
-                  Your order number is #2001539. We have emailed your order confirmation, and will
-                  send you an update when your order has shipped.
+                  Your order number is #2001539. We have emailed your order
+                  confirmation, and will send you an update when your order has
+                  shipped.
                 </Typography>
-              </React.Fragment>
+              </>
             ) : (
-              <React.Fragment>
+              <>
                 {getStepContent(activeStep)}
                 <div className={classes.buttons}>
                   {activeStep !== 0 && (
@@ -120,11 +120,11 @@ export default function NewOrder() {
                     {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
                   </Button>
                 </div>
-              </React.Fragment>
+              </>
             )}
-          </React.Fragment>
+          </>
         </Paper>
       </main>
-    </React.Fragment>
+    </>
   );
-};
+}

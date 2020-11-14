@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-{/*
+{
+  /*
 import Snackbar, { SnackbarOrigin } from '@material-ui/core/Snackbar';
 
 export interface State extends SnackbarOrigin {
@@ -61,4 +62,5 @@ const InstallPWA = () => {
 };
 
 export default InstallPWA;
-*/}
+*/
+}
