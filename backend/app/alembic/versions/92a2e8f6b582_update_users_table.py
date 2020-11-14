@@ -11,16 +11,14 @@ from sqlalchemy import Column, String
 
 
 # revision identifiers, used by Alembic.
-revision = '92a2e8f6b582'
-down_revision = '19fb8328e5af'
+revision = "92a2e8f6b582"
+down_revision = "19fb8328e5af"
 branch_labels = None
 depends_on = None
 
 
 def upgrade():
-    op.add_column('user',
-        Column('is_provider', String())
-    )
+    op.add_column("user", Column("is_provider", String()))
 
 
 def downgrade():

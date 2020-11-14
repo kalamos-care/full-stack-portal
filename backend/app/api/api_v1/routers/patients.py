@@ -9,6 +9,7 @@ from app.core import security
 from app.core.auth import get_current_active_user, get_current_active_superuser
 
 from app.db.session import get_db
+
 # Create crud functions for patients
 # from app.db.crud import (
 #    get_users,
@@ -23,7 +24,8 @@ from app.db.session import get_db
 patients_router = r = APIRouter()
 
 
-@r.get("/patients",
+@r.get(
+    "/patients",
     # Create Patient schema to reference here
     # response_model=t.List[Patient],
     # response_model_exclude_none=True,
