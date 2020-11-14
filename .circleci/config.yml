@@ -1,6 +1,16 @@
 version: 2
 
 jobs:
+  lint-dockerfiles:
+    docker:
+      - image: hadolint/hadolint:latest-debian
+    steps:
+      - checkout
+      - run:
+          name: Lint Dockerfiles
+          # Ignore custom rules.
+          command: hadolint --ignore DL3008 --ignore DL3018 .docker/*.dockerfile
+
   lint-and-test-backend:
     working_directory: /project
     docker:
@@ -69,5 +79,6 @@ workflows:
   version: 2
   lint-test-deploy:
     jobs:
+      - lint-dockerfiles
       - lint-and-test-backend
       - lint-and-test-frontend
