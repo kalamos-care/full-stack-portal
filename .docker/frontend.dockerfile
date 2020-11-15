@@ -13,4 +13,4 @@ WORKDIR /app
 RUN npm install -g 'serve@11.3.2'
 COPY --from=build /app/build/ ./
 
-CMD ["serve", "-l", "3000", "."]
+CMD ["serve", "-l", "3000", "-s", "."]
