@@ -1,0 +1,9 @@
+apiVersion: v2
+name: kalamadoo
+description: Kalamos Thing
+type: application
+version: 0.0.1
+dependencies:
+- name: postgresql
+  version: 8.6.4
+  repository: https://charts.bitnami.com/bitnami

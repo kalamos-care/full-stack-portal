@@ -1,0 +1,36 @@
+backend:
+  ingress:
+    host: kalamadoo-api.death-ripper.com
+  deployment:
+    replicas: 2
+    container:
+      port: 8888
+      image:
+        repo: 339302979805.dkr.ecr.us-east-2.amazonaws.com/kalamadoo-backend
+      env:
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: database
+              key: uri
+
+frontend:
+  ingress:
+    host: kalamadoo.death-ripper.com
+  deployment:
+    replicas: 2
+    container:
+      port: 3000
+      image:
+        repo: 339302979805.dkr.ecr.us-east-2.amazonaws.com/kalamadoo-frontend
+      env:
+        - name: BASE_URL
+          value: https://kalamadoo.death-ripper.com
+        - name: BACKEND_URL
+          value: https://kalamadoo-api.death-ripper.com/api/v1
+
+global:
+  postgresql:
+    postgresqlDatabase: kalamos
+    postgresqlUsername: kalamos
+    existingSecret: database
