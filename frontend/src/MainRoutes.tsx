@@ -14,9 +14,7 @@ export const MainRoutes: FC = () => {
 
   return (
     <Switch>
-      <Route path="/admin">
-        <Admin />
-      </Route>
+      <Route path="/admin" component={Admin} />
       <PrivateRoute path="/clinic/" component={ProviderDashboard} />
       <Route path="/company" component={Home} />
       <Route path="/product" component={Home} />
