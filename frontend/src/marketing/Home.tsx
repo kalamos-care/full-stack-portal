@@ -100,7 +100,7 @@ export const Home: FC = () => {
               <FAQ />
             </Route>
             <Route exact path="/resources/api">
-              <Redirect to="kalamos.care/api/docs" />
+              <Redirect push to="/api/docs" />
             </Route>
             <Route exact path="/legal">
               <Legal />

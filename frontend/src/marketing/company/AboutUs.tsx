@@ -15,34 +15,26 @@ const AboutUs: FC = () => {
     <Container maxWidth="md">
       <Grid item xs={12}>
         <Typography
-          component="h1"
-          variant="h2"
-          align="center"
-          color="textPrimary"
-          gutterBottom
-        >
-          About Us
-        </Typography>
-      </Grid>
-      <Grid item xs={12}>
-        <Typography
           component="h2"
           variant="h3"
           color="textPrimary"
+          align="center"
           gutterBottom
         >
           Our Mission
         </Typography>
-        <Typography variant="body1" paragraph>
+        <Typography variant="h6" align="center" paragraph>
           To make sexual wellness approachable and accessible for everyone.
         </Typography>
+        </Grid>
+        <Grid item xs={12}>
         <Typography
           component="h3"
           variant="h4"
           color="textPrimary"
           gutterBottom
         >
-          Sexual health is awkward. It doesn't&nbsp;have to be.
+          Sexual health is awkward. It doesn't have to be.
         </Typography>
         <Typography variant="body1" paragraph>
           It can be awkward to talk to someone you don't know about sex. Hell,

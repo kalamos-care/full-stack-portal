@@ -1,19 +1,19 @@
 import React, { FC, useState } from 'react';
+import {
+  Link as RouterLink,
+  LinkProps as RouterLinkProps,
+} from 'react-router-dom';
+
 import { makeStyles } from '@material-ui/core/styles';
 
 import { Typography, Grid, Container } from '@material-ui/core/';
 
-import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import StarIcon from '@material-ui/icons/StarBorder';
-import Toolbar from '@material-ui/core/Toolbar';
-import Link from '@material-ui/core/Link';
-import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles((theme) => ({
   '@global': {
@@ -48,38 +48,37 @@ const tiers = [
     title: 'Open Source',
     price: '0',
     description: [
-      '10 users included',
-      '2 GB of storage',
-      'Help center access',
-      'Email support',
+      'Self-hosted',
+      'Fully customizeable',
     ],
-    buttonText: 'Try for free',
+    buttonText: 'Read the Docs',
     buttonVariant: 'outlined',
+    url: '/resources/api'
   },
   {
     title: 'Basic',
     subheader: 'Most popular',
     price: '10',
     description: [
-      '20 users included',
-      '10 GB of storage',
-      'Help center access',
-      'Priority email support',
+      'Order and track kits',
+      'Receive proactive alerts',
+      'Email support',
     ],
     buttonText: 'Get started',
     buttonVariant: 'contained',
+    url: '/signup',
   },
   {
     title: 'Pro',
     price: '50',
     description: [
-      '50 users included',
-      '30 GB of storage',
-      'Help center access',
-      'Phone & email support',
+      'All basic features',
+      'Message patients',
+      'Generate claims',
     ],
     buttonText: 'Contact us',
     buttonVariant: 'outlined',
+    url: '/contact-us',
   },
 ];
 
@@ -104,9 +103,7 @@ export const Pricing: FC = () => {
           color="textSecondary"
           component="p"
         >
-          Quickly build an effective pricing table for your potential customers
-          with this layout. It&apos;s built with default Material-UI components
-          with little customization.
+          Select the plan that's right for your remote monitoring practice.
         </Typography>
       </Container>
       {/* End hero unit */}
@@ -155,7 +152,7 @@ export const Pricing: FC = () => {
                 <CardActions>
                   {/* Button variant was throwing an error for being undefined type */}
                   {/* variant={tier.buttonVariant} */}
-                  <Button fullWidth color="primary" variant="outlined">
+                  <Button fullWidth color="primary" variant="outlined" component={RouterLink} to={tier.url}>
                     {tier.buttonText}
                   </Button>
                 </CardActions>

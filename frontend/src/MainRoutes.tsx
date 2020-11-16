@@ -4,7 +4,7 @@ import { useHistory } from 'react-router';
 // import { makeStyles } from '@material-ui/core/styles';
 
 import { Admin } from './admin';
-import { Home, Login, SignUp } from './marketing';
+import { Home } from './marketing';
 import { ProviderDashboard } from './clinic-app';
 import { PrivateRoute } from './PrivateRoute';
 import { logout } from './utils/auth';
@@ -18,7 +18,6 @@ export const MainRoutes: FC = () => {
         <Admin />
       </Route>
       <PrivateRoute path="/clinic/" component={ProviderDashboard} />
-      <Route exact path="/" component={Home} />
       <Route path="/company" component={Home} />
       <Route path="/product" component={Home} />
       <Route path="/resources" component={Home} />
@@ -33,6 +32,7 @@ export const MainRoutes: FC = () => {
           return null;
         }}
       />
+      <Route exact path="/" component={Home} />
     </Switch>
   );
 };
