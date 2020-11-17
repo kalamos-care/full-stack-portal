@@ -18,14 +18,11 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 
 const useStyles = makeStyles((theme) => ({
-  link: {
-    color: 'white',
-  },
   title: {
     flexGrow: 1,
     textAlign: 'left',
-    color: inherit;
-    text-decoration: none;
+    color: 'inherit',
+    textDecoration: 'none',
   },
 }));
 
