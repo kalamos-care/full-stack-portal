@@ -143,9 +143,9 @@ workflows:
             - lint-dockerfiles
             - lint-and-test-backend
             - lint-and-test-frontend
-      # - deploy:
-      #     requires:
-      #       - lint-dockerfiles
-      #       - lint-and-test-backend
-      #       - lint-and-test-frontend
-      #       - build-app
+      - deploy:
+          requires:
+            - lint-dockerfiles
+            - lint-and-test-backend
+            - lint-and-test-frontend
+            - build-app
