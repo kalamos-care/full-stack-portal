@@ -1,11 +1,12 @@
-import Grid from '@material-ui/core/Grid';
-import NewOrderIcon from '@material-ui/icons/LocalHospital';
-import NewPatientIcon from '@material-ui/icons/PersonAdd';
 import React, { FC } from 'react';
 import { Switch, Route, Link as RouterLink } from 'react-router-dom';
+
 import { makeStyles } from '@material-ui/core/styles';
 
+import Grid from '@material-ui/core/Grid';
+
 import NewOrder from './Orders/NewOrder';
+import { OrderDetail } from './Orders/OrderDetail';
 
 import { PatientList, NewPatient, PatientDetail } from '.';
 
@@ -19,24 +20,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const actions = [
-  {
-    icon: (
-      <RouterLink to="/clinic/patients/new">
-        <NewPatientIcon />
-      </RouterLink>
-    ),
-    name: 'New Patient',
-  },
-  {
-    icon: (
-      <RouterLink to="/clinic/patients/">
-        <NewOrderIcon />
-      </RouterLink>
-    ),
-    name: 'New Order',
-  },
-];
 
 export const Patients: FC = () => {
   const classes = useStyles();
@@ -50,8 +33,11 @@ export const Patients: FC = () => {
         <Route exact path="/clinic/patients/new">
           <NewPatient />
         </Route>
-        <Route path="/clinic/patients/orders/new">
+        <Route exact path="/clinic/patients/orders/new">
           <NewOrder />
+        </Route>
+        <Route path="/clinic/patients/:id/orders/:id">
+          <OrderDetail />
         </Route>
         <Route path="/clinic/patients/:id">
           <PatientDetail />

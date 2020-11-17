@@ -21,21 +21,12 @@ import { ContactUs } from './ContactUs';
 
 
 const useStyles = makeStyles((theme) => ({
-  body: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    '& > *': {
-      margin: theme.spacing(1),
-      width: theme.spacing(16),
-      height: theme.spacing(16),
-    },
-  },
   icon: {
     marginRight: theme.spacing(2),
   },
   heroContent: {
     backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(8, 0, 6),
+    padding: theme.spacing(4, 0, 4),
   },
   heroButtons: {
     marginTop: theme.spacing(4),

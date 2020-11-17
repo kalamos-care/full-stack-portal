@@ -24,6 +24,8 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
     textAlign: 'left',
+    color: inherit;
+    text-decoration: none;
   },
 }));
 
@@ -58,8 +60,8 @@ const Header: FC = () => {
         <Typography
           variant="h6"
           className={classes.title}
-          // component={RouterLink}
-          // to="/"
+          component={RouterLink}
+          to="/clinic"
         >
           Kalamos Care
         </Typography>

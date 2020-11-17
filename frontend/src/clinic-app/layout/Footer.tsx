@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import { BrowserRouter as Router, Link as RouterLink } from 'react-router-dom';
+import { BrowserRouter as Router, Link as RouterLink, useParams } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 
 import {
@@ -40,7 +40,8 @@ const bottomNavs = [
 const Footer: FC = () => {
   const classes = useStyles();
 
-  // Bottom Nav state management (I think)
+  // Bottom Nav state management
+  // Update based on URL parameters
   const [value, setValue] = React.useState('notifications');
 
   function handleBottomNavChange(
