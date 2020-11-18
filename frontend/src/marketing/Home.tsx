@@ -47,6 +47,7 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: theme.spacing(4),
   },
   footer: {
+    display: 'flex';
     textAlign: 'center',
     position: 'relative',
     bottom: '0',
@@ -63,13 +64,6 @@ export const Home: FC = () => {
       </header>
       <main className={classes.main}>
         <Container>
-          {/*
-          A <Switch> looks through all its children <Route>
-          elements and renders the first one whose path
-          matches the current URL. Use a <Switch> any time
-          you have multiple routes, but you want only one
-          of them to render at a time
-        */}
           <Switch>
             <Route exact path="/">
               <LandingPage />
