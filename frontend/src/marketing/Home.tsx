@@ -48,6 +48,7 @@ const useStyles = makeStyles((theme) => ({
   },
   footer: {
     textAlign: 'center',
+    position: 'relative',
     bottom: '0',
   },
 }));
