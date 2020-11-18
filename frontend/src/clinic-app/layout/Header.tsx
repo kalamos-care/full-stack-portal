@@ -18,12 +18,11 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 
 const useStyles = makeStyles((theme) => ({
-  link: {
-    color: 'white',
-  },
   title: {
     flexGrow: 1,
     textAlign: 'left',
+    color: 'inherit',
+    textDecoration: 'none',
   },
 }));
 
@@ -58,8 +57,8 @@ const Header: FC = () => {
         <Typography
           variant="h6"
           className={classes.title}
-          // component={RouterLink}
-          // to="/"
+          component={RouterLink}
+          to="/clinic"
         >
           Kalamos Care
         </Typography>

@@ -11,6 +11,13 @@ export const FAQ: FC = () => {
   return (
     <Container maxWidth="md">
       <Grid>
+        <Typography variant="h4" gutterBottom>
+          FAQ
+        </Typography>
+        <Typography variant="h6" gutterBottom>
+          Coming Soon
+        </Typography>
+        {/*
         <Typography
           component="h1"
           variant="h2"
@@ -20,6 +27,7 @@ export const FAQ: FC = () => {
         >
           FAQ
         </Typography>
+        */}
       </Grid>
     </Container>
   );

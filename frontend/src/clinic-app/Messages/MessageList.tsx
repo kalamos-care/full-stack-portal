@@ -82,6 +82,7 @@ export const MessageList: FC = () => {
               alignItems="flex-start"
               component={RouterLink}
               to={`/clinic/messages/${conversation.id}`}
+              key={conversation.id}
             >
               <ListItemAvatar>
                 <Avatar

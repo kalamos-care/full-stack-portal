@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link as RouterLink, useParams } from 'react-router-dom';
 
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -79,6 +79,8 @@ const patientDetails = {
 export const PatientDetail: FC = () => {
   const classes = useStyles();
 
+  // let slug: string = useParams();
+
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
@@ -125,23 +127,25 @@ export const PatientDetail: FC = () => {
           </Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <p>Email</p>
-            <p>{patientDetails.contact.email}</p>
-            <p>Phone Number</p>
-            <p>{patientDetails.contact.phone}</p>
-            <p><em>Social</em></p>
-            <p>Facebook</p>
-            <p>{patientDetails.contact.facebook}</p>
-            <p>Twitter</p>
-            <p>{patientDetails.contact.twitter}</p>
-            <p>Instagram</p>
-            <p>{patientDetails.contact.instagram}</p>
-            <p>Snapchat</p>
-            <p>{patientDetails.contact.snapchat}</p>
-            <p><em>Languages</em></p>
-            <p>{patientDetails.contact.languages}</p>
-            <p>Preferred Language</p>
-            <p>{patientDetails.contact.preferredLanguage}</p>
+            <Grid>
+              <p>Email</p>
+              <p>{patientDetails.contact.email}</p>
+              <p>Phone Number</p>
+              <p>{patientDetails.contact.phone}</p>
+              <p><em>Social</em></p>
+              <p>Facebook</p>
+              <p>{patientDetails.contact.facebook}</p>
+              <p>Twitter</p>
+              <p>{patientDetails.contact.twitter}</p>
+              <p>Instagram</p>
+              <p>{patientDetails.contact.instagram}</p>
+              <p>Snapchat</p>
+              <p>{patientDetails.contact.snapchat}</p>
+              <p><em>Languages</em></p>
+              <p>{patientDetails.contact.languages}</p>
+              <p>Preferred Language</p>
+              <p>{patientDetails.contact.preferredLanguage}</p>
+            </Grid>
           </AccordionDetails>
         </Accordion>
         <Accordion>
@@ -161,17 +165,17 @@ export const PatientDetail: FC = () => {
                   <Table stickyHeader aria-label="sticky table">
                     <TableHead>
                       <TableRow>
-                        <TableCell>Order Date</TableCell>
-                        <TableCell align="right">Order Number</TableCell>
+                        <TableCell>Order Number</TableCell>
+                        <TableCell align="right">Order Date</TableCell>
                         <TableCell align="right">Status</TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
                       {patientDetails.lab_orders.map((lab_order) => (
-                        <TableRow key={lab_order.order_id}>
-                          <TableCell>{lab_order.ship_date}</TableCell>
+                        <TableRow key={lab_order.order_id} component={RouterLink} to="/clinic/patients/:id/orders/:id">
                           <TableCell>{lab_order.order_id}</TableCell>
-                          <TableCell>{lab_order.received_date}</TableCell>
+                          <TableCell align="right">{lab_order.ship_date}</TableCell>
+                          <TableCell align="right">{lab_order.received_date}</TableCell>
                         </TableRow>
                       ))}
                     </TableBody>
