@@ -125,6 +125,7 @@ jobs:
             --wait \
             --timeout 60s \
             --install \
+            --namespace kalamadoo \
             --values=.helm/values.staging.yaml \
             --set "frontend.deployment.container.image.tag=$(git rev-parse --short HEAD)" \
             --set "backend.deployment.container.image.tag=$(git rev-parse --short HEAD)" \
