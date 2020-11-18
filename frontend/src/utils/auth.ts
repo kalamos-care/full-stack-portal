@@ -104,6 +104,7 @@ export const signUp = async (
   }
 
   const data = await response.json();
+  
   if (response.status > 400 && response.status < 500) {
     if (data.detail) {
       throw data.detail;

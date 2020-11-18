@@ -1,3 +1,5 @@
+// import decodeJwt from 'jwt-decode';
+
 import { BACKEND_URL } from '../config';
 
 {/*
@@ -27,20 +29,22 @@ export const getMessage = async () => {
 */
 
 export const getUserInfo = async () => {
-  var jwt = localStorage.getItem("token");
+  var jwt = localStorage.getItem('token');
 
   if (!jwt) {
     return false;
   }
 
-  var myHeaders = new Headers();
-  myHeaders.append("Authorization", jwt);
-  myHeaders.append("Content-Type", "text/plain");
+  // var myHeaders = new Headers();
+  // myHeaders.append("Authorization", jwt);
+  // myHeaders.append("Content-Type", "text/plain");
 
   
   const response = await fetch(`${BACKEND_URL}/users/me`, {
     method: 'GET',
-    headers: myHeaders,
+    headers: {
+      Authorization: `${jwt}`,
+    },
     redirect: 'follow'
   });
 
@@ -50,7 +54,7 @@ export const getUserInfo = async () => {
     return data.email;
   }
 
-  return Promise.reject('Failed to get message from backend');
+  return Promise.reject('Failed to get user info from backend. JWT:' + {jwt});
 };
 
 
