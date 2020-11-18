@@ -119,6 +119,9 @@ jobs:
           name: Get cluster config.
           command: aws s3 cp s3://kalamos-k3s/config /root/.kube/ --region us-east-2
       - run:
+          name: Update Helm deps.
+          command: helm dependency update .helm/
+      - run:
           name: Deploy
           command: |
             helm upgrade \
