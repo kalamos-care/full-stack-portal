@@ -149,3 +149,7 @@ workflows:
             - lint-and-test-backend
             - lint-and-test-frontend
             - build-app
+          filters:
+            branches:
+              only:
+                - master
