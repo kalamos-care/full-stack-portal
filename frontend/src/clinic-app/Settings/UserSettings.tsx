@@ -22,7 +22,7 @@ export const UserSettings: FC = () => {
     }
   };
 
-  queryBackend();
+  //queryBackend();
 
   return (
     <Grid container spacing={2}>
