@@ -128,7 +128,7 @@ jobs:
             --values=.helm/values.staging.yaml \
             --set "frontend.deployment.container.image.tag=$(git rev-parse --short HEAD)" \
             --set "backend.deployment.container.image.tag=$(git rev-parse --short HEAD)" \
-            api \
+            kalamadoo \
             .helm/
 
 workflows:
