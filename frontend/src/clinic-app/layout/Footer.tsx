@@ -60,6 +60,7 @@ const Footer: FC = () => {
     >
       {bottomNavs.map((bottomNav) => (
         <BottomNavigationAction
+          key={bottomNav.value}
           label={bottomNav.label}
           value={bottomNav.value}
           icon={bottomNav.icon}

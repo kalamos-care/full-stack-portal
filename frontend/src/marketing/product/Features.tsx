@@ -65,86 +65,6 @@ export const Features: FC = () => {
             <Grid>
                 <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>Features</Typography>
             </Grid>
-            <Container className={classes.cardGrid} maxWidth="md">
-                {/* End hero unit */}
-                <Grid container spacing={4}>
-                    <Grid item xs={12} sm={6} md={4}>
-                        <Card className={classes.card}>
-                            <CardMedia
-                                className={classes.cardMedia}
-                                image="https://source.unsplash.com/random"
-                                title="Image title"
-                            />
-                            <CardContent className={classes.cardContent}>
-                                <Typography gutterBottom variant="h5" component="h2">Ping Backend</Typography>
-                                <Typography variant="body2" color="textSecondary" component="p">Click me!</Typography>
-                            </CardContent>
-                            <CardActions>
-                                {!message && !error && (
-                                    <Button size="small" color="primary">
-
-                                        <a href="#" onClick={() => queryBackend()}>
-                                            Call the backend
-                    </a>
-                                    </Button>
-                                )}
-                                {message && (
-                                    <p>
-                                        <code>{message}</code>
-                                    </p>
-                                )}
-                                {error && (
-                                    <p>
-                                        Error: <code>{error}</code>
-                                    </p>
-                                )}
-                            </CardActions>
-                        </Card>
-                    </Grid>
-                    <Grid item xs={12} sm={6} md={4}>
-                        <Card className={classes.card}>
-                            <CardMedia
-                                className={classes.cardMedia}
-                                image="https://source.unsplash.com/random"
-                                title="Image title"
-                            />
-                            <CardContent className={classes.cardContent}>
-                                <Typography gutterBottom variant="h5" component="h2">
-                                    Admin Dashboard
-    </Typography>
-                                <Typography variant="body2" color="textSecondary" component="p">
-                                    Monitor app users/usage</Typography>
-                            </CardContent>
-                            <CardActions>
-                                <Button size="small" color="primary" component={RouterLink} to="/admin">
-                                    Admin Dashboard
-                                </Button>
-                            </CardActions>
-                        </Card>
-                    </Grid>
-                    <Grid item xs={12} sm={6} md={4}>
-                        <Card className={classes.card}>
-                            <CardMedia
-                                className={classes.cardMedia}
-                                image="https://source.unsplash.com/random"
-                                title="Image title"
-                            />
-                            <CardContent className={classes.cardContent}>
-                                <Typography gutterBottom variant="h5" component="h2">
-                                    Provider Dashboard
-    </Typography>
-                                <Typography variant="body2" color="textSecondary" component="p">
-                                    Monitor your Patients!!!</Typography>
-                            </CardContent>
-                            <CardActions>
-                                <Button size="small" color="primary" component={RouterLink} to="/clinic">
-                                    Protected Route
-                                </Button>
-                            </CardActions>
-                        </Card>
-                    </Grid>
-                </Grid>
-            </Container>
             <Container maxWidth="md" className={classes.promoFeatures}>
                 <Grid container spacing={2} className={classes.promoFeature}>
                     <Grid item xs={12}>
@@ -233,6 +153,86 @@ export const Features: FC = () => {
                     </Grid>
                     <Grid item md={4} xs={12}>
                         <img src={OpenSourceImg} alt="open source" width="100%" />
+                    </Grid>
+                </Grid>
+            </Container>
+            <Container className={classes.cardGrid} maxWidth="md">
+                {/* End hero unit */}
+                <Grid container spacing={4}>
+                    <Grid item xs={12} sm={6} md={4}>
+                        <Card className={classes.card}>
+                            <CardMedia
+                                className={classes.cardMedia}
+                                image="https://source.unsplash.com/random"
+                                title="Image title"
+                            />
+                            <CardContent className={classes.cardContent}>
+                                <Typography gutterBottom variant="h5" component="h2">Ping Backend</Typography>
+                                <Typography variant="body2" color="textSecondary" component="p">Click me!</Typography>
+                            </CardContent>
+                            <CardActions>
+                                {!message && !error && (
+                                    <Button size="small" color="primary">
+
+                                        <a href="#" onClick={() => queryBackend()}>
+                                            Call the backend
+                    </a>
+                                    </Button>
+                                )}
+                                {message && (
+                                    <p>
+                                        <code>{message}</code>
+                                    </p>
+                                )}
+                                {error && (
+                                    <p>
+                                        Error: <code>{error}</code>
+                                    </p>
+                                )}
+                            </CardActions>
+                        </Card>
+                    </Grid>
+                    <Grid item xs={12} sm={6} md={4}>
+                        <Card className={classes.card}>
+                            <CardMedia
+                                className={classes.cardMedia}
+                                image="https://source.unsplash.com/random"
+                                title="Image title"
+                            />
+                            <CardContent className={classes.cardContent}>
+                                <Typography gutterBottom variant="h5" component="h2">
+                                    Admin Dashboard
+    </Typography>
+                                <Typography variant="body2" color="textSecondary" component="p">
+                                    Monitor app users/usage</Typography>
+                            </CardContent>
+                            <CardActions>
+                                <Button size="small" color="primary" component={RouterLink} to="/admin">
+                                    Admin Dashboard
+                                </Button>
+                            </CardActions>
+                        </Card>
+                    </Grid>
+                    <Grid item xs={12} sm={6} md={4}>
+                        <Card className={classes.card}>
+                            <CardMedia
+                                className={classes.cardMedia}
+                                image="https://source.unsplash.com/random"
+                                title="Image title"
+                            />
+                            <CardContent className={classes.cardContent}>
+                                <Typography gutterBottom variant="h5" component="h2">
+                                    Provider Dashboard
+    </Typography>
+                                <Typography variant="body2" color="textSecondary" component="p">
+                                    Monitor your Patients!!!</Typography>
+                            </CardContent>
+                            <CardActions>
+                                <Button size="small" color="primary" component={RouterLink} to="/clinic">
+                                    Protected Route
+                                </Button>
+                            </CardActions>
+                        </Card>
                     </Grid>
                 </Grid>
             </Container>

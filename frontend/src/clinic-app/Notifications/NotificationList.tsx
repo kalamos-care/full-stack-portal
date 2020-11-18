@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
 
 const notifications = [
   {
+    id: 1,
     severity: 'error',
     title: 'Error',
     message: 'This is an error alert — ${<strong>}check it out!${</strong>}',
@@ -23,6 +24,7 @@ const notifications = [
     url: '/clinic/notifications/error',
   },
   {
+    id: 2,
     severity: 'warning',
     title: 'Warning',
     message: 'This is a warning alert — ${<strong>}check it out!${</strong>}',
@@ -30,6 +32,7 @@ const notifications = [
     url: '/clinic/notifications/warning',
   },
   {
+    id: 3,
     severity: 'info',
     title: 'Info',
     message: 'This is an info alert — ${<strong>}check it out!${</strong>}',
@@ -37,6 +40,7 @@ const notifications = [
     url: '/clinic/notifications/info',
   },
   {
+    id: 4,
     severity: 'success',
     title: 'Success',
     message: 'This is a success alert — ${<strong>}check it out!${</strong>}',
@@ -65,7 +69,7 @@ export const NotificationsList: FC = () => {
             {notification.severity}
             */}
       {notifications.map((notification) => (
-        <Alert className={classes.notification} severity="info">
+        <Alert className={classes.notification} severity="info" key={notification.id}>
           <AlertTitle>{notification.title}</AlertTitle>
           {notification.message}
           <Button

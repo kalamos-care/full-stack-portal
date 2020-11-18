@@ -14,6 +14,13 @@ export const Blog: FC = () => {
     <Container maxWidth="md">
       <Grid item xs={12} md={8}>
         <Typography variant="h4" gutterBottom>
+          Blog
+        </Typography>
+        <Typography variant="h6" gutterBottom>
+          Coming Soon
+        </Typography>
+        {/*}
+        <Typography variant="h4" gutterBottom>
           Raw Talk
         </Typography>
         <Divider />
@@ -122,6 +129,7 @@ export const Blog: FC = () => {
           stigma around being sexually active. We’ve barely taken our first
           step, but we’re excited for the journey.
         </Typography>
+        */}
       </Grid>
     </Container>
   );

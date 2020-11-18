@@ -4,22 +4,47 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 
-// import { getUserInfo } from '../../utils/api';
+import { getUserInfo } from '../../utils/api';
 
 const useStyles = makeStyles((theme) => ({}));
 
 export const UserSettings: FC = () => {
+  const [userInfo, setUserInfo] = useState<string>('');
+  const [error, setError] = useState<string>('');
   const classes = useStyles();
+
+  const queryBackend = async () => {
+    try {
+      const userInfo = await getUserInfo();
+      setUserInfo(userInfo);
+    } catch (err) {
+      setError(err);
+    }
+  };
+
+  queryBackend();
 
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
-      <Typography component="h4" variant="h5" gutterBottom>
-        User Settings
+        <Typography component="h4" variant="h5" gutterBottom>
+          User Settings
       </Typography>
-      <Typography component="h5" variant="h6">
-        Manage your account here
+        <Typography component="h5" variant="h6">
+          Manage your account here
       </Typography>
+      </Grid>
+      <Grid>
+        {userInfo && (
+          <p>
+            <code>{userInfo}</code>
+          </p>
+        )}
+        {error && (
+          <p>
+            Error: <code>{error}</code>
+          </p>
+        )}
       </Grid>
       <Grid item xs={12}>
         <p>First Name - string*</p>

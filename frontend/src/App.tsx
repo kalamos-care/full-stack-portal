@@ -4,6 +4,7 @@ import { ThemeProvider } from '@material-ui/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
 
 import { MainRoutes } from './MainRoutes';
+import ScrollToTop from './ScrollToTop';
 
 const theme = createMuiTheme({
   palette: {
@@ -25,6 +26,7 @@ const App: FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <Router>
+        <ScrollToTop />
         <MainRoutes />
       </Router>
     </ThemeProvider>
