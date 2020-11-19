@@ -182,7 +182,6 @@ const LandingPage: FC = () => {
       <Grid container className={classes.contactForm}>
         <ContactUs />
       </Grid>
-      <Divider className={classes.divider} />
     </main>
   );
 };
