@@ -27,18 +27,15 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   footerArea: {
-    marginTop: theme.spacing(4),
-    paddingTop: theme.spacing(4),
-    paddingBottom: theme.spacing(2),
+    margin: theme.spacing(4, 0, 2),
+    padding: theme.spacing(4, 0, 4),
     [theme.breakpoints.up('sm')]: {
-      paddingTop: theme.spacing(6),
-      paddingBottom: theme.spacing(6),
+      padding: theme.spacing(6, 0, 6),
     },
   },
   copyright: {
     alignItems: 'center',
     width: '100%',
-    paddingTop: theme.spacing(2),
   },
   divider: {
     margin: theme.spacing(4),
@@ -146,9 +143,7 @@ const Footer: FC = () => {
             </ul>
           </Grid>
         ))}
-      </Grid>
-      <Grid container spacing={4} className={classes.copyright}>
-        <Grid xs={12}>
+        <Grid item xs={12}>
           {/* This is broken
                 <ul>
                     {social.icon.map((item) => (

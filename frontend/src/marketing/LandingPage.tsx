@@ -52,7 +52,7 @@ const LandingPage: FC = () => {
   const classes = useStyles();
 
   return (
-    <main>
+    <Container>
       {/* Hero unit */}
         <Grid container spacing={2} justify="center" className={classes.heroContent}>
           <Grid item xs={12}>
@@ -182,7 +182,7 @@ const LandingPage: FC = () => {
       <Grid container className={classes.contactForm}>
         <ContactUs />
       </Grid>
-    </main>
+    </Container>
   );
 };
 

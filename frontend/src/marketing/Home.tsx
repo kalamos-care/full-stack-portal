@@ -33,7 +33,6 @@ const useStyles = makeStyles((theme) => ({
   marketing: {
     display: 'flex',
     flexDirection: 'column',
-    height: '100vh',
   },
   header: {
     display: 'flex',
