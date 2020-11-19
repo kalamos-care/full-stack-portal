@@ -25,11 +25,13 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   heroContent: {
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(4, 0, 4),
+    padding: theme.spacing(4),
   },
   heroButtons: {
-    marginTop: theme.spacing(4),
+    margin: theme.spacing(2),
+  },
+  divider: {
+    margin: theme.spacing(4),
   },
   promoFeatures: {
 
@@ -50,10 +52,9 @@ const LandingPage: FC = () => {
   const classes = useStyles();
 
   return (
-    <main>
+    <Container>
       {/* Hero unit */}
-      <Container maxWidth="md" className={classes.heroContent}>
-        <Grid container spacing={2} justify="center">
+        <Grid container spacing={2} justify="center" className={classes.heroContent}>
           <Grid item xs={12}>
             <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
               Remote PrEP Patient Monitoring
@@ -83,10 +84,9 @@ const LandingPage: FC = () => {
                 </Button>
           </Grid>
         </Grid>
-      </Container>
-      <Divider />
+      <Divider className={classes.divider} />
       {/* Feature List */}
-      <Container maxWidth="md" className={classes.promoFeatures}>
+      <Grid container className={classes.promoFeatures}>
         <Grid container spacing={2} className={classes.promoFeature}>
           <Grid item xs={12}>
             <Typography variant="h3" align="center" color="textPrimary" gutterBottom>
@@ -176,13 +176,13 @@ const LandingPage: FC = () => {
             <img src={OpenSourceImg} alt="open source" width="100%" />
           </Grid>
         </Grid>
-      </Container>
-      <Divider />
+      </Grid>
+      <Divider className={classes.divider} />
       {/* Contact Us */}
-      <Container className={classes.contactForm}>
+      <Grid container className={classes.contactForm}>
         <ContactUs />
-      </Container>
-    </main>
+      </Grid>
+    </Container>
   );
 };
 
