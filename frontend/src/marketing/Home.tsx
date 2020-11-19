@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: theme.spacing(4),
   },
   footer: {
-    display: 'flex';
+    display: 'flex',
     textAlign: 'center',
     position: 'relative',
     bottom: '0',
@@ -63,7 +63,7 @@ export const Home: FC = () => {
         <Header />
       </header>
       <main className={classes.main}>
-        <Container>
+        <Container maxWidth="md">
           <Switch>
             <Route exact path="/">
               <LandingPage />
