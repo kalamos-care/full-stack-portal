@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
       listStyle: 'none',
     },
   },
-  footer: {
+  footerArea: {
     borderTop: `1px solid ${theme.palette.divider}`,
     marginTop: theme.spacing(8),
     paddingTop: theme.spacing(3),
@@ -118,7 +118,7 @@ const Footer: FC = () => {
   const classes = useStyles();
 
   return (
-    <Container component="footer" className={classes.footer}>
+    <Container className={classes.footerArea}>
       <Grid container spacing={4} justify="space-evenly">
         {footers.map((footer) => (
           <Grid item xs={6} sm={3} key={footer.title}>

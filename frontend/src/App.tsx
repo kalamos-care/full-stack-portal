@@ -2,6 +2,8 @@ import React, { FC } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { ThemeProvider } from '@material-ui/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+
 
 import { MainRoutes } from './MainRoutes';
 import ScrollToTop from './ScrollToTop';
@@ -18,7 +20,7 @@ const theme = createMuiTheme({
     },
   },
   typography: {
-    fontFamily: [].join(','),
+    //fontFamily: [].join(','),
   },
 });
 
@@ -26,6 +28,7 @@ const App: FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <Router>
+        <CssBaseline />
         <ScrollToTop />
         <MainRoutes />
       </Router>

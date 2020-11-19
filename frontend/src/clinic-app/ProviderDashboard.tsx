@@ -20,7 +20,7 @@ import Header from './layout/Header';
 import Footer from './layout/Footer';
 
 const useStyles = makeStyles((theme) => ({
-  app: {
+  clinicApp: {
     display: 'flex',
     flexDirection: 'column',
     height: '100vh',
@@ -49,7 +49,7 @@ export const ProviderDashboard: FC = () => {
   // const [auth, setAuth] = React.useState(true);
 
   return (
-    <Box className={classes.app}>
+    <Box className={classes.clinicApp}>
       <header className={classes.header}>
         <Header />
       </header>
