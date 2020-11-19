@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import { BrowserRouter as Router, Link as RouterLink, useParams } from 'react-router-dom';
+import { Link as RouterLink, useParams, NavLink } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 
 import {
@@ -64,7 +64,7 @@ const Footer: FC = () => {
           label={bottomNav.label}
           value={bottomNav.value}
           icon={bottomNav.icon}
-          component={RouterLink}
+          component={NavLink}
           to={bottomNav.url}
         />
       ))}

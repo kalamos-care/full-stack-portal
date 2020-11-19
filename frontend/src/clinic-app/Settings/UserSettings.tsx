@@ -22,7 +22,7 @@ export const UserSettings: FC = () => {
     }
   };
 
-  //queryBackend();
+  queryBackend();
 
   return (
     <Grid container spacing={2}>
@@ -34,7 +34,7 @@ export const UserSettings: FC = () => {
           Manage your account here
       </Typography>
       </Grid>
-      <Grid>
+      <Grid item xs={12}>
         {userInfo && (
           <p>
             <code>{userInfo}</code>

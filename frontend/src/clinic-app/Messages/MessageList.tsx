@@ -15,7 +15,6 @@ import Avatar from '@material-ui/core/Avatar';
 const useStyles = makeStyles((theme) => ({
   messageList: {
     width: '100%',
-    maxWidth: '36ch',
     backgroundColor: theme.palette.background.paper,
   },
   inline: {
@@ -66,8 +65,8 @@ export const MessageList: FC = () => {
   const classes = useStyles();
 
   return (
-    <Grid>
-      <Grid>
+    <Grid container>
+      <Grid item xs={12}>
         <Typography component="h4" variant="h5" gutterBottom>
           Messages
         </Typography>
@@ -75,42 +74,44 @@ export const MessageList: FC = () => {
           Sign up for a Pro plan to message your patients.
         </Typography>
       </Grid>
-      <List className={classes.messageList}>
-        {conversations.map((conversation) => (
-          <>
-            <ListItem
-              alignItems="flex-start"
-              component={RouterLink}
-              to={`/clinic/messages/${conversation.id}`}
-              key={conversation.id}
-            >
-              <ListItemAvatar>
-                <Avatar
-                  alt={conversation.avatar.alt}
-                  src={conversation.avatar.src}
+      <Grid item xs={12}>
+        <List className={classes.messageList}>
+          {conversations.map((conversation) => (
+            <>
+              <ListItem
+                alignItems="flex-start"
+                component={RouterLink}
+                to={`/clinic/messages/${conversation.id}`}
+                key={conversation.id}
+              >
+                <ListItemAvatar>
+                  <Avatar
+                    alt={conversation.avatar.alt}
+                    src={conversation.avatar.src}
+                  />
+                </ListItemAvatar>
+                <ListItemText
+                  primary={conversation.preview.title}
+                  secondary={
+                    <>
+                      <Typography
+                        component="span"
+                        variant="body2"
+                        className={classes.inline}
+                        color="textPrimary"
+                      >
+                        {conversation.preview.participants}
+                      </Typography>
+                      {conversation.preview.text}
+                    </>
+                  }
                 />
-              </ListItemAvatar>
-              <ListItemText
-                primary={conversation.preview.title}
-                secondary={
-                  <>
-                    <Typography
-                      component="span"
-                      variant="body2"
-                      className={classes.inline}
-                      color="textPrimary"
-                    >
-                      {conversation.preview.participants}
-                    </Typography>
-                    {conversation.preview.text}
-                  </>
-                }
-              />
-            </ListItem>
-            <Divider variant="inset" component="li" />
-          </>
-        ))}
-      </List>
+              </ListItem>
+              <Divider variant="inset" component="li" />
+            </>
+          ))}
+        </List>
+      </Grid>
     </Grid>
   );
 };

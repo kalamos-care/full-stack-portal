@@ -1,16 +1,4 @@
-// import decodeJwt from 'jwt-decode';
-
 import { BACKEND_URL } from '../config';
-
-{/*
-function authHeaders(token: string) {
-  return {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  };
-}
-*/}
 
 export const getMessage = async () => {
   const response = await fetch(BACKEND_URL);
@@ -31,9 +19,9 @@ export const getMessage = async () => {
 export const getUserInfo = async () => {
   var jwt = localStorage.getItem('token');
 
-  if (!jwt) {
-    return false;
-  }
+  //if (!jwt.token) {
+  //  return false;
+  //}
 
   // var myHeaders = new Headers();
   // myHeaders.append("Authorization", jwt);

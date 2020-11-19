@@ -14,12 +14,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
 const notifications = [
   {
     id: 1,
     severity: 'error',
     title: 'Error',
-    message: 'This is an error alert — ${<strong>}check it out!${</strong>}',
+    message: 'This is an error alert — check it out!',
     cta: 'Click',
     url: '/clinic/notifications/error',
   },
@@ -27,7 +28,7 @@ const notifications = [
     id: 2,
     severity: 'warning',
     title: 'Warning',
-    message: 'This is a warning alert — ${<strong>}check it out!${</strong>}',
+    message: 'This is a warning alert — check it out!',
     cta: 'Click',
     url: '/clinic/notifications/warning',
   },
@@ -35,7 +36,7 @@ const notifications = [
     id: 3,
     severity: 'info',
     title: 'Info',
-    message: 'This is an info alert — ${<strong>}check it out!${</strong>}',
+    message: 'This is an info alert — check it out!',
     cta: 'Click',
     url: '/clinic/notifications/info',
   },
@@ -43,20 +44,48 @@ const notifications = [
     id: 4,
     severity: 'success',
     title: 'Success',
-    message: 'This is a success alert — ${<strong>}check it out!${</strong>}',
+    message: 'This is a success alert — check it out!',
     cta: 'Click',
     url: '/clinic/notifications/error',
   },
 ];
 
+type Severity = "error" | "success" | "info" | "warning" | undefined;
+type Notification = {
+  id: number,
+  severity: Severity,
+  title: string,
+  message: string,
+  cta: string,
+  url: string,
+};
+
+{/*
+function NotificationAlert(notification: Notification) {
+  return (
+    <Alert severity={notification.severity} key={notification.id}>
+      <AlertTitle>{notification.title}</AlertTitle>
+      {notification.message}
+      <Button
+        color="inherit"
+        size="small"
+        component={RouterLink}
+        to={notification.url}
+      >
+        {notification.cta}
+      </Button>
+    </Alert>
+  )
+};
+*/}
+
+
 export const NotificationsList: FC = () => {
   const classes = useStyles();
 
-  // type Severity = "error" | "success" | "info" | "warning" | undefined;
-
   return (
-    <Grid>
-      <Grid>
+    <Grid container>
+      <Grid item xs={12}>
         <Typography component="h4" variant="h5" gutterBottom>
           Notifications
         </Typography>
@@ -64,24 +93,21 @@ export const NotificationsList: FC = () => {
           Here's what happened while you were away
         </Typography>
       </Grid>
+      <Grid item xs={12}>
+        <Typography variant="body1" gutterBottom>
+          List alerts detailing action items. If the account is new, have the "tutorial" start here.
+        </Typography>
+      </Grid>
       {/*
             Need to expressly define severity types in order to insert 
             {notification.severity}
-            */}
+            
       {notifications.map((notification) => (
-        <Alert className={classes.notification} severity="info" key={notification.id}>
-          <AlertTitle>{notification.title}</AlertTitle>
-          {notification.message}
-          <Button
-            color="inherit"
-            size="small"
-            component={RouterLink}
-            to={notification.url}
-          >
-            {notification.cta}
-          </Button>
-        </Alert>
+        <NotificationAlert notification = {notification} />
       ))}
+      */}
     </Grid>
   );
 };
+
+

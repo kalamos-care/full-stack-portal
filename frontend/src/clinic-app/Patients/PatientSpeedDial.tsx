@@ -30,7 +30,7 @@ const actions = [
   },
   {
     icon: (
-      <RouterLink to="/clinic/patients/">
+      <RouterLink to="/clinic/patients/orders/new">
         <NewOrderIcon />
       </RouterLink>
     ),
