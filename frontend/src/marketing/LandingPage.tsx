@@ -21,14 +21,11 @@ import { ContactUs } from './ContactUs';
 
 
 const useStyles = makeStyles((theme) => ({
-  icon: {
-    marginRight: theme.spacing(2),
-  },
   heroContent: {
     padding: theme.spacing(4),
   },
   heroButtons: {
-    margin: theme.spacing(2),
+    //margin: theme.spacing(2),
   },
   divider: {
     margin: theme.spacing(4),
@@ -54,36 +51,36 @@ const LandingPage: FC = () => {
   return (
     <Container>
       {/* Hero unit */}
-        <Grid container spacing={2} justify="center" className={classes.heroContent}>
-          <Grid item xs={12}>
-            <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-              Remote PrEP Patient Monitoring
+      <Grid container spacing={2} justify="center" className={classes.heroContent}>
+        <Grid item xs={12}>
+          <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
+            Remote PrEP Patient Monitoring
             </Typography>
-          </Grid>
-          <Grid item md={6} xs={12}>
-            <Typography variant="h5" align="center" color="textSecondary" paragraph>
-              Let us automate the logistics of PrEP prescribing: from testing to medication delivery to adherence monitoring.
+        </Grid>
+        <Grid item md={6} xs={12}>
+          <Typography variant="h5" align="center" color="textSecondary" paragraph>
+            Let us automate the logistics of PrEP prescribing: from testing to medication delivery to adherence monitoring.
               </Typography>
-            <Typography variant="h5" align="center" color="textSecondary" paragraph>
-              You focus on building strong personal relationships with your patients.
+          <Typography variant="h5" align="center" color="textSecondary" paragraph>
+            You focus on building strong personal relationships with your patients.
             </Typography>
-          </Grid>
-          <Grid item md={4} xs={12}>
-            <img src={DrsImg} alt="doctors" width="100%" />
-          </Grid>
         </Grid>
-        <Grid container spacing={2} justify="center" className={classes.heroButtons}>
-          <Grid item>
-            <Button variant="contained" color="primary" component={RouterLink} to="/signup">
-              Create Your Account
-                </Button>
-          </Grid>
-          <Grid item>
-            <Button variant="outlined" color="primary" component={RouterLink} to="/company/about-us">
-              Read More About Us
-                </Button>
-          </Grid>
+        <Grid item md={4} xs={12}>
+          <img src={DrsImg} alt="doctors" width="100%" />
         </Grid>
+      </Grid>
+      <Grid container spacing={2} justify="center" className={classes.heroButtons}>
+        <Grid item>
+          <Button variant="contained" color="primary" component={RouterLink} to="/signup">
+            Create Your Account
+                </Button>
+        </Grid>
+        <Grid item>
+          <Button variant="outlined" color="primary" component={RouterLink} to="/company/about-us">
+            Read More About Us
+                </Button>
+        </Grid>
+      </Grid>
       <Divider className={classes.divider} />
       {/* Feature List */}
       <Grid container className={classes.promoFeatures}>
