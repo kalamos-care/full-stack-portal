@@ -1,7 +1,8 @@
 import React, { FC, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
-import { Typography, Grid, Container } from '@material-ui/core/';
+import { Container } from '@material-ui/core/';
+import PageTitle from '../layout/PageTitle';
 
 const useStyles = makeStyles((theme) => ({}));
 
@@ -10,25 +11,7 @@ export const FAQ: FC = () => {
 
   return (
     <Container maxWidth="md">
-      <Grid>
-        <Typography variant="h4" gutterBottom>
-          FAQ
-        </Typography>
-        <Typography variant="h6" gutterBottom>
-          Coming Soon
-        </Typography>
-        {/*
-        <Typography
-          component="h1"
-          variant="h2"
-          align="center"
-          color="textPrimary"
-          gutterBottom
-        >
-          FAQ
-        </Typography>
-        */}
-      </Grid>
+      <PageTitle title="FAQ" subtitle="Coming Soon" />
     </Container>
   );
 };

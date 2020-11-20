@@ -6,14 +6,11 @@ import {
 
 import { makeStyles } from '@material-ui/core/styles';
 
-import { Typography, Grid, Container } from '@material-ui/core/';
+import { Typography, Grid, Container, Button, Card, CardActions, CardContent, CardHeader } from '@material-ui/core/';
 
-import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardHeader from '@material-ui/core/CardHeader';
 import StarIcon from '@material-ui/icons/StarBorder';
+
+import PageTitle from '../layout/PageTitle';
 
 const useStyles = makeStyles((theme) => ({
   '@global': {
@@ -87,6 +84,7 @@ export const Pricing: FC = () => {
 
   return (
     <>
+      <PageTitle title="Pricing" subtitle="Select the plan that's right for your remote monitoring practice" />
       <Container maxWidth="sm" component="main" className={classes.heroContent}>
         <Typography
           component="h1"

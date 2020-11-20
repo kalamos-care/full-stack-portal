@@ -3,18 +3,15 @@ import { Link as RouterLink } from 'react-router-dom';
 
 import { makeStyles } from '@material-ui/core/styles';
 
-import { Typography, Grid, Container } from '@material-ui/core/';
-import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
+import { Typography, Grid, Container, Button, Card, CardActions, CardHeader, CardContent, CardMedia } from '@material-ui/core/';
 
 import DeliveryImg from '../../assets/images/undraw_delivery.svg';
 import BillingImg from '../../assets/images/undraw_billing.svg';
 import MessagingImg from '../../assets/images/undraw_messaging.svg';
 import AiImg from '../../assets/images/undraw_ai.svg';
 import OpenSourceImg from '../../assets/images/undraw_open_source.svg';
+
+import PageTitle from '../layout/PageTitle';
 
 import { getMessage } from '../../utils/api';
 
@@ -62,6 +59,7 @@ export const Features: FC = () => {
 
     return (
         <Container maxWidth="md">
+            <PageTitle title="Features" subtitle="Everything you need to successfully monitor patients remotely." />
             <Grid>
                 <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>Features</Typography>
             </Grid>

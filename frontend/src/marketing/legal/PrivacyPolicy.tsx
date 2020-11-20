@@ -3,6 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import { Typography, Grid, Container } from '@material-ui/core/';
 
+import PageTitle from '../layout/PageTitle';
+
 const useStyles = makeStyles((theme) => ({}));
 
 export const PrivacyPolicy: FC = () => {
@@ -10,18 +12,9 @@ export const PrivacyPolicy: FC = () => {
 
   return (
     <Container maxWidth="md">
-      <Grid>
-        <Typography
-          component="h1"
-          variant="h2"
-          align="center"
-          color="textPrimary"
-          gutterBottom
-        >
-          Privacy Policy
-        </Typography>
-      </Grid>
-      <Grid>
+      <PageTitle title="Privacy Policy" subtitle="" />
+      <Grid container>
+        <Grid item xs={12}>
         <Typography variant="body1" paragraph>
           Kalamos Care, Inc. (“Kalamos,” “we,” or “us,”) is committed to
           protecting your privacy. This Privacy Policy (“Privacy Policy”) along
@@ -443,6 +436,7 @@ export const PrivacyPolicy: FC = () => {
           The Website is owned and operated by Kalamos. You can contact us using
           the Contact Us page or by email via privacy@kalamos.com.
         </Typography>
+      </Grid>
       </Grid>
     </Container>
   );

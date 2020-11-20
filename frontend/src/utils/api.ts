@@ -14,22 +14,25 @@ export const getMessage = async () => {
 
 export const getUserInfo = async () => {
   var jwt = localStorage.getItem('token');
+
+  // console.log(jwt);
+
+  var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Bearer " + jwt);
+    myHeaders.append("Accept", "application/json");
   
   const response = await fetch(`${BACKEND_URL}/users/me`, {
     method: 'GET',
-    headers: {
-      Authorization: `${jwt}`,
-    },
-    redirect: 'follow'
+    headers: myHeaders,
   });
 
   const data = await response.json();
 
-  if (data.email) {
+  if (data) {
     return data.email;
   }
 
-  return Promise.reject('Failed to get user info from backend. JWT:' + {jwt});
+  return Promise.reject('Failed to get user info from backend. JWT: ' + jwt);
 };
 
 

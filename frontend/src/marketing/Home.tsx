@@ -27,7 +27,6 @@ import { FAQ } from './resources/FAQ';
 import { ApiDocs } from './resources/ApiDocs';
 import { PrivacyPolicy } from './legal/PrivacyPolicy';
 import { TermsOfUse } from './legal/TermsOfUse';
-import { Legal } from './legal/Legal';
 
 const useStyles = makeStyles((theme) => ({
   marketing: {
@@ -94,9 +93,6 @@ export const Home: FC = () => {
             </Route>
             <Route exact path="/resources/api">
               <Redirect push to="/api/docs" />
-            </Route>
-            <Route exact path="/legal">
-              <Legal />
             </Route>
             <Route exact path="/legal/terms-of-use">
               <TermsOfUse />

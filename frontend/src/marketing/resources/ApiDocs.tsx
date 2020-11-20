@@ -3,6 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import { Typography, Grid, Container } from '@material-ui/core/';
 
+import PageTitle from '../layout/PageTitle';
+
 const useStyles = makeStyles((theme) => ({}));
 
 export const ApiDocs: FC = () => {
@@ -10,17 +12,7 @@ export const ApiDocs: FC = () => {
 
   return (
     <Container maxWidth="md">
-      <Grid>
-        <Typography
-          component="h1"
-          variant="h2"
-          align="center"
-          color="textPrimary"
-          gutterBottom
-        >
-          API Docs
-        </Typography>
-      </Grid>
+      <PageTitle title="API Docs" subtitle="This is hosted thru FastAPI" />
     </Container>
   );
 };
