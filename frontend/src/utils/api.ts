@@ -12,21 +12,8 @@ export const getMessage = async () => {
   return Promise.reject('Failed to get message from backend');
 };
 
-/*
-
-*/
-
 export const getUserInfo = async () => {
   var jwt = localStorage.getItem('token');
-
-  //if (!jwt.token) {
-  //  return false;
-  //}
-
-  // var myHeaders = new Headers();
-  // myHeaders.append("Authorization", jwt);
-  // myHeaders.append("Content-Type", "text/plain");
-
   
   const response = await fetch(`${BACKEND_URL}/users/me`, {
     method: 'GET',
