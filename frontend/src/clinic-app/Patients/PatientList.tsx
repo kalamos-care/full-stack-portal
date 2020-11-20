@@ -10,6 +10,8 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { FixedSizeList, ListChildComponentProps } from 'react-window';
 
+import BreadcrumbTitle from '../layout/BreadcrumbTitle';
+
 import { PatientSpeedDial } from './PatientSpeedDial';
 
 const useStyles = makeStyles((theme) => ({}));
@@ -34,21 +36,16 @@ export const PatientList: FC = () => {
   const classes = useStyles();
 
   return (
-    <Grid>
-      <Grid>
-        <Typography component="h4" variant="h5" gutterBottom>
-          Patients
-        </Typography>
-        <Typography component="h5" variant="h6" gutterBottom>
-          List patients here!
-        </Typography>
+    <Grid container>
+      <BreadcrumbTitle title="Patients" subtitle="List patients here." />
+      <Grid item xs={12}>
+        <Paper>
+          <FixedSizeList height={590} width={340} itemSize={46} itemCount={200}>
+            {renderPatientRow}
+          </FixedSizeList>
+        </Paper>
+        <PatientSpeedDial />
       </Grid>
-      <Paper>
-        <FixedSizeList height={590} width={340} itemSize={46} itemCount={200}>
-          {renderPatientRow}
-        </FixedSizeList>
-      </Paper>
-      <PatientSpeedDial />
     </Grid>
   );
 };

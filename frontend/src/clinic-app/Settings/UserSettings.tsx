@@ -4,6 +4,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 
+import BreadcrumbTitle from '../layout/BreadcrumbTitle';
+
 import { getUserInfo } from '../../utils/api';
 
 const useStyles = makeStyles((theme) => ({}));
@@ -26,14 +28,7 @@ export const UserSettings: FC = () => {
 
   return (
     <Grid container spacing={2}>
-      <Grid item xs={12}>
-        <Typography component="h4" variant="h5" gutterBottom>
-          User Settings
-      </Typography>
-        <Typography component="h5" variant="h6">
-          Manage your account here
-      </Typography>
-      </Grid>
+      <BreadcrumbTitle title="User Settings" subtitle="Manage your account here" />
       <Grid item xs={12}>
         {userInfo && (
           <p>
