@@ -50,7 +50,7 @@ const Header: FC = () => {
     <AppBar position="static">
       <Toolbar>
         <Typography
-          variant="h6"
+          variant="h5"
           className={classes.title}
           component={RouterLink}
           to="/clinic"
