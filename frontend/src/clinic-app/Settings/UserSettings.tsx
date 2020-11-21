@@ -31,14 +31,12 @@ export const UserSettings: FC = () => {
       <BreadcrumbTitle title="User Settings" subtitle="Manage your account here" />
       <Grid item xs={12}>
         {userInfo && (
-          <p>
-            <code>{userInfo}</code>
-          </p>
+          <p>User Email: <code>{userInfo}</code></p>
         )}
         {error && (
           <p>
             Error: <code>{error}</code>
-          </p>
+          </p> 
         )}
       </Grid>
       <Grid item xs={12}>

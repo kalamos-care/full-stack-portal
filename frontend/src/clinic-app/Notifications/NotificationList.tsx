@@ -8,6 +8,8 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
+import BreadcrumbTitle from '../layout/BreadcrumbTitle';
+
 const useStyles = makeStyles((theme) => ({
   notification: {
     marginTop: theme.spacing(2),
@@ -85,14 +87,7 @@ export const NotificationsList: FC = () => {
 
   return (
     <Grid container>
-      <Grid item xs={12}>
-        <Typography component="h4" variant="h5" gutterBottom>
-          Notifications
-        </Typography>
-        <Typography component="h5" variant="h6" gutterBottom>
-          Here's what happened while you were away
-        </Typography>
-      </Grid>
+      <BreadcrumbTitle title="Notifications" subtitle="Here's what happened while you were away" />
       <Grid item xs={12}>
         <Typography variant="body1" gutterBottom>
           List alerts detailing action items. If the account is new, have the "tutorial" start here.

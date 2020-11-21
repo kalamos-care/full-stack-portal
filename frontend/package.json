@@ -21,7 +21,8 @@
     "react-scripts": "3.4.3",
     "react-truncate": "^2.4.0",
     "react-window": "^1.8.6",
-    "standard": "^14.3.3"
+    "standard": "^14.3.3",
+    "typeface-arimo": "^1.1.13"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -67,6 +68,7 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^2.5.1",
+    "file-loader": "^6.2.0",
     "prettier": "^2.0.5",
     "react-test-renderer": "^16.14.0",
     "typescript": "^4.0.5"

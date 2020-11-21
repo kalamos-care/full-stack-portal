@@ -12,6 +12,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 
+import BreadcrumbTitle from '../layout/BreadcrumbTitle';
+
 const useStyles = makeStyles((theme) => ({
   messageList: {
     width: '100%',
@@ -66,14 +68,7 @@ export const MessageList: FC = () => {
 
   return (
     <Grid container>
-      <Grid item xs={12}>
-        <Typography component="h4" variant="h5" gutterBottom>
-          Messages
-        </Typography>
-        <Typography component="h5" variant="h6" gutterBottom>
-          Sign up for a Pro plan to message your patients.
-        </Typography>
-      </Grid>
+      <BreadcrumbTitle title="Messages" subtitle="Sign up for a Pro plan to message your patients." />
       <Grid item xs={12}>
         <List className={classes.messageList}>
           {conversations.map((conversation) => (
