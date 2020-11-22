@@ -1,6 +1,6 @@
 backend:
   ingress:
-    host: kalamadoo-api.death-ripper.com
+    host: api.kala.care
   deployment:
     replicas: 2
     container:
@@ -16,7 +16,7 @@ backend:
 
 frontend:
   ingress:
-    host: kalamadoo.death-ripper.com
+    host: app.kala.care
   deployment:
     replicas: 2
     container:
@@ -25,9 +25,9 @@ frontend:
         repo: 339302979805.dkr.ecr.us-east-2.amazonaws.com/kalamadoo-frontend
       env:
         - name: BASE_URL
-          value: https://kalamadoo.death-ripper.com
+          value: https://app.kala.care
         - name: BACKEND_URL
-          value: https://kalamadoo-api.death-ripper.com/api/v1
+          value: https://api.kala.care/api/v1
 
 global:
   postgresql:
