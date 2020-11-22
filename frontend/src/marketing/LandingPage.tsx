@@ -53,7 +53,7 @@ const LandingPage: FC = () => {
       {/* Hero unit */}
       <Grid container spacing={2} justify="center" className={classes.heroContent}>
         <Grid item xs={12}>
-          <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
+          <Typography variant="h3" align="center" color="textPrimary" gutterBottom>
             Remote PrEP Patient Monitoring
             </Typography>
         </Grid>
@@ -86,7 +86,7 @@ const LandingPage: FC = () => {
       <Grid container className={classes.promoFeatures}>
         <Grid container spacing={2} className={classes.promoFeature}>
           <Grid item xs={12}>
-            <Typography variant="h3" align="center" color="textPrimary" gutterBottom>
+            <Typography variant="h4" align="center" color="textPrimary" gutterBottom>
               Home Testing
             </Typography>
           </Grid>
@@ -104,7 +104,7 @@ const LandingPage: FC = () => {
         </Grid>
         <Grid container spacing={2} className={classes.promoFeature}>
           <Grid item xs={12}>
-            <Typography variant="h3" align="center" color="textPrimary" gutterBottom>
+            <Typography variant="h4" align="center" color="textPrimary" gutterBottom>
               Billing
             </Typography>
           </Grid>
@@ -122,7 +122,7 @@ const LandingPage: FC = () => {
         </Grid>
         <Grid container spacing={2} className={classes.promoFeature}>
           <Grid item xs={12}>
-            <Typography variant="h3" align="center" color="textPrimary" gutterBottom>
+            <Typography variant="h4" align="center" color="textPrimary" gutterBottom>
               Messaging
             </Typography>
           </Grid>
@@ -139,7 +139,7 @@ const LandingPage: FC = () => {
         </Grid>
         <Grid container spacing={2} className={classes.promoFeature}>
           <Grid item xs={12}>
-            <Typography variant="h3" align="center" color="textPrimary" gutterBottom>
+            <Typography variant="h4" align="center" color="textPrimary" gutterBottom>
               Interventions
             </Typography>
           </Grid>
@@ -157,7 +157,7 @@ const LandingPage: FC = () => {
         </Grid>
         <Grid container spacing={2} className={classes.promoFeature}>
           <Grid item xs={12}>
-            <Typography variant="h3" align="center" color="textPrimary" gutterBottom>
+            <Typography variant="h4" align="center" color="textPrimary" gutterBottom>
               Open Source
             </Typography>
           </Grid>
