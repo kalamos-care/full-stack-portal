@@ -127,9 +127,9 @@ const LandingPage: FC = () => {
             </Typography>
           </Grid>
           <Grid item md={8} xs={12}>
-            <Typography variant="h6" align="right" color="textSecondary" paragraph>
+            <Typography variant="h6" align="left" color="textSecondary" paragraph>
               Successful remote monitoring requires seamless communication between patients and providers.            </Typography>
-            <Typography variant="h6" align="right" color="textSecondary" paragraph>
+            <Typography variant="h6" align="left" color="textSecondary" paragraph>
               With Kalamos, you can easily message your patients directly within the app.
             </Typography>
           </Grid>

@@ -1,6 +1,6 @@
 apiVersion: v2
 name: kalamadoo
-description: Kalamos Thing
+description: Kalamos Provider Portal
 type: application
 version: 0.0.1
 dependencies:
