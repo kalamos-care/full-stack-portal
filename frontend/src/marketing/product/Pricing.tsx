@@ -20,11 +20,11 @@ const useStyles = makeStyles((theme) => ({
       listStyle: 'none',
     },
   },
+  tiers: {
+    paddingTop: theme.spacing(4),
+  },
   link: {
     margin: theme.spacing(1, 1.5),
-  },
-  heroContent: {
-    padding: theme.spacing(8, 0, 6),
   },
   cardHeader: {
     backgroundColor:
@@ -83,30 +83,16 @@ export const Pricing: FC = () => {
   const classes = useStyles();
 
   return (
-    <>
-      <PageTitle title="Pricing" subtitle="Select the plan that's right for your remote monitoring practice" />
-      <Container maxWidth="sm" component="main" className={classes.heroContent}>
-        <Typography
-          component="h1"
-          variant="h2"
-          align="center"
-          color="textPrimary"
-          gutterBottom
-        >
-          Pricing
-        </Typography>
-        <Typography
-          variant="h5"
-          align="center"
-          color="textSecondary"
-          component="p"
-        >
-          Select the plan that's right for your remote monitoring practice.
-        </Typography>
-      </Container>
-      {/* End hero unit */}
       <Container maxWidth="lg" component="main">
-        <Grid container spacing={5} alignItems="flex-end">
+      <PageTitle title="Simple pricing for any practice" subtitle="Select the plan that's right for your remote monitoring practice" />
+      <Grid container>
+        <Grid item xs={12}>
+          <Typography variant="subtitle1" gutterBottom>
+            No long-term contracts, just pay as you go. Try risk-free for 30 days. 
+          </Typography>
+        </Grid>
+      </Grid>
+        <Grid container spacing={5} alignItems="flex-end" className={classes.tiers}>
           {tiers.map((tier) => (
             // Enterprise card is full width at sm breakpoint
             <Grid
@@ -159,6 +145,5 @@ export const Pricing: FC = () => {
           ))}
         </Grid>
       </Container>
-    </>
   );
 };

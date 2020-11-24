@@ -17,6 +17,9 @@ import { getMessage } from '../../utils/api';
 
 
 const useStyles = makeStyles((theme) => ({
+    featureSet: {
+        padding: theme.spacing(4,0,4),
+    },
     cardGrid: {
         paddingTop: theme.spacing(8),
         paddingBottom: theme.spacing(8),
@@ -59,103 +62,97 @@ export const Features: FC = () => {
 
     return (
         <Container maxWidth="md">
-            <PageTitle title="Features" subtitle="Everything you need to successfully monitor patients remotely." />
-            <Grid>
-                <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>Features</Typography>
+            <PageTitle title="Your remote monitoring toolkit" subtitle="Not every patient needs an office visit. That doesn't mean they don't need care." />
+            <Grid container className={classes.featureSet}>
+                <Grid item xs={12}>
+                    <Typography variant="h5" gutterBottom>
+                        Intelligent Notifications
+                    </Typography>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                    <Typography variant="h6" gutterBottom>
+                        Diagnostic Alerts
+                    </Typography>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                    <Typography variant="h6" gutterBottom>
+                        Adherence Updates
+                    </Typography>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                    <Typography variant="h6" gutterBottom>
+                        Enrollment Opportunities
+                    </Typography>
+                </Grid>
             </Grid>
-            <Container maxWidth="md" className={classes.promoFeatures}>
-                <Grid container spacing={2} className={classes.promoFeature}>
-                    <Grid item xs={12}>
-                        <Typography variant="h3" align="center" color="textPrimary" gutterBottom>
-                            Home Testing
-            </Typography>
-                    </Grid>
-                    <Grid item md={8} xs={12}>
-                        <Typography variant="h6" color="textSecondary" paragraph>
-                            Don’t let the constraints of brick and mortar phlebotomy prevent your patients from being up-to-date with their lab work.
-            </Typography>
-                        <Typography variant="h6" color="textSecondary" paragraph>
-                            You can place an order for a self-collection kit for your patient while submitting a lab requisition.
-            </Typography>
-                    </Grid>
-                    <Grid item md={4} xs={12}>
-                        <img src={DeliveryImg} alt="delivery" width="100%" />
-                    </Grid>
+            <Grid container className={classes.featureSet}>
+                <Grid item xs={12}>
+                    <Typography variant="h5" gutterBottom>
+                        Remote Monitoring Tools
+                    </Typography>
                 </Grid>
-                <Grid container spacing={2} className={classes.promoFeature}>
-                    <Grid item xs={12}>
-                        <Typography variant="h3" align="center" color="textPrimary" gutterBottom>
-                            Billing
-            </Typography>
-                    </Grid>
-                    <Grid item md={4} xs={12}>
-                        <img src={BillingImg} alt="billing" width="100%" className={classes.promoImage} />
-                    </Grid>
-                    <Grid item md={8} xs={12}>
-                        <Typography variant="h6" align="right" color="textSecondary" paragraph>
-                            Changes to CMS reimbursement guidelines now allow providers to bill for remote patient monitoring.
-            </Typography>
-                        <Typography variant="h6" align="right" color="textSecondary" paragraph>
-                            Easily maintain records so that both you and your patients can submit for reimbursement.
-            </Typography>
-                    </Grid>
+                <Grid item xs={12} md={4}>
+                    <Typography variant="h6" gutterBottom>
+                        Mobile First
+                    </Typography>
                 </Grid>
-                <Grid container spacing={2} className={classes.promoFeature}>
-                    <Grid item xs={12}>
-                        <Typography variant="h3" align="center" color="textPrimary" gutterBottom>
-                            Messaging
-            </Typography>
-                    </Grid>
-                    <Grid item md={8} xs={12}>
-                        <Typography variant="h6" align="right" color="textSecondary" paragraph>
-                            Successful remote monitoring requires seamless communication between patients and providers.            </Typography>
-                        <Typography variant="h6" align="right" color="textSecondary" paragraph>
-                            With Kalamos, you can easily message your patients directly within the app.
-            </Typography>
-                    </Grid>
-                    <Grid item md={4} xs={12}>
-                        <img src={MessagingImg} alt="messaging" width="100%" />
-                    </Grid>
+                <Grid item xs={12} md={4}>
+                    <Typography variant="h6" gutterBottom>
+                        At-Home Testing
+                    </Typography>
                 </Grid>
-                <Grid container spacing={2} className={classes.promoFeature}>
-                    <Grid item xs={12}>
-                        <Typography variant="h3" align="center" color="textPrimary" gutterBottom>
-                            Interventions
-            </Typography>
-                    </Grid>
-                    <Grid item md={4} xs={12}>
-                        <img src={AiImg} alt="interventions" width="100%" />
-                    </Grid>
-                    <Grid item md={8} xs={12}>
-                        <Typography variant="h6" align="right" color="textSecondary" paragraph>
-                            Most PrEP patients discontinue usage within a year of starting; and almost all patients struggle with adherence.
-            </Typography>
-                        <Typography variant="h6" align="right" color="textSecondary" paragraph>
-                            We’ve integrated CDC-recommended interventions for adherence and persistence.
-            </Typography>
-                    </Grid>
+                <Grid item xs={12} md={4}>
+                    <Typography variant="h6" gutterBottom>
+                        Advanced Scheduling
+                    </Typography>
                 </Grid>
-                <Grid container spacing={2} className={classes.promoFeature}>
-                    <Grid item xs={12}>
-                        <Typography variant="h3" align="center" color="textPrimary" gutterBottom>
-                            Open Source
-            </Typography>
-                    </Grid>
-                    <Grid item md={8} xs={12}>
-                        <Typography variant="h6" align="left" color="textSecondary" paragraph>
-                            It takes (at least) two to tango, so collaboration is at our core. To beat HIV and other STIs, we must work as a community.
-            </Typography>
-                        <Typography variant="h6" align="left" color="textSecondary" paragraph>
-                            Our core capabilities will remain free and open to anyone that shares our mission.
-            </Typography>
-                    </Grid>
-                    <Grid item md={4} xs={12}>
-                        <img src={OpenSourceImg} alt="open source" width="100%" />
-                    </Grid>
+            </Grid>
+            <Grid container className={classes.featureSet}>
+                <Grid item xs={12}>
+                    <Typography variant="h5" gutterBottom>
+                        Integrated Messaging
+                    </Typography>
                 </Grid>
-            </Container>
+                <Grid item xs={12} md={4}>
+                    <Typography variant="h6" gutterBottom>
+                        Secure Conversations
+                    </Typography>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                    <Typography variant="h6" gutterBottom>
+                        Text-based Interventions
+                    </Typography>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                    <Typography variant="h6" gutterBottom>
+                        Care Team Coordination
+                    </Typography>
+                </Grid>
+            </Grid>
+            <Grid container className={classes.featureSet}>
+                <Grid item xs={12}>
+                    <Typography variant="h5" gutterBottom>
+                        Digial Practice Management
+                    </Typography>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                    <Typography variant="h6" gutterBottom>
+                        Recruit Patients
+                    </Typography>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                    <Typography variant="h6" gutterBottom>
+                        EMR Integration
+                    </Typography>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                    <Typography variant="h6" gutterBottom>
+                        Claims Management
+                    </Typography>
+                </Grid>
+            </Grid>
+            {/*
             <Container className={classes.cardGrid} maxWidth="md">
-                {/* End hero unit */}
                 <Grid container spacing={4}>
                     <Grid item xs={12} sm={6} md={4}>
                         <Card className={classes.card}>
@@ -234,6 +231,7 @@ export const Features: FC = () => {
                     </Grid>
                 </Grid>
             </Container>
+                                */}
         </Container>
     );
 };

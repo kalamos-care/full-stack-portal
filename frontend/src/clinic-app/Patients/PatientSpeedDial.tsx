@@ -8,6 +8,7 @@ import SpeedDialAction from '@material-ui/lab/SpeedDialAction';
 
 import NewOrderIcon from '@material-ui/icons/LocalHospital';
 import NewPatientIcon from '@material-ui/icons/PersonAdd';
+import NewKitIcon from '@material-ui/icons/LocalShipping';
 
 const useStyles = makeStyles((theme) => ({
   speedDial: {
@@ -35,6 +36,14 @@ const actions = [
       </RouterLink>
     ),
     name: 'New Order',
+  },
+  {
+    icon: (
+      <RouterLink to="/clinic/patients/">
+        <NewKitIcon />
+      </RouterLink>
+    ),
+    name: 'New Kit Order',
   },
 ];
 

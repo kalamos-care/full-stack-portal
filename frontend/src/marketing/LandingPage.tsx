@@ -54,7 +54,7 @@ const LandingPage: FC = () => {
       <Grid container spacing={2} justify="center" className={classes.heroContent}>
         <Grid item xs={12}>
           <Typography variant="h3" align="center" color="textPrimary" gutterBottom>
-            Remote PrEP Patient Monitoring
+            Remote Patient Monitoring
             </Typography>
         </Grid>
         <Grid item md={6} xs={12}>
