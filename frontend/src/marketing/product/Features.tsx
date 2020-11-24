@@ -20,21 +20,6 @@ const useStyles = makeStyles((theme) => ({
     featureSet: {
         padding: theme.spacing(4,0,4),
     },
-    cardGrid: {
-        paddingTop: theme.spacing(8),
-        paddingBottom: theme.spacing(8),
-    },
-    card: {
-        height: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-    },
-    cardMedia: {
-        paddingTop: '56.25%', // 16:9
-    },
-    cardContent: {
-        flexGrow: 1,
-    },
     promoFeatures: {
 
     },
@@ -132,7 +117,7 @@ export const Features: FC = () => {
             <Grid container className={classes.featureSet}>
                 <Grid item xs={12}>
                     <Typography variant="h5" gutterBottom>
-                        Digial Practice Management
+                        Digital Practice Management
                     </Typography>
                 </Grid>
                 <Grid item xs={12} md={4}>
