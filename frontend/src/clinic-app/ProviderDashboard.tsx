@@ -48,6 +48,13 @@ export const ProviderDashboard: FC = () => {
 
   // const [auth, setAuth] = React.useState(true);
 
+  {/*
+    1. Check to see what clinics the provider has access to
+      1a. If no practices, launch clinic search/creation process
+    2. Append clinic # to the url and use that to pull data
+    3. Allow provider to switch clinics with upper right action items
+  */}
+
   return (
     <Box className={classes.clinicApp}>
       <header className={classes.header}>
