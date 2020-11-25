@@ -158,6 +158,7 @@ export const Features: FC = () => {
     return (
         <Container maxWidth="md">
             <PageTitle title="Kalamos Feature Set" subtitle="Kalamos was built from the ground up to make remote patient monitoring easy" />
+            {/* Insert button to pricing */}
             {featureList.map((featureSection) => (
                 <Grid container className={classes.featureSection} key={featureSection.sectionTitle}>
                     <Grid item xs={12}>
