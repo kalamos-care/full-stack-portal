@@ -1,42 +1,150 @@
 import React, { FC, useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+//import { Link as RouterLink } from 'react-router-dom';
 
 import { makeStyles } from '@material-ui/core/styles';
 
-import { Typography, Grid, Container, Button, Card, CardActionArea, CardActions, CardHeader, CardContent, CardMedia } from '@material-ui/core/';
+import { Typography, Grid, Container, Button, Card, CardContent, CardMedia } from '@material-ui/core/';
 
 import NotificationImg from '../../assets/images/undraw_new_notification.svg';
 import AdherenceImg from '../../assets/images/undraw_med_adherence.svg';
 import InterventionImg from '../../assets/images/undraw_intervention_suggest.svg';
+
 import MobileFirstImg from '../../assets/images/undraw_mobile_first.svg';
 import DeliveredImg from '../../assets/images/undraw_order_delivered.svg';
 import ScheduleImg from '../../assets/images/undraw_scheduling.svg';
 
+import SecureImg from '../../assets/images/undraw_secure.svg';
+import ChatBotImg from '../../assets/images/undraw_chat_bot.svg';
+import PeerNavImg from '../../assets/images/undraw_peers.svg';
+
+import OnlineAdImg from '../../assets/images/undraw_online_adv.svg';
+import ClaimsImg from '../../assets/images/undraw_billing.svg';
+import IntegrationImg from '../../assets/images/undraw_data_processing.svg';
+
 import PageTitle from '../layout/PageTitle';
 
-import { getMessage } from '../../utils/api';
+// import { getMessage } from '../../utils/api';
 
 
 const useStyles = makeStyles((theme) => ({
-    featureSet: {
+    featureSection: {
         padding: theme.spacing(4, 0, 4),
     },
     featureCard: {
-        padding: theme.spacing(2, 2, 2),
+        padding: theme.spacing(1),
+        margin: theme.spacing(1),
+        height: "350px",
     },
-    promoFeature: {
-        padding: theme.spacing(4),
-    },
-    promoImage: {
-        maxHeight: "180px",
+    featureImg: {
+        height: "175px",
     },
 }));
+
+const featureList = [
+    {
+        sectionTitle: "Intelligent Notifications",
+        sectionSubtitle: "Running a practice is time consuming. Our notifications make it easy to stay up-to-date on what matters most.",
+        features: [
+            {
+                featureImg: NotificationImg,
+                featureImgAlt: "Diagnostic Alerts",
+                featureTitle: "Diagnostic Alerts",
+                featureCaption: "Set reminders for follow up testing and receive proactive updates about home-delivered test kits.",
+            },
+            {
+                featureImg: AdherenceImg,
+                featureImgAlt: "Adherence Updates",
+                featureTitle: "Adherence Updates",
+                featureCaption: "Adherence and persistence monitoring let you know if patients are at risk of disusage.",
+            },
+            {
+                featureImg: InterventionImg,
+                featureImgAlt: "Intervention Suggestions",
+                featureTitle: "Intervention Suggestions",
+                featureCaption: "Based on patient data, we can suggest evidence-based behavioral health interventions.",
+            },
+        ],
+    },
+    {
+        sectionTitle: "Remote Monitoring Toolkit",
+        sectionSubtitle: "Not every patient needs an office visit. That doesn't mean they don't need care.",
+        features: [
+            {
+                featureImg: MobileFirstImg,
+                featureImgAlt: "Mobile-first Design",
+                featureTitle: "Mobile-first Design",
+                featureCaption: "Our website is designed and built to be used like any other app on your phone, except it’s accessible anywhere.",
+            },
+            {
+                featureImg: DeliveredImg,
+                featureImgAlt: "At-Home Testing",
+                featureTitle: "At-Home Testing",
+                featureCaption: "We’ve partnered with Molecular Testing Labs to provide world class diagnostics on patient collected samples.",
+            },
+            {
+                featureImg: ScheduleImg,
+                featureImgAlt: "Advanced Scheduling",
+                featureTitle: "Advanced Scheduling",
+                featureCaption: "Coordinating checkups is time consuming. We sync schedules between you and your patients.",
+            },
+        ],
+    },
+    {
+        sectionTitle: "Care Team Coordination",
+        sectionSubtitle: "It takes a village, but it doesn’t have to be difficult to work together.",
+        features: [
+            {
+                featureImg: SecureImg,
+                featureImgAlt: "Secure Conversations",
+                featureTitle: "Secure Conversations",
+                featureCaption: "",
+            },
+            {
+                featureImg: ChatBotImg,
+                featureImgAlt: "Text-based Interventions",
+                featureTitle: "Text-based Interventions",
+                featureCaption: "",
+            },
+            {
+                featureImg: PeerNavImg,
+                featureImgAlt: "Peer Navigation",
+                featureTitle: "Peer Navigation",
+                featureCaption: "",
+            },
+        ],
+    },
+    {
+        sectionTitle: "Digital Practice Management",
+        sectionSubtitle: "A new paradigm calls for new management tools. Kalamos makes it simple to start and operate a digital-first clinic.",
+        features: [
+            {
+                featureImg: OnlineAdImg,
+                featureImgAlt: "Patient Recruitment",
+                featureTitle: "Patient Recruitment",
+                featureCaption: "",
+            },
+            {
+                featureImg: ClaimsImg,
+                featureImgAlt: "Claims Management",
+                featureTitle: "Claims Management",
+                featureCaption: "",
+            },
+            {
+                featureImg: IntegrationImg,
+                featureImgAlt: "FHIR Integrations",
+                featureTitle: "FHIR Integrations",
+                featureCaption: "",
+            },
+        ],
+    },
+];
 
 export const Features: FC = () => {
     const [message, setMessage] = useState<string>('');
     const [error, setError] = useState<string>('');
     const classes = useStyles();
 
+    {/*
     const queryBackend = async () => {
         try {
             const message = await getMessage();
@@ -45,157 +153,43 @@ export const Features: FC = () => {
             setError(err);
         }
     };
+    */}
 
     return (
         <Container maxWidth="md">
             <PageTitle title="Kalamos Feature Set" subtitle="Kalamos was built from the ground up to make remote patient monitoring easy" />
-            <Grid container className={classes.featureSet}>
-                <Grid item xs={12}>
-                    <Typography variant="h5" gutterBottom>
-                        Intelligent Notifications
-                    </Typography>
-                    <Typography variant="subtitle1" gutterBottom>
-                        Running a practice is time consuming. Our notifications make it easy to stay up-to-date on what matters most.
-                    </Typography>
+            {featureList.map((featureSection) => (
+                <Grid container className={classes.featureSection} key={featureSection.sectionTitle}>
+                    <Grid item xs={12}>
+                        <Typography variant="h5" gutterBottom>
+                            {featureSection.sectionTitle}
+                        </Typography>
+                        <Typography variant="subtitle1" gutterBottom>
+                            {featureSection.sectionSubtitle}
+                        </Typography>
+                    </Grid>
+                    {featureSection.features.map((feature) => (
+                        <Grid item xs={12} md={4}>
+                            <Card className={classes.featureCard}>
+                                <CardMedia
+                                    className={classes.featureImg}
+                                    component="img"
+                                    image={feature.featureImg}
+                                    title={feature.featureImgAlt}
+                                />
+                                <CardContent>
+                                    <Typography variant="h6" gutterBottom>
+                                        {feature.featureTitle}
+                                    </Typography>
+                                    <Typography variant="body1">
+                                        {feature.featureCaption}
+                                    </Typography>
+                                </CardContent>
+                            </Card>
+                        </Grid>
+                    ))}
                 </Grid>
-                <Grid item xs={12} md={4}>
-                    <Typography variant="h6" gutterBottom>
-                        Diagnostic Alerts
-                    </Typography>
-                    <Typography variant="body1" gutterBottom>
-                        Set reminders for follow up testing and receive proactive updates about home-delivered test kits.
-                    </Typography>
-                    <img src={NotificationImg} alt="messaging" width="100%" />
-                </Grid>
-                <Grid item xs={12} md={4}>
-                    <Typography variant="h6" gutterBottom>
-                        Adherence Updates
-                    </Typography>
-                    <img src={AdherenceImg} alt="messaging" width="100%" />
-                    <Typography variant="body1" gutterBottom>
-                        Adherence and persistence monitoring let you know if patients are at risk of disusage.
-                    </Typography>
-                </Grid>
-                <Grid item xs={12} md={4}>
-                    <img src={InterventionImg} alt="messaging" width="100%" />
-                    <Typography variant="h6" gutterBottom>
-                        Intervention Suggestions
-                    </Typography>
-                    <Typography variant="body1" gutterBottom>
-                        Based on demographics and behavior, we can suggest evidence-based behavioral health interventions.
-                    </Typography>
-                </Grid>
-            </Grid>
-            <Grid container className={classes.featureSet}>
-                <Grid item xs={12}>
-                    <Typography variant="h5" gutterBottom>
-                        Remote Monitoring Toolkit
-                    </Typography>
-                    <Typography variant="subtitle1" gutterBottom>
-                        Not every patient needs an office visit. That doesn't mean they don't need care.
-                    </Typography>
-                </Grid>
-                <Grid item xs={12} md={4}>
-                    <Card className={classes.featureCard}>
-                        <CardMedia
-                            component="img"
-                            image={MobileFirstImg}
-                            title="Mobile First"
-                        />
-                        <CardContent>
-                            <Typography variant="h6" gutterBottom>
-                                Mobile First
-                                </Typography>
-                            <Typography variant="body1">
-                                Our website is designed and built to be used like any other app on your phone, except it’s accessible anywhere.
-                                </Typography>
-                        </CardContent>
-                    </Card>
-                </Grid>
-                <Grid item xs={12} md={4}>
-                    <Card className={classes.featureCard}>
-                        <CardMedia
-                            component="img"
-                            image={DeliveredImg}
-                            title="At-Home Testing"
-                        />
-                        <CardContent>
-                            <Typography variant="h6" gutterBottom>
-                                At-Home Testing
-                                </Typography>
-                            <Typography variant="body1">
-                                Our website is designed and built to be used like any other app on your phone, except it’s accessible anywhere.
-                                </Typography>
-                        </CardContent>
-                    </Card>
-                </Grid>
-                <Grid item xs={12} md={4}>
-                    <Card className={classes.featureCard}>
-                        <CardMedia
-                            component="img"
-                            image={ScheduleImg}
-                            title="Advanced Scheduling"
-                        />
-                        <CardContent>
-                            <Typography variant="h6" gutterBottom>
-                                Advanced Scheduling
-                                </Typography>
-                            <Typography variant="body1">
-                                Coordinating checkups is time consuming. We sync schedules between you and your patients.                                </Typography>
-                        </CardContent>
-                    </Card>
-                </Grid>
-            </Grid>
-            <Grid container className={classes.featureSet}>
-                <Grid item xs={12}>
-                    <Typography variant="h5" gutterBottom>
-                        Care Team Coordination
-                    </Typography>
-                    <Typography variant="subtitle1" gutterBottom>
-                        It takes a village, but it doesn’t have to be difficult to work together.
-                    </Typography>
-                </Grid>
-                <Grid item xs={12} md={4}>
-                    <Typography variant="h6" gutterBottom>
-                        Secure Conversations
-                    </Typography>
-                </Grid>
-                <Grid item xs={12} md={4}>
-                    <Typography variant="h6" gutterBottom>
-                        Text-based Interventions
-                    </Typography>
-                </Grid>
-                <Grid item xs={12} md={4}>
-                    <Typography variant="h6" gutterBottom>
-                        Peer Navigation
-                    </Typography>
-                </Grid>
-            </Grid>
-            <Grid container className={classes.featureSet}>
-                <Grid item xs={12}>
-                    <Typography variant="h5" gutterBottom>
-                        Digital Practice Management
-                    </Typography>
-                    <Typography variant="subtitle1" gutterBottom>
-                        A new paradigm calls for new management tools. Kalamos makes it simple to start and operate a digital-first clinic.
-                    </Typography>
-                </Grid>
-                <Grid item xs={12} md={4}>
-                    <Typography variant="h6" gutterBottom>
-                        Recruit Patients
-                    </Typography>
-                </Grid>
-                <Grid item xs={12} md={4}>
-                    <Typography variant="h6" gutterBottom>
-                        Claims Management
-                    </Typography>
-                </Grid>
-                <Grid item xs={12} md={4}>
-                    <Typography variant="h6" gutterBottom>
-                        FHIR Integrations
-                    </Typography>
-                </Grid>
-            </Grid>
+            ))}
             {/*
             <Container className={classes.cardGrid} maxWidth="md">
                 <Grid container spacing={4}>
