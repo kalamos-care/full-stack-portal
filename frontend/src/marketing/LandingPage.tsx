@@ -71,7 +71,7 @@ const LandingPage: FC = () => {
       </Grid>
       <Grid container spacing={2} justify="center" className={classes.heroButtons}>
         <Grid item>
-          <Button variant="contained" color="primary" component={RouterLink} to="/signup">
+          <Button variant="contained" color="secondary" component={RouterLink} to="/signup">
             Create Your Account
                 </Button>
         </Grid>

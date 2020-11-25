@@ -33,6 +33,10 @@ const theme = createMuiTheme({
     secondary: {
       main: '#ff6e6c',
     },
+    text: {
+      primary: "#1f1235",
+      secondary: "#1b1425",
+    }
   },
   typography: {
     button: {

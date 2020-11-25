@@ -3,13 +3,14 @@ import { Link as RouterLink } from 'react-router-dom';
 
 import { makeStyles } from '@material-ui/core/styles';
 
-import { Typography, Grid, Container, Button, Card, CardActions, CardHeader, CardContent, CardMedia } from '@material-ui/core/';
+import { Typography, Grid, Container, Button, Card, CardActionArea, CardActions, CardHeader, CardContent, CardMedia } from '@material-ui/core/';
 
-import DeliveryImg from '../../assets/images/undraw_delivery.svg';
-import BillingImg from '../../assets/images/undraw_billing.svg';
-import MessagingImg from '../../assets/images/undraw_messaging.svg';
-import AiImg from '../../assets/images/undraw_ai.svg';
-import OpenSourceImg from '../../assets/images/undraw_open_source.svg';
+import NotificationImg from '../../assets/images/undraw_new_notification.svg';
+import AdherenceImg from '../../assets/images/undraw_med_adherence.svg';
+import InterventionImg from '../../assets/images/undraw_intervention_suggest.svg';
+import MobileFirstImg from '../../assets/images/undraw_mobile_first.svg';
+import DeliveredImg from '../../assets/images/undraw_order_delivered.svg';
+import ScheduleImg from '../../assets/images/undraw_scheduling.svg';
 
 import PageTitle from '../layout/PageTitle';
 
@@ -18,10 +19,10 @@ import { getMessage } from '../../utils/api';
 
 const useStyles = makeStyles((theme) => ({
     featureSet: {
-        padding: theme.spacing(4,0,4),
+        padding: theme.spacing(4, 0, 4),
     },
-    promoFeatures: {
-
+    featureCard: {
+        padding: theme.spacing(2, 2, 2),
     },
     promoFeature: {
         padding: theme.spacing(4),
@@ -47,55 +48,111 @@ export const Features: FC = () => {
 
     return (
         <Container maxWidth="md">
-            <PageTitle title="Your remote monitoring toolkit" subtitle="Not every patient needs an office visit. That doesn't mean they don't need care." />
+            <PageTitle title="Kalamos Feature Set" subtitle="Kalamos was built from the ground up to make remote patient monitoring easy" />
             <Grid container className={classes.featureSet}>
                 <Grid item xs={12}>
                     <Typography variant="h5" gutterBottom>
                         Intelligent Notifications
+                    </Typography>
+                    <Typography variant="subtitle1" gutterBottom>
+                        Running a practice is time consuming. Our notifications make it easy to stay up-to-date on what matters most.
                     </Typography>
                 </Grid>
                 <Grid item xs={12} md={4}>
                     <Typography variant="h6" gutterBottom>
                         Diagnostic Alerts
                     </Typography>
+                    <Typography variant="body1" gutterBottom>
+                        Set reminders for follow up testing and receive proactive updates about home-delivered test kits.
+                    </Typography>
+                    <img src={NotificationImg} alt="messaging" width="100%" />
                 </Grid>
                 <Grid item xs={12} md={4}>
                     <Typography variant="h6" gutterBottom>
                         Adherence Updates
                     </Typography>
+                    <img src={AdherenceImg} alt="messaging" width="100%" />
+                    <Typography variant="body1" gutterBottom>
+                        Adherence and persistence monitoring let you know if patients are at risk of disusage.
+                    </Typography>
                 </Grid>
                 <Grid item xs={12} md={4}>
+                    <img src={InterventionImg} alt="messaging" width="100%" />
                     <Typography variant="h6" gutterBottom>
-                        Enrollment Opportunities
+                        Intervention Suggestions
+                    </Typography>
+                    <Typography variant="body1" gutterBottom>
+                        Based on demographics and behavior, we can suggest evidence-based behavioral health interventions.
                     </Typography>
                 </Grid>
             </Grid>
             <Grid container className={classes.featureSet}>
                 <Grid item xs={12}>
                     <Typography variant="h5" gutterBottom>
-                        Remote Monitoring Tools
+                        Remote Monitoring Toolkit
+                    </Typography>
+                    <Typography variant="subtitle1" gutterBottom>
+                        Not every patient needs an office visit. That doesn't mean they don't need care.
                     </Typography>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Typography variant="h6" gutterBottom>
-                        Mobile First
-                    </Typography>
+                    <Card className={classes.featureCard}>
+                        <CardMedia
+                            component="img"
+                            image={MobileFirstImg}
+                            title="Mobile First"
+                        />
+                        <CardContent>
+                            <Typography variant="h6" gutterBottom>
+                                Mobile First
+                                </Typography>
+                            <Typography variant="body1">
+                                Our website is designed and built to be used like any other app on your phone, except it’s accessible anywhere.
+                                </Typography>
+                        </CardContent>
+                    </Card>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Typography variant="h6" gutterBottom>
-                        At-Home Testing
-                    </Typography>
+                    <Card className={classes.featureCard}>
+                        <CardMedia
+                            component="img"
+                            image={DeliveredImg}
+                            title="At-Home Testing"
+                        />
+                        <CardContent>
+                            <Typography variant="h6" gutterBottom>
+                                At-Home Testing
+                                </Typography>
+                            <Typography variant="body1">
+                                Our website is designed and built to be used like any other app on your phone, except it’s accessible anywhere.
+                                </Typography>
+                        </CardContent>
+                    </Card>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Typography variant="h6" gutterBottom>
-                        Advanced Scheduling
-                    </Typography>
+                    <Card className={classes.featureCard}>
+                        <CardMedia
+                            component="img"
+                            image={ScheduleImg}
+                            title="Advanced Scheduling"
+                        />
+                        <CardContent>
+                            <Typography variant="h6" gutterBottom>
+                                Advanced Scheduling
+                                </Typography>
+                            <Typography variant="body1">
+                                Coordinating checkups is time consuming. We sync schedules between you and your patients.                                </Typography>
+                        </CardContent>
+                    </Card>
                 </Grid>
             </Grid>
             <Grid container className={classes.featureSet}>
                 <Grid item xs={12}>
                     <Typography variant="h5" gutterBottom>
-                        Integrated Messaging
+                        Care Team Coordination
+                    </Typography>
+                    <Typography variant="subtitle1" gutterBottom>
+                        It takes a village, but it doesn’t have to be difficult to work together.
                     </Typography>
                 </Grid>
                 <Grid item xs={12} md={4}>
@@ -110,7 +167,7 @@ export const Features: FC = () => {
                 </Grid>
                 <Grid item xs={12} md={4}>
                     <Typography variant="h6" gutterBottom>
-                        Care Team Coordination
+                        Peer Navigation
                     </Typography>
                 </Grid>
             </Grid>
@@ -118,6 +175,9 @@ export const Features: FC = () => {
                 <Grid item xs={12}>
                     <Typography variant="h5" gutterBottom>
                         Digital Practice Management
+                    </Typography>
+                    <Typography variant="subtitle1" gutterBottom>
+                        A new paradigm calls for new management tools. Kalamos makes it simple to start and operate a digital-first clinic.
                     </Typography>
                 </Grid>
                 <Grid item xs={12} md={4}>
@@ -127,12 +187,12 @@ export const Features: FC = () => {
                 </Grid>
                 <Grid item xs={12} md={4}>
                     <Typography variant="h6" gutterBottom>
-                        EMR Integration
+                        Claims Management
                     </Typography>
                 </Grid>
                 <Grid item xs={12} md={4}>
                     <Typography variant="h6" gutterBottom>
-                        Claims Management
+                        FHIR Integrations
                     </Typography>
                 </Grid>
             </Grid>
@@ -217,6 +277,6 @@ export const Features: FC = () => {
                 </Grid>
             </Container>
                                 */}
-        </Container>
+        </Container >
     );
 };
