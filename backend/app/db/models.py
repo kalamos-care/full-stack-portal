@@ -176,7 +176,7 @@ class Assay(Base):
     loinc_code = Column(String)
     cpt_code = Column(String)
     lab_id= relationship("Lab")
-    device_id = Column(String)
+    device_ids = Column(Dict)
     cash_price = Column(Float)
     is_available = Column(Boolean)
 
