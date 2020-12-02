@@ -46,6 +46,9 @@ export const ProviderDashboard: FC = () => {
   const classes = useStyles();
   const history = useHistory();
 
+  const clinics = localStorage.getItem('clinics');
+  console.log(clinics);
+
   // const [auth, setAuth] = React.useState(true);
 
   {/*
