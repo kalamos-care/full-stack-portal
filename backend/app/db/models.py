@@ -77,6 +77,7 @@ class Clinic(Base):
     is_public = Column(Boolean)
     is_accepting_patients = Column(Boolean)
     has_BAA = Column(Boolean)
+    providers = Column(Dict)
 
 
 # Labs
@@ -185,10 +186,10 @@ class Lab_Order(Base):
     __tablename__ = "lab_order"
 
     id = Column(Integer, primary_key=True, index=True)
-    patient_id	relationship("Patients")
+    patient_id	relationship("Patient")
     lab_order_number = Column(Integer)
-    provider_id = relationship("Providers")
-    clinic_id = relationship("Clinics")
+    provider_id = relationship("Provider")
+    clinic_id = relationship("Clinic")
     assays = Column(Dict)
     icd_10_codes = Column(List)
     collection_date = Column(Date)
@@ -258,8 +259,8 @@ class Insurer(Base):
 class Insurer__Patient(Base):
     __tablename__ = "insurer__patient"
 
-    patient_id = relationship("Patients")
-    insurer_id = relationship("Insurers")
+    patient_id = relationship("Patient")
+    insurer_id = relationship("Insurer")
     member_id = Column(String)
     group_id = Column(String)
     pbm_bin = Column(String)
