@@ -49,6 +49,7 @@ class Provider(Base):
     is_public = Column(Boolean, default=False)
     is_accepting_patients = Column(Boolean, default=True)
     patients = Column(Dict)
+    clinics = relationship("Clinic")
 
 
 # State Licenses
@@ -175,7 +176,7 @@ class Assay(Base):
     short_name = Column(String)
     loinc_code = Column(String)
     cpt_code = Column(String)
-    lab_id= relationship("Lab")
+    lab_id = relationship("Lab")
     device_ids = Column(Dict)
     cash_price = Column(Float)
     is_available = Column(Boolean)
@@ -186,7 +187,7 @@ class Lab_Order(Base):
     __tablename__ = "lab_order"
 
     id = Column(Integer, primary_key=True, index=True)
-    patient_id	relationship("Patient")
+    patient_id = relationship("Patient")
     lab_order_number = Column(Integer)
     provider_id = relationship("Provider")
     clinic_id = relationship("Clinic")
