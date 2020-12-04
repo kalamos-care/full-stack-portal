@@ -1,4 +1,4 @@
-from sqlalchemy import Boolean, Column, Date, Dict, Float, Integer, List, String
+from sqlalchemy import Boolean, Column, Date, Float, Integer, String
 
 from sqlalchemy.orm import relationship
 
@@ -29,6 +29,8 @@ class Address(Base):
     city = Column(String)
     state = Column(String)
     zip_code = Column(Integer)
+    is_business = Column(Boolean, default=False)
+    is_po_box = Column(Boolean, default=False)
 
 
 # Provider
@@ -97,7 +99,17 @@ class Lab(Base):
     billing_contact_email = Column(String)
     billing_contact_phone = Column(String)
     url = Column(String)
-    assays = Column(Dict) # references the Assay model?
+    assays = relationship("Lab__Assay")
+
+
+# Lab__Assay
+# Individual lab compendium
+class Lab__Assay(Base):
+    __tablename__ = "lab__assay"
+
+    id = Column(Integer, primary_key=True, index=True)
+    lab_id = relationship("Lab")
+    assay_id = relationship("Assay")
 
 
 # Patients
@@ -119,19 +131,27 @@ class Patient(Base):
     email = Column(String)
     phone_day = Column(String)
     phone_night = Column(String)
-    social = Column(Dict)
-    providers = Column(Dict)
-    labs = Column(Dict)
-    prescriptions = Column(Dict)
+    social = relationship("Patient__Social")
+    providers = relationship("Provider__Patient")
+    labs_orders = relationship("Lab_Order")
+    prescriptions = relationship("Prescription__Patient")
     labs_hipaa_auth = Column(Boolean)
     labs_hipaa_auth_date = Column(Date)
     shipping_address = relationship("Addess")
     home_address = relationship("Addess")
 
 
+# Patient__Social
+class Patient__Social(Base):
+    __tablename__ = "patient__social"
+
+    id = Column(Integer, primary_key=True, index=True)
+    patient = relationship("Patient")
+    facebook = Column(String)
+
 # Prescriptions
-class Prescription(Base):
-    __tablename__ = "prescription"
+class Prescription__Patient(Base):
+    __tablename__ = "prescription__patient"
 
     id = Column(Integer, primary_key=True, index=True)
     patient_id = relationship("Patient")
@@ -149,6 +169,7 @@ class Prescription(Base):
 class Provider__Patient(Base):
     __tablename__ = "provider__patient"
 
+    id = Column(Integer, primary_key=True, index=True)
     patient_id = relationship("Patient")
     provider_id = relationship("Provider")
     hipaa_auth = Column(Boolean)
@@ -159,6 +180,7 @@ class Provider__Patient(Base):
 class Clinic__Patient(Base):
     __tablename__ = "clinic__patient"
 
+    id = Column(Integer, primary_key=True, index=True)
     clinic_id = relationship("Clinic")
     patient_id = relationship("Patient")
     hipaa_auth = Column(Boolean)
@@ -169,6 +191,7 @@ class Clinic__Patient(Base):
 class Provider__Clinic(Base):
     __tablename__ = "provider__clinic"
 
+    id = Column(Integer, primary_key=True, index=True)
     provider_id = relationship("Provider")
     clinic_id = relationship("Clinic")
 
@@ -181,8 +204,9 @@ class Provider__Clinic(Base):
 class Lab__Patient(Base):
     __tablename__ = "lab__patient"
 
+    id = Column(Integer, primary_key=True, index=True)
     patient_id = relationship("Patient")
-    provider_id = relationship("Provider")
+    lab_id = relationship("Lab")
     hipaa_auth = Column(Boolean)
     hipaa_auth_expire = Column(Date)
 
@@ -197,7 +221,7 @@ class Assay(Base):
     loinc_code = Column(String)
     cpt_code = Column(String)
     lab_id = relationship("Lab")
-    device_ids = Column(Dict)
+    device_id = relationship("Device")
     cash_price = Column(Float)
     is_available = Column(Boolean)
 
@@ -214,8 +238,11 @@ class Lab_Order(Base):
     # same question as above
     clinic_id = relationship("Clinic")
     # same question as above
-    assays = Column(Dict)
-    icd_10_codes = Column(List)
+    assays = relationship("Order__Assays")
+    #
+    # need to add this at some point
+    # icd_10_codes = Column(List)
+    #
     collection_date = Column(Date)
     replacement = Column(Boolean)
     cash_price = Column(Float)
@@ -228,6 +255,7 @@ class Lab_Order(Base):
 class Order__Assays(Base):
     __tablename__ = "order__assays"
 
+    id = Column(Integer, primary_key=True, index=True)
     lab_order_id = relationship("Lab_Order")
     assay_id = relationship("Assay")
 
@@ -238,7 +266,7 @@ class Order__Assays(Base):
 
 # Devices
 class Device(Base):
-    __tablename__ = "lab_order"
+    __tablename__ = "device"
 
     id = Column(Integer, primary_key=True, index=True)
     device_long_name = Column(String)
@@ -248,13 +276,13 @@ class Device(Base):
 
 # Kits
 class Kit(Base):
-    __tablename__ = "lab_order"
+    __tablename__ = "kit"
 
     id = Column(Integer, primary_key=True, index=True)
     kit_name = Column(String)
     kit_sku = Column(String)
     kit_id = Column(String)
-    devices = Column(Dict)
+    devices = relationship("Kit__Device")
     order_id = Column(Integer)
     shipping_speed = Column(Integer)
     status = Column(String)
@@ -266,8 +294,13 @@ class Kit(Base):
     delivered_to_processor = Column(Boolean)
 
 
-# Kit__Devices
-# Unsure if I need a table
+# Kit__Device
+class Kit__Device(Base):
+    __tablename__ = "kit__device"
+
+    id = Column(Integer, primary_key=True, index=True)
+    kit_id = relationship("Kit")
+    device = relationship("Device")
 
 
 # Insurers
@@ -284,6 +317,7 @@ class Insurer(Base):
 class Insurer__Patient(Base):
     __tablename__ = "insurer__patient"
 
+    id = Column(Integer, primary_key=True, index=True)
     patient_id = relationship("Patient")
     insurer_id = relationship("Insurer")
     member_id = Column(String)
