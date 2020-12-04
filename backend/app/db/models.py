@@ -44,12 +44,13 @@ class Provider(Base):
     address = relationship("Address")
     npi = Column(Integer, unique=True)
     medicaid_id = Column(String)
-    state_licenses = Column(Dict)
+    # does this need to be a join table?
+    state_licenses = relationship("State_License")
     mtl_provider_id = Column(String, unique=True)
     is_public = Column(Boolean, default=False)
     is_accepting_patients = Column(Boolean, default=True)
-    patients = Column(Dict)
-    clinics = relationship("Clinic")
+    patients = relationship("Provider__Patient")
+    clinics = relationship("Provider__Clinic")
 
 
 # State Licenses
@@ -78,7 +79,8 @@ class Clinic(Base):
     is_public = Column(Boolean)
     is_accepting_patients = Column(Boolean)
     has_BAA = Column(Boolean)
-    providers = Column(Dict)
+    providers = relationship("Provider__Clinic")
+    patients= relationship("Clinic__Patient")
 
 
 # Labs
@@ -132,7 +134,7 @@ class Prescription(Base):
     __tablename__ = "prescription"
 
     id = Column(Integer, primary_key=True, index=True)
-    patient_id = reference ("Patient")
+    patient_id = relationship("Patient")
     provider_id = relationship("Provider")
     rx_name = Column(String)
     rx_number = Column(String)
@@ -147,10 +149,28 @@ class Prescription(Base):
 class Provider__Patient(Base):
     __tablename__ = "provider__patient"
 
-    patient_id = reference ("Patient")
+    patient_id = relationship("Patient")
     provider_id = relationship("Provider")
     hipaa_auth = Column(Boolean)
     hipaa_auth_expire = Column(Date)
+
+
+# Clinic__Patient
+class Clinic__Patient(Base):
+    __tablename__ = "clinic__patient"
+
+    clinic_id = relationship("Clinic")
+    patient_id = relationship("Patient")
+    hipaa_auth = Column(Boolean)
+    hipaa_auth_expire = Column(Date)
+
+
+# Proivder__Clinic
+class Provider__Clinic(Base):
+    __tablename__ = "provider__clinic"
+
+    provider_id = relationship("Provider")
+    clinic_id = relationship("Clinic")
 
 
 # Lab__Patient
@@ -161,7 +181,7 @@ class Provider__Patient(Base):
 class Lab__Patient(Base):
     __tablename__ = "lab__patient"
 
-    patient_id = reference ("Patient")
+    patient_id = relationship("Patient")
     provider_id = relationship("Provider")
     hipaa_auth = Column(Boolean)
     hipaa_auth_expire = Column(Date)
@@ -188,9 +208,12 @@ class Lab_Order(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     patient_id = relationship("Patient")
+    # does this need a join table? We might want to look up all the lab orders per patient?
     lab_order_number = Column(Integer)
     provider_id = relationship("Provider")
+    # same question as above
     clinic_id = relationship("Clinic")
+    # same question as above
     assays = Column(Dict)
     icd_10_codes = Column(List)
     collection_date = Column(Date)
@@ -201,10 +224,11 @@ class Lab_Order(Base):
 
 
 # Oder__Assays
+# insert the same lab order id to multiple rows and have a unique assay per order
 class Order__Assays(Base):
     __tablename__ = "order__assays"
 
-    lab_order_id = reference ("Lab_Order")
+    lab_order_id = relationship("Lab_Order")
     assay_id = relationship("Assay")
 
 
