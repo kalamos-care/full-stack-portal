@@ -51,8 +51,15 @@ export const NewPatient: FC = () => {
             required
             fullWidth
             id="lasstname"
-            label="Lask Name"
+            label="Last Name"
             name="lasstname"
+          />
+          <TextField
+            margin="normal"
+            fullWidth
+            id="dateofburth"
+            label="Date of Birth"
+            name="dateofbirth"
           />
           <TextField
             margin="normal"

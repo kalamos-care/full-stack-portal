@@ -12,6 +12,8 @@ export const isAuthenticated = () => {
   );
 };
 
+
+
 /**
  * Login to backend and store JSON web token on success
  *
@@ -50,10 +52,13 @@ export const login = async (email: string, password: string) => {
     throw data;
   }
 
+  const clinics = "1";
+
   if ('access_token' in data) {
     const decodedToken: any = decodeJwt(data.access_token);
     localStorage.setItem('token', data.access_token);
     localStorage.setItem('permissions', decodedToken.permissions);
+    localStorage.setItem('clinics', clinics);
   }
 
   return data;
