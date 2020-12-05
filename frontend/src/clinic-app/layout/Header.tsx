@@ -8,9 +8,11 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
-import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
+
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -64,7 +66,7 @@ const Header: FC = () => {
           onClick={handleMenu}
           color="inherit"
         >
-          <AccountCircle />
+          <MoreVertIcon />
         </IconButton>
         <Menu
           id="menu-appbar"

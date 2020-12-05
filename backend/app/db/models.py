@@ -4,6 +4,8 @@ from sqlalchemy.orm import relationship
 
 from .session import Base
 
+# I think I can probably remove provider status from user object, but I want to change the default view based on that
+
 # for Authentication
 class User(Base):
     __tablename__ = "user"
@@ -84,6 +86,14 @@ class Clinic(Base):
     providers = relationship("Provider__Clinic")
     patients= relationship("Clinic__Patient")
 
+
+# Clinics Users
+class Clinic__User(Base):
+    __tablename__ = "clinic__user"
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = relationship("User")
+    clinic_id = relationship("Clinic")
 
 # Labs
 class Lab(Base):

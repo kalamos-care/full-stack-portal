@@ -5,8 +5,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import {
   BottomNavigation,
   BottomNavigationAction,
-  Typography,
-  Box,
 } from '@material-ui/core/';
 import { Chat, Folder, Notifications } from '@material-ui/icons/';
 

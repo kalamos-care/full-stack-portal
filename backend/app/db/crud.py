@@ -64,3 +64,74 @@ def edit_user(db: Session, user_id: int, user: schemas.UserEdit) -> schemas.User
     db.commit()
     db.refresh(db_user)
     return db_user
+
+
+def get_address(db: Session, address_id: int):
+    address = db.query(models.Address).filter(models.Address.id == address_id).first()
+    if not address:
+        raise HTTPException(status_code=404, detail="Address not found")
+    return address
+
+# def create_address(db: Session, address: schemas.AddressCreate):
+# def edit_address(db: Session, address_id: int, address: schemas.AddressEdit) -> schemas.Address:
+# def delete_address(db: Session, address_id: int):
+
+
+def get_patient(db: Session, patient_id: int):
+    patient = db.query(models.Patient).filter(models.Patient.id == patient_id).first()
+    if not address:
+        raise HTTPException(status_code=404, detail="Patient not found")
+    return patient
+
+
+# should I include a check to provider__patient or clinic__patient table?
+def get_patients(db: Session, skip: int = 0, limit: int = 100):
+    return db.query(models.Patient).offset(skip).limit(limit).all()
+
+
+def create_patient(db: Session, patient: schemas.PatientCreate):
+    db_patient = models.Patient(
+        legal_first_name=patient.legal_first_name,
+        legal_last_name=patient.legal_last_name,
+        date_of_birth=patient.date_of_birth,
+        email=patient.email,
+        phone_day=patient.phone_day
+    )
+    db.add(db_patient)
+    db.commit()
+    db.refresh(db_patient)
+    return db_patient
+
+
+def edit_patient(db: Session, patient_id: int, patient: schemas.PatientEdit) -> schemas.Patient:
+    db_patient = get_patient(db, patient_id)
+    if not db_patient:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, detail="Patient not found")
+    update_data = patient.dict(exclude_unset=True)
+
+    for key, value in update_data.items():
+        setattr(db_patient, key, value)
+
+    db.add(db_patient)
+    db.commit()
+    db.refresh(db_patient)
+    return db_patient
+
+
+# If the patient chooses to delete themselves, we could remove them from the DB
+# If the provider/clinic deletes a patient, we just need to remove them from provider__patient table
+def delete_patient(db: Session, patient_id: int):
+    patient = get_patient(db, patient_id)
+    if not patient:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, detail="Patient not found")
+    db.delete(patient)
+    db.commit()
+    return patient
+
+
+# def get_provider(db: Session, provider_id: int)
+# def get_provider(db: Session, skip: int = 0, limit: int = 100)
+# def create_provider(db: Session, )
+# def edit_provider(db: Session, )
+# def delete_provider(db: Session, )
+
