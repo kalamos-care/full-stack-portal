@@ -1,6 +1,5 @@
 Immediate to-dos
 1. Write out schemas/models/crud for Patients, Providers, Lab_Orders, and Kits
-2. Rename Users to Providers
 3. Hook up HelloWorks
 
 
