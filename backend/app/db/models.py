@@ -24,8 +24,7 @@ class User(Base):
 class Address(Base):
     __tablename__ = "address"
 
-    id = Column(Integer, primary_key=True, index=True)
-    address_id = Column(Integer)
+    address_id = Column(Integer, primary_key=True, index=True)
     title = Column(String)
     street_1 = Column(String)
     street_2 = Column(String)
@@ -40,8 +39,7 @@ class Address(Base):
 class Provider(Base):
     __tablename__ = "provider"
 
-    id = Column(Integer, primary_key=True, index=True)
-    provider_id = Column(Integer)
+    provider_id = Column(Integer, primary_key=True, index=True)
     first_name = Column(String)
     last_name = Column(String)
     email = Column(String, unique=True)
@@ -63,7 +61,8 @@ class Provider(Base):
 class State_License(Base):
     __tablename__ = "state_license"
 
-    provider_id = Column(Integer, primary_key=True, index=True)
+    id = Column(Integer, primary_key=True, index=True)
+    provider_id = Column(Integer)
     state_abbreviation = Column(String)
     state_license = Column(String)
 
@@ -72,8 +71,7 @@ class State_License(Base):
 class Clinic(Base):
     __tablename__ = "clinic"
 
-    id = Column(Integer, primary_key=True, index=True)
-    clinic_id = Column(Integer)
+    clinic_id = Column(Integer, primary_key=True, index=True)
     legal_name = Column(String)
     legal_address = relationship("Address", back_populates="address_id")
     contact_name = Column(String)
@@ -95,15 +93,14 @@ class Clinic__User(Base):
     __tablename__ = "clinic__user"
 
     id = Column(Integer, primary_key=True, index=True)
-    user_id = relationship("User", , back_populates="id")
+    user_id = relationship("User", back_populates="id")
     clinic_id = relationship("Clinic", back_populates="clinic_id")
 
 # Labs
 class Lab(Base):
     __tablename__ = "lab"
 
-    id = Column(Integer, primary_key=True, index=True)
-    lab_id = Column(Integer)
+    lab_id = Column(Integer, primary_key=True, index=True)
     legal_name = Column(String)
     legal_address = relationship("Address", back_populates="address_id")
     contact_name = Column(String)
@@ -113,7 +110,7 @@ class Lab(Base):
     billing_contact_email = Column(String)
     billing_contact_phone = Column(String)
     url = Column(String)
-    assays = relationship("Lab__Assay", , back_populates="assay_id")
+    assays = relationship("Lab__Assay", back_populates="assay_id")
 
 
 # Lab__Assay
@@ -130,8 +127,7 @@ class Lab__Assay(Base):
 class Patient(Base):
     __tablename__ = "patient"
 
-    id = Column(Integer, primary_key=True, index=True)
-    patient_id = Column(Integer)
+    patient_id = Column(Integer, primary_key=True, index=True)
     legal_first_name = Column(String)
     preferred_first_name = Column(String)
     legal_last_name = Column(String)
@@ -168,8 +164,7 @@ class Patient__Social(Base):
 class Prescription__Patient(Base):
     __tablename__ = "prescription__patient"
 
-    id = Column(Integer, primary_key=True, index=True)
-    prescription_id = Column(Integer)
+    prescription_id = Column(Integer, primary_key=True, index=True)
     patient_id = relationship("Patient", back_populates="patient_id")
     provider_id = relationship("Provider", back_populates="provider_id")
     rx_name = Column(String)
@@ -231,8 +226,7 @@ class Lab__Patient(Base):
 class Assay(Base):
     __tablename__ = "assay"
 
-    id = Column(Integer, primary_key=True, index=True)
-    assay_id = Column(Integer)
+    assay_id = Column(Integer, primary_key=True, index=True)
     long_name = Column(String)
     short_name = Column(String)
     loinc_code = Column(String)
@@ -247,7 +241,7 @@ class Assay(Base):
 class Lab_Order(Base):
     __tablename__ = "lab_order"
 
-    id = Column(Integer, primary_key=True, index=True)
+    order_id = Column(Integer, primary_key=True, index=True)
     patient_id = relationship("Patient", back_populates="patient_id")
     # does this need a join table? We might want to look up all the lab orders per patient?
     lab_order_number = Column(Integer)
@@ -285,7 +279,7 @@ class Order__Assays(Base):
 class Device(Base):
     __tablename__ = "device"
 
-    id = Column(Integer, primary_key=True, index=True)
+    device_id = Column(Integer, primary_key=True, index=True)
     device_long_name = Column(String)
     device_short_name = Column(String)
     device_manufacturer_sku = Column(String)
@@ -295,7 +289,7 @@ class Device(Base):
 class Kit(Base):
     __tablename__ = "kit"
 
-    id = Column(Integer, primary_key=True, index=True)
+    kit_id = Column(Integer, primary_key=True, index=True)
     kit_name = Column(String)
     kit_sku = Column(String)
     kit_id = Column(String)
@@ -317,7 +311,7 @@ class Kit__Device(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     kit_id = relationship("Kit", back_populates="kit_id")
-    device = relationship("Device", back_populates="device_id")
+    device_id = relationship("Device", back_populates="device_id")
 
 
 # Insurers

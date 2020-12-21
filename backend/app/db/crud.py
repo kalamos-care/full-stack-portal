@@ -67,7 +67,7 @@ def edit_user(db: Session, user_id: int, user: schemas.UserEdit) -> schemas.User
 
 
 def get_address(db: Session, address_id: int):
-    address = db.query(models.Address).filter(models.Address.id == address_id).first()
+    address = db.query(models.Address).filter(models.Address.address_id == address_id).first()
     if not address:
         raise HTTPException(status_code=404, detail="Address not found")
     return address
@@ -78,8 +78,8 @@ def get_address(db: Session, address_id: int):
 
 
 def get_patient(db: Session, patient_id: int):
-    patient = db.query(models.Patient).filter(models.Patient.id == patient_id).first()
-    if not address:
+    patient = db.query(models.Patient).filter(models.Patient.patient_id == patient_id).first()
+    if not patient:
         raise HTTPException(status_code=404, detail="Patient not found")
     return patient
 
