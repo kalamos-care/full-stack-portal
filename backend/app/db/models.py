@@ -44,7 +44,6 @@ class Provider(Base):
     last_name = Column(String)
     email = Column(String, unique=True)
     phone = Column(String)
-    # this seems very incorrect...
     address = relationship("Address", back_populates="address_id")
     npi = Column(Integer, unique=True)
     medicaid_id = Column(String)
@@ -62,7 +61,7 @@ class State_License(Base):
     __tablename__ = "state_license"
 
     id = Column(Integer, primary_key=True, index=True)
-    provider_id = Column(Integer)
+    provider_id = relationship("Provider", back_populates="provider_id")
     state_abbreviation = Column(String)
     state_license = Column(String)
 
@@ -292,7 +291,6 @@ class Kit(Base):
     kit_id = Column(Integer, primary_key=True, index=True)
     kit_name = Column(String)
     kit_sku = Column(String)
-    kit_id = Column(String)
     devices = relationship("Kit__Device", back_populates="device")
     order_id = Column(Integer)
     shipping_speed = Column(Integer)
