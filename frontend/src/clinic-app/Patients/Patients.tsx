@@ -5,9 +5,6 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import Grid from '@material-ui/core/Grid';
 
-import NewOrder from './Orders/NewOrder';
-import { OrderDetail } from './Orders/OrderDetail';
-
 import { PatientList, NewPatient, PatientDetail } from '.';
 
 const useStyles = makeStyles((theme) => ({
@@ -32,12 +29,6 @@ export const Patients: FC = () => {
         </Route>
         <Route exact path="/clinic/patients/new">
           <NewPatient />
-        </Route>
-        <Route exact path="/clinic/patients/orders/new">
-          <NewOrder />
-        </Route>
-        <Route path="/clinic/patients/:id/orders/:id">
-          <OrderDetail />
         </Route>
         <Route path="/clinic/patients/:id">
           <PatientDetail />

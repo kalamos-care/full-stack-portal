@@ -29,22 +29,6 @@ const actions = [
     ),
     name: 'New Patient',
   },
-  {
-    icon: (
-      <RouterLink to="/clinic/patients/orders/new">
-        <NewOrderIcon />
-      </RouterLink>
-    ),
-    name: 'New Order',
-  },
-  {
-    icon: (
-      <RouterLink to="/clinic/patients/">
-        <NewKitIcon />
-      </RouterLink>
-    ),
-    name: 'New Kit Order',
-  },
 ];
 
 export const PatientSpeedDial: FC = () => {

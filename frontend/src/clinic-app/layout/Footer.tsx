@@ -6,7 +6,7 @@ import {
   BottomNavigation,
   BottomNavigationAction,
 } from '@material-ui/core/';
-import { Chat, Folder, Notifications } from '@material-ui/icons/';
+import { Chat, Folder, Notifications, LocalHospital } from '@material-ui/icons/';
 
 const useStyles = makeStyles((theme) => ({
   bottom_nav: {
@@ -30,8 +30,8 @@ const bottomNavs = [
   {
     label: 'Messages',
     value: 'messages',
-    icon: <Chat />,
-    url: '/clinic/messages',
+    icon: <LocalHospital />,
+    url: '/clinic/orders',
   },
 ];
 
