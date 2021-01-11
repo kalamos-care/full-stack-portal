@@ -1,14 +1,15 @@
-from sqlalchemy import Boolean, Column, Date, Float, Integer, String
-
-from sqlalchemy.orm import relationship
+# TODO: Order__ICD10: Unsure if I need a table
+# TODO: I think I can probably remove provider status from user object, but I
+# TODO: want to change the default view based on that
 
 from .session import Base
+from sqlalchemy import Boolean, Column, Date, Float, \
+    Integer, String, ForeignKey
+from sqlalchemy.orm import relationship
 
-# I think I can probably remove provider status from user object, but I want to change the default view based on that
 
-# for Authentication
 class User(Base):
-    __tablename__ = "user"
+    __tablename__ = "users"
 
     id = Column(Integer, primary_key=True, index=True)
     email = Column(String, unique=True, index=True, nullable=False)
@@ -20,11 +21,10 @@ class User(Base):
     is_superuser = Column(Boolean, default=False)
 
 
-# Address
 class Address(Base):
-    __tablename__ = "address"
+    __tablename__ = "addresses"
 
-    address_id = Column(Integer, primary_key=True, index=True)
+    id = Column(Integer, primary_key=True, index=True)
     title = Column(String)
     street_1 = Column(String)
     street_2 = Column(String)
@@ -35,137 +35,119 @@ class Address(Base):
     is_po_box = Column(Boolean, default=False)
 
 
-# Provider
 class Provider(Base):
-    __tablename__ = "provider"
+    __tablename__ = "providers"
 
-    provider_id = Column(Integer, primary_key=True, index=True)
+    id = Column(Integer, primary_key=True, index=True)
+
     first_name = Column(String)
     last_name = Column(String)
     email = Column(String, unique=True)
     phone = Column(String)
-    address = relationship("Address", back_populates="address_id")
+    address_id = Column(Integer, ForeignKey("addresses.id"))
+    address = relationship("Address")
+
     npi = Column(Integer, unique=True)
     medicaid_id = Column(String)
-    # does this need to be a join table?
-    state_licenses = relationship("State_License", back_populates="provider_id")
+    
+    state_license_id = Column(Integer, ForeignKey("state_licenses.id"))
+    state_licenses = relationship("StateLicense", back_populates="provider")
+
     mtl_provider_id = Column(String, unique=True)
     is_public = Column(Boolean, default=False)
     is_accepting_patients = Column(Boolean, default=True)
-    patients = relationship("Provider__Patient", back_populates="patient_id")
-    clinics = relationship("Provider__Clinic", back_populates="clinic_id")
+
+    patients = relationship("ProviderPatient", back_populates="provider")
+    clinics = relationship("ProviderClinic", back_populates="provider")
+    prescriptions = relationship("Prescription", back_populates="provider")
+    orders = relationship("LabOrder", back_populates="provider")
 
 
-# State Licenses
-class State_License(Base):
-    __tablename__ = "state_license"
+class StateLicense(Base):
+    __tablename__ = "state_licenses"
 
     id = Column(Integer, primary_key=True, index=True)
-    provider_id = relationship("Provider", back_populates="provider_id")
+    provider_id = Column(Integer, ForeignKey("providers.id"))
+    provider = relationship("Provider", back_populates="state_licenses")
     state_abbreviation = Column(String)
     state_license = Column(String)
 
 
-# Clinics
 class Clinic(Base):
-    __tablename__ = "clinic"
+    __tablename__ = "clinics"
 
-    clinic_id = Column(Integer, primary_key=True, index=True)
+    id = Column(Integer, primary_key=True, index=True)
     legal_name = Column(String)
-    legal_address = relationship("Address", back_populates="address_id")
+    legal_address_id = Column(Integer, ForeignKey("addresses.id"))
+    legal_address = relationship("Address")
+
     contact_name = Column(String)
     contact_email = Column(String)
     contact_phone = Column(String)
+
     billing_contact_name = Column(String)
     billing_contact_email = Column(String)
     billing_contact_phone = Column(String)
+
     url = Column(String)
     is_public = Column(Boolean)
     is_accepting_patients = Column(Boolean)
     has_BAA = Column(Boolean)
-    providers = relationship("Provider__Clinic", back_populates="provider_id")
-    patients= relationship("Clinic__Patient", back_populates="patient_id")
+
+    providers = relationship("ProviderClinic", back_populates="clinics")
+    patients = relationship("ClinicPatient", back_populates="clinics")
+    order = relationship("LabOrder", back_populates="clinic")
 
 
-# Clinics Users
-class Clinic__User(Base):
-    __tablename__ = "clinic__user"
-
-    id = Column(Integer, primary_key=True, index=True)
-    user_id = relationship("User", back_populates="id")
-    clinic_id = relationship("Clinic", back_populates="clinic_id")
-
-# Labs
-class Lab(Base):
-    __tablename__ = "lab"
-
-    lab_id = Column(Integer, primary_key=True, index=True)
-    legal_name = Column(String)
-    legal_address = relationship("Address", back_populates="address_id")
-    contact_name = Column(String)
-    contact_email = Column(String)
-    contact_phone = Column(String)
-    billing_contact_name = Column(String)
-    billing_contact_email = Column(String)
-    billing_contact_phone = Column(String)
-    url = Column(String)
-    assays = relationship("Lab__Assay", back_populates="assay_id")
-
-
-# Lab__Assay
-# Individual lab compendium
-class Lab__Assay(Base):
-    __tablename__ = "lab__assay"
-
-    id = Column(Integer, primary_key=True, index=True)
-    lab_id = relationship("Lab", back_populates="lab_id")
-    assay_id = relationship("Assay", back_populates="assay_id")
-
-
-# Patients
 class Patient(Base):
-    __tablename__ = "patient"
+    __tablename__ = "patients"
 
-    patient_id = Column(Integer, primary_key=True, index=True)
+    id = Column(Integer, primary_key=True, index=True)
+
     legal_first_name = Column(String)
-    preferred_first_name = Column(String)
     legal_last_name = Column(String)
+    ssn = Column(Integer)
+    preferred_first_name = Column(String)
+
     date_of_birth = Column(Date)
-    sex_at_birth = Column(String)
-    gender_identity = Column(String)
     ethnicity = Column(String)
     race = Column(String)
+    sex_at_birth = Column(String)
+    gender_identity = Column(String)
     religion = Column(String)
+
     primary_language = Column(String)
-    ssn = Column(Integer)
     email = Column(String)
     phone_day = Column(String)
     phone_night = Column(String)
-    social = relationship("Patient__Social", back_populates="network_id")
-    providers = relationship("Provider__Patient", back_populates="provider_id")
-    labs_orders = relationship("Lab_Order", back_populates="lab_order_number")
-    prescriptions = relationship("Prescription__Patient", back_populates="prescription_id")
+
+    # social = relationship("PatientSocial", back_populates="network_id")
+    providers = relationship("ProviderPatient", back_populates="patient")
+    lab_orders = relationship("LabOrder", back_populates="patient")
+    prescriptions = relationship("Prescription", back_populates="patient")
+    clinics = relationship("ClinicPatient", back_populates="patient")
+    orders = relationship("LabOrder", back_populates="patient")
+
     labs_hipaa_auth = Column(Boolean)
     labs_hipaa_auth_date = Column(Date)
-    shipping_address = relationship("Addess", back_populates="address_id")
-    home_address = relationship("Addess", back_populates="address_id")
+
+    shipping_address_id = Column(Integer, ForeignKey("addresses.id"))
+    shipping_address = relationship("Addess")
+
+    home_address_id = Column(Integer, ForeignKey("addresses.id"))
+    home_address = relationship("Addess")
 
 
-# Patient__Social
-class Patient__Social(Base):
-    __tablename__ = "patient__social"
+class Prescription(Base):
+    __tablename__ = "prescriptions"
 
     id = Column(Integer, primary_key=True, index=True)
-    patient = relationship("Patient", back_populates="patient_id")
-    network_id = Column(String)
+    patient_id = Column(Integer, ForeignKey("patients.id"))
+    provider_id = Column(Integer, ForeignKey("providers.id"))
 
-# Prescriptions
-class Prescription__Patient(Base):
-    __tablename__ = "prescription__patient"
+    patient = relationship("Patient", back_populates="prescriptions")
+    provider = relationship("Provider", back_populates="prescriptions")
 
-    prescription_id = Column(Integer, primary_key=True, index=True)
-    patient_id = relationship("Patient", back_populates="patient_id")
-    provider_id = relationship("Provider", back_populates="provider_id")
     rx_name = Column(String)
     rx_number = Column(String)
     rx_quantity = Column(Integer)
@@ -175,156 +157,67 @@ class Prescription__Patient(Base):
     fills_remaining = Column(Integer)
 
 
-# Proivder__Patient
-class Provider__Patient(Base):
-    __tablename__ = "provider__patient"
-
-    id = Column(Integer, primary_key=True, index=True)
-    patient_id = relationship("Patient", back_populates="patient_id")
-    provider_id = relationship("Provider", back_populates="provider_id")
-    hipaa_auth = Column(Boolean)
-    hipaa_auth_expire = Column(Date)
-
-
-# Clinic__Patient
-class Clinic__Patient(Base):
-    __tablename__ = "clinic__patient"
-
-    id = Column(Integer, primary_key=True, index=True)
-    clinic_id = relationship("Clinic", back_populates="clinic_id")
-    patient_id = relationship("Patient", back_populates="patient_id")
-    hipaa_auth = Column(Boolean)
-    hipaa_auth_expire = Column(Date)
-
-
-# Proivder__Clinic
-class Provider__Clinic(Base):
-    __tablename__ = "provider__clinic"
-
-    id = Column(Integer, primary_key=True, index=True)
-    provider_id = relationship("Provider", back_populates="provider_id")
-    clinic_id = relationship("Clinic", back_populates="clinic_id")
-
-
-# Lab__Patient
-# This can actually use the same object
-# This should probably be a list of Patient_IDs with NPIs and exipration dates
-# Should this also be a part of authorization?
-# Ask Mike
-class Lab__Patient(Base):
-    __tablename__ = "lab__patient"
-
-    id = Column(Integer, primary_key=True, index=True)
-    patient_id = relationship("Patient", back_populates="patient_id")
-    lab_id = relationship("Lab", back_populates="lab_id")
-    hipaa_auth = Column(Boolean)
-    hipaa_auth_expire = Column(Date)
-
-
-# Assays
-class Assay(Base):
-    __tablename__ = "assay"
-
-    assay_id = Column(Integer, primary_key=True, index=True)
-    long_name = Column(String)
-    short_name = Column(String)
-    loinc_code = Column(String)
-    cpt_code = Column(String)
-    lab_id = relationship("Lab", back_populates="lab_id")
-    device_id = relationship("Device", back_populates="device_id")
-    cash_price = Column(Float)
-    is_available = Column(Boolean)
-
-
-# Lab Order
-class Lab_Order(Base):
-    __tablename__ = "lab_order"
-
-    order_id = Column(Integer, primary_key=True, index=True)
-    patient_id = relationship("Patient", back_populates="patient_id")
-    # does this need a join table? We might want to look up all the lab orders per patient?
-    lab_order_number = Column(Integer)
-    provider_id = relationship("Provider", back_populates="provider_id")
-    # same question as above
-    clinic_id = relationship("Clinic", back_populates="clinic_id")
-    # same question as above
-    assays = relationship("Order__Assays", back_populates="assay_id")
-    #
-    # need to add this at some point
-    # icd_10_codes = Column(List)
-    #
-    collection_date = Column(Date)
-    replacement = Column(Boolean)
-    cash_price = Column(Float)
-    insurance_bill = Column(Boolean, default=False)
-    status = Column(String)
-
-
-# Oder__Assays
-# insert the same lab order id to multiple rows and have a unique assay per order
-class Order__Assays(Base):
-    __tablename__ = "order__assays"
-
-    id = Column(Integer, primary_key=True, index=True)
-    lab_order_id = relationship("Lab_Order", back_populates="lab_order_number")
-    assay_id = relationship("Assay", back_populates="assay_id")
-
-
-# Order__ICD10
-# Unsure if I need a table
-
-
-# Devices
-class Device(Base):
-    __tablename__ = "device"
-
-    device_id = Column(Integer, primary_key=True, index=True)
-    device_long_name = Column(String)
-    device_short_name = Column(String)
-    device_manufacturer_sku = Column(String)
-
-
-# Kits
-class Kit(Base):
-    __tablename__ = "kit"
-
-    kit_id = Column(Integer, primary_key=True, index=True)
-    kit_name = Column(String)
-    kit_sku = Column(String)
-    devices = relationship("Kit__Device", back_populates="device")
-    order_id = Column(Integer)
-    shipping_speed = Column(Integer)
-    status = Column(String)
-    outbound_address = relationship("Address", back_populates="address_id")	
-    outbound_tracking = Column(String)
-    delivered_to_recepient = Column(Boolean)
-    inbound_address = relationship("Address", back_populates="address_id")
-    inbound_tracking = Column(String)
-    delivered_to_processor = Column(Boolean)
-
-
-# Kit__Device
-class Kit__Device(Base):
-    __tablename__ = "kit__device"
-
-    id = Column(Integer, primary_key=True, index=True)
-    kit_id = relationship("Kit", back_populates="kit_id")
-    device_id = relationship("Device", back_populates="device_id")
-
-
-# Insurers
 class Insurer(Base):
     __tablename__ = "insurer"
 
     insurer_id = Column(Integer, primary_key=True, index=True)
     insurer_name = Column(String)
     claims_address = relationship("Address", back_populates="address_id")
-    edi	= Column(Integer)
+    edi_id = Column(Integer)
 
 
-# Insurer__Patient
-class Insurer__Patient(Base):
-    __tablename__ = "insurer__patient"
+class ProviderPatient(Base):
+    __tablename__ = "providers_patients"
+
+    id = Column(Integer, primary_key=True, index=True)
+    patient_id = Column(Integer, ForeignKey("patients.id"))
+    provider_id = Column(Integer, ForeignKey("providers.id"))
+    hipaa_auth = Column(Boolean)
+    hipaa_auth_expire = Column(Date)
+
+    patient = relationship("Patient", back_populates="providers")
+    provider = relationship("Provider", back_populates="patients")
+
+
+class ClinicPatient(Base):
+    __tablename__ = "clinics_patients"
+
+    id = Column(Integer, primary_key=True, index=True)
+    clinic_id = Column(Integer, ForeignKey("clinics.id"))
+    patient_id = Column(Integer, ForeignKey("patients.id"))
+    hipaa_auth = Column(Boolean)
+    hipaa_auth_expire = Column(Date)
+
+    clinic = relationship("Clinic", back_populates="patients")
+    patient = relationship("Patient", back_populates="clinics")
+
+
+class ProviderClinic(Base):
+    __tablename__ = "providers_clinics"
+
+    id = Column(Integer, primary_key=True, index=True)
+    provider_id = Column(Integer, ForeignKey("providers.id"))
+    clinic_id = Column(Integer, ForeignKey("clinics.id"))
+
+    provider = relationship("Provider", back_populates="clinics")
+    clinic = relationship("Clinic", back_populates="providers")
+
+
+class LabPatient(Base):
+    __tablename__ = "labs_patients"
+
+    id = Column(Integer, primary_key=True, index=True)
+    provider_id = Column(Integer, ForeignKey("providers.id"))
+    clinic_id = Column(Integer, ForeignKey("clinics.id"))
+    hipaa_auth = Column(Boolean)
+    hipaa_auth_expire = Column(Date)
+
+    patient = relationship("Patient", back_populates="labs")
+    lab = relationship("Lab", back_populates="patients")
+
+
+class InsurerPatient(Base):
+    __tablename__ = "insurer_patient"
 
     id = Column(Integer, primary_key=True, index=True)
     patient_id = relationship("Patient", back_populates="patient_id")
@@ -334,3 +227,129 @@ class Insurer__Patient(Base):
     pbm_bin = Column(String)
     pbm_pcn = Column(String)
     pbm_rx_group_id = Column(String)
+
+
+
+class Lab(Base):
+    __tablename__ = "labs"
+
+    id = Column(Integer, primary_key=True, index=True)
+
+    legal_name = Column(String)
+    legal_address_id = Column(Integer, ForeignKey("addresses.id"))
+    legal_address = relationship("Address")
+
+    contact_name = Column(String)
+    contact_email = Column(String)
+    contact_phone = Column(String)
+
+    billing_contact_name = Column(String)
+    billing_contact_email = Column(String)
+    billing_contact_phone = Column(String)
+
+    url = Column(String)
+    assays = relationship("LabAssay", back_populates="labs")
+
+
+class Assay(Base):
+    __tablename__ = "assays"
+
+    id = Column(Integer, primary_key=True, index=True)
+
+    long_name = Column(String)
+    short_name = Column(String)
+
+    loinc_code = Column(String)
+    cpt_code = Column(String)
+
+    device_id = Column(Integer, ForeignKey("devices.id"))
+    device = relationship("Device", back_populates="assays")
+    cash_price = Column(Float)
+    is_available = Column(Boolean)
+
+    labs = relationship("LabAssay", back_populates="assays")
+    orders = relationship("LabOrder", back_populates="assay")
+
+
+class Device(Base):
+    __tablename__ = "devices"
+
+    id = Column(Integer, primary_key=True, index=True)
+    long_name = Column(String)
+    short_name = Column(String)
+    manufacturer_sku = Column(String)
+
+    assays = relationship("Assay", back_populates="device")
+
+
+class Kit(Base):
+    __tablename__ = "kits"
+
+    kit_id = Column(Integer, primary_key=True, index=True)
+    kit_name = Column(String)
+    kit_sku = Column(String)
+
+    devices = relationship("Kit__Device", back_populates="device")
+    order_id = Column(Integer)
+    shipping_speed = Column(Integer)
+    status = Column(String)
+    outbound_address = relationship("Address", back_populates="address_id")
+    outbound_tracking = Column(String)
+    delivered_to_recepient = Column(Boolean)
+    inbound_address = relationship("Address", back_populates="address_id")
+    inbound_tracking = Column(String)
+    delivered_to_processor = Column(Boolean)
+
+
+class LabAssay(Base):
+    __tablename__ = "labs_assays"
+
+    id = Column(Integer, primary_key=True, index=True)
+    lab_id = Column(Integer, ForeignKey("labs.id"))
+    lab = relationship("Lab", back_populates="assays")
+
+    assay_id = Column(Integer, ForeignKey("assays.id"))
+    assay = relationship("Assay", back_populates="labs")
+
+
+class LabOrder(Base):
+    # TODO: add this at some point, icd_10_codes = Column(List)
+
+    __tablename__ = "labs_orders"
+
+    id = Column(Integer, primary_key=True, index=True)
+    lab_order_number = Column(Integer)
+
+    patient_id = Column(Integer, ForeignKey("patients.id"))
+    provider_id = Column(Integer, ForeignKey("providers.id"))
+    clinic_id = Column(Integer, ForeignKey("clinics.id"))
+    assay_id = Column(Integer, ForeignKey("assays.id"))
+
+    collection_date = Column(Date)
+    replacement = Column(Boolean)
+    cash_price = Column(Float)
+    insurance_bill = Column(Boolean, default=False)
+    status = Column(String)
+
+    patient = relationship("Patient", back_populates="orders")
+    provider = relationship("Provider", back_populates="orders")
+    clinic = relationship("Clinic", back_populates="order")
+    assay = relationship("OrderAssay", back_populates="orders")
+
+
+class OrderAssay(Base):
+    __tablename__ = "orders_assays"
+
+    id = Column(Integer, primary_key=True, index=True)
+    lab_order_id = Column(Integer, ForeignKey("labs_orders.id"))
+    assay_id = Column()
+    lab_order_id = relationship("Lab_Order", back_populates="lab_order_number")
+    assay_id = relationship("Assay", back_populates="assay_id")
+
+
+class KitDevice(Base):
+    __tablename__ = "kit_device"
+
+    id = Column(Integer, primary_key=True, index=True)
+    kit_id = relationship("Kit", back_populates="kit_id")
+    device_id = relationship("Device", back_populates="device_id")
