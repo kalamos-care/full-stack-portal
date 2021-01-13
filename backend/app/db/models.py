@@ -81,8 +81,9 @@ class Clinic(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     legal_name = Column(String)
-    #legal_address_id = Column(Integer, ForeignKey("addresses.id"))
-    #legal_address = relationship("Address")
+    npi = Column(Integer)
+    # legal_address_id = Column(Integer, ForeignKey("addresses.id"))
+    # legal_address = relationship("Address")
 
     contact_name = Column(String)
     contact_email = Column(String)
@@ -97,9 +98,9 @@ class Clinic(Base):
     is_accepting_patients = Column(Boolean)
     has_BAA = Column(Boolean)
 
-    #providers = relationship("ProviderClinic", back_populates="clinics")
-    #patients = relationship("ClinicPatient", back_populates="clinics")
-    #order = relationship("LabOrder", back_populates="clinic")
+    # providers = relationship("ProviderClinic", back_populates="clinics")
+    # patients = relationship("ClinicPatient", back_populates="clinics")
+    # orders = relationship("LabOrder", back_populates="clinic")
 
 
 class Patient(Base):
@@ -166,7 +167,7 @@ class DiagnosticOrder(Base):
     __tablename__ = "diagnostic_orders"
 
     id = Column(Integer, primary_key=True, index=True)
-    lab_order_number = Column(Integer)
+    diagnostic_order_number = Column(Integer)
 
     patient_id = Column(Integer, ForeignKey("patients.id"))
     provider_id = Column(Integer, ForeignKey("providers.id"))
@@ -188,7 +189,7 @@ class DiagnosticOrder(Base):
 class Kit(Base):
     __tablename__ = "kits"
 
-    kit_id = Column(Integer, primary_key=True, index=True)
+    id = Column(Integer, primary_key=True, index=True)
     kit_name = Column(String)
     kit_sku = Column(String)
 
