@@ -15,7 +15,7 @@ def git_short_rev():
     return subprocess.check_output(cmd).decode().strip()
 
 
-def get_ecr_login_cmd(region, registry):
+def get_ecr_login_cmd(region=DEFAULT_AWS_REGION, registry=DEFAULT_REGISTRY):
     get_login = f"aws ecr get-login-password --region {region}"
     docker_login = f"docker login --username AWS --password-stdin {registry}"
     return f"{get_login} | {docker_login}"
