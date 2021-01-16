@@ -16,7 +16,9 @@ def git_short_rev():
 
 
 def get_ecr_login_cmd(region, registry):
-    return f"aws ecr get-login-password --region {region} | docker login --username AWS --password-stdin {registry}"
+    get_login = f"aws ecr get-login-password --region {region}"
+    docker_login = f"docker login --username AWS --password-stdin {registry}"
+    return f"{get_login} | {docker_login}"
 
 
 def get_docker_pull_cmd(repo, tag):
