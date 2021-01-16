@@ -47,4 +47,4 @@ deploy-backend:
 deploy: build
 deploy: push
 deploy:
-	./scripts/deploy frontend backend
+	./scripts/deploy frontend=$(TAG) backend=$(TAG)
