@@ -5,7 +5,6 @@ import os.path
 import subprocess
 
 DOCKER_PRUNE_CMD = "docker system prune -f"
-CMD_STRING = "commands=[\"$prune_command\", \"$ecr_login\", \"$pull_frontend\", \"$pull_backend\", \"$update_command\"]"
 DEFAULT_REGISTRY = "339302979805.dkr.ecr.us-east-2.amazonaws.com"
 DEFAULT_AWS_REGION = "us-east-2"
 SSM_CLIENT = boto3.client('ssm')
