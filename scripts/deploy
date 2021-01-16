@@ -94,4 +94,3 @@ if __name__ == "__main__":
 
     todo = parse_args(sys.argv[1:], default_tag=rev)
     update(**todo)
-    print(sys.argv)
