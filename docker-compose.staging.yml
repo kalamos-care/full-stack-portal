@@ -1,0 +1,53 @@
+version: '3.7'
+
+networks:
+  web:
+    external: true
+  internal:
+    external: false
+
+services:
+  postgres:
+    image: postgres:12
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+    volumes:
+      - db-data:/var/lib/postgresql/data:cached
+    networks:
+      - internal
+    labels:
+      - traefik.enable=false
+
+  backend:
+    image: 339302979805.dkr.ecr.us-east-2.amazonaws.com/kalamadoo-backend:${BACKEND_TAG}
+    command: python app/main.py
+    environment:
+      PYTHONPATH: .
+      DATABASE_URL: "postgresql://postgres:${DATABASE_PASSWORD}@postgres:5432/postgres"
+    networks:
+      - internal
+      - web
+    labels:
+      - traefik.backend=kalamos-backend
+      - traefik.host.frontend.rule=Host:api.kala.care
+      - traefik.path.frontend.rule=Host:app.kala.care;PathPrefix:/api
+      - traefik.docker.network=web
+      - traefik.port=8888
+    depends_on:
+      - "postgres"
+
+  frontend:
+    image: 339302979805.dkr.ecr.us-east-2.amazonaws.com/kalamadoo-frontend:${FRONTEND_TAG}
+    networks:
+      - internal
+      - web
+    labels:
+      - traefik.backend=kalamos-frontend
+      - traefik.frontend.rule=Host:app.kala.care
+      - traefik.docker.network=web
+      - traefik.port=3000
+
+volumes:
+  db-data:
