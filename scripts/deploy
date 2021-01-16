@@ -1,0 +1,96 @@
+#!/usr/bin/env python3
+
+import boto3
+import os.path
+import subprocess
+
+DOCKER_PRUNE_CMD = "docker system prune -f"
+CMD_STRING = "commands=[\"$prune_command\", \"$ecr_login\", \"$pull_frontend\", \"$pull_backend\", \"$update_command\"]"
+DEFAULT_REGISTRY = "339302979805.dkr.ecr.us-east-2.amazonaws.com"
+DEFAULT_AWS_REGION = "us-east-2"
+SSM_CLIENT = boto3.client('ssm')
+
+
+def git_short_rev():
+    cmd = ['git', 'rev-parse', '--short', 'HEAD']
+    return subprocess.check_output(cmd).decode().strip()
+
+
+def get_ecr_login_cmd(region, registry):
+    return f"aws ecr get-login-password --region {region} | docker login --username AWS --password-stdin {registry}"
+
+
+def get_docker_pull_cmd(repo, tag):
+    return f"docker pull {repo}:{tag}"
+
+
+def get_update_cmd(compose_fpath="/root/docker-compose.yml", **tags):
+    envs = []
+    services = []
+    base = f"docker-compose up -f {compose_fpath} -d"
+
+    for k, v in tags.items():
+        envs.append(f"{k.upper()}_TAG={v}")
+        services.append(k)
+
+    envs = " ".join(envs)
+    services = " ".join(services)
+
+    return f"{envs} {base} {services}"
+
+
+def parse_args(args, default_tag=None):
+    """
+    Args will come in as a list of:
+    service_name[=tag]
+    """
+    result = {}
+
+    for arg in args:
+        parts = arg.split("=")
+        if len(parts) == 1:
+            service = parts[0]
+            tag = default_tag or git_short_rev()
+        elif len(parts) == 2:
+            service, tag = parts
+        else:
+            raise TypeError("arguments should look like service[=tag]")
+
+        result[service] = tag
+
+    return result
+
+
+def update(aws_region=DEFAULT_AWS_REGION, registry=DEFAULT_REGISTRY, **kwargs):
+    cmds = [DOCKER_PRUNE_CMD, get_ecr_login_cmd()]
+    for k, v in kwargs.items():
+        repo = os.path(registry, k)
+        cmds.append(get_docker_pull_cmd(repo, v))
+
+    cmds.append(get_update_cmd(**kwargs))
+    SSM_CLIENT.send_command(
+        Targets=[{
+            "Key": "Name",
+            "Values": ["staging.portal.node"]
+        }],
+        DocumentName="AWS-RunShellScript",
+        MaxConcurrency="25%",
+        Parameters={"commands": cmds},
+    )
+    raise NotImplementedError
+
+
+if __name__ == "__main__":
+    import logging
+    import sys
+
+    try:
+        rev = git_short_rev()
+    except subprocess.CalledProcessError:
+        msg = "unable to get short has of git revision -- are you in the repo?"
+        logging.error(msg)
+        sys.exit(1)
+
+    todo = parse_args(sys.argv[1:], default_tag=rev)
+    update(**todo)
+    print(sys.argv)
