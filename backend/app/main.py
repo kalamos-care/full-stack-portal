@@ -5,6 +5,7 @@ import uvicorn
 from app.api.api_v1.routers.users import users_router
 from app.api.api_v1.routers.auth import auth_router
 from app.api.api_v1.routers.patients import patients_router
+from app.api.api_v1.routers.clinics import clinics_router
 
 from app.core import config
 from app.db.session import SessionLocal
@@ -52,6 +53,14 @@ app.include_router(
     tags=["patients"],
     dependencies=[Depends(get_current_active_user)],
 )
+
+app.include_router(
+    clinics_router,
+    prefix="/api/v1",
+    tags=["clinics"],
+    dependencies=[Depends(get_current_active_user)],
+)
+
 
 
 if __name__ == "__main__":

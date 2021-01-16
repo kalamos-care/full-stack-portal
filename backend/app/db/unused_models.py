@@ -139,8 +139,6 @@ class InsurerPatient(Base):
 
 # lab stuff
 
-
-
 class Lab(Base):
     __tablename__ = "labs"
 
@@ -162,25 +160,6 @@ class Lab(Base):
     assays = relationship("LabAssay", back_populates="labs")
 
 
-class Assay(Base):
-    __tablename__ = "assays"
-
-    id = Column(Integer, primary_key=True, index=True)
-
-    long_name = Column(String)
-    short_name = Column(String)
-
-    loinc_code = Column(String)
-    cpt_code = Column(String)
-
-    device_id = Column(Integer, ForeignKey("devices.id"))
-    device = relationship("Device", back_populates="assays")
-    cash_price = Column(Float)
-    is_available = Column(Boolean)
-
-    labs = relationship("LabAssay", back_populates="assays")
-    orders = relationship("LabOrder", back_populates="assay")
-
 
 class Device(Base):
     __tablename__ = "devices"
@@ -193,24 +172,6 @@ class Device(Base):
     assays = relationship("Assay", back_populates="device")
 
 
-class Kit(Base):
-    __tablename__ = "kits"
-
-    kit_id = Column(Integer, primary_key=True, index=True)
-    kit_name = Column(String)
-    kit_sku = Column(String)
-
-    devices = relationship("Kit__Device", back_populates="device")
-    order_id = Column(Integer)
-    shipping_speed = Column(Integer)
-    status = Column(String)
-    outbound_address = relationship("Address", back_populates="address_id")
-    outbound_tracking = Column(String)
-    delivered_to_recepient = Column(Boolean)
-    inbound_address = relationship("Address", back_populates="address_id")
-    inbound_tracking = Column(String)
-    delivered_to_processor = Column(Boolean)
-
 
 class LabAssay(Base):
     __tablename__ = "labs_assays"
@@ -221,31 +182,6 @@ class LabAssay(Base):
 
     assay_id = Column(Integer, ForeignKey("assays.id"))
     assay = relationship("Assay", back_populates="labs")
-
-
-class LabOrder(Base):
-    # TODO: add this at some point, icd_10_codes = Column(List)
-
-    __tablename__ = "labs_orders"
-
-    id = Column(Integer, primary_key=True, index=True)
-    lab_order_number = Column(Integer)
-
-    patient_id = Column(Integer, ForeignKey("patients.id"))
-    provider_id = Column(Integer, ForeignKey("providers.id"))
-    clinic_id = Column(Integer, ForeignKey("clinics.id"))
-    assay_id = Column(Integer, ForeignKey("assays.id"))
-
-    collection_date = Column(Date)
-    replacement = Column(Boolean)
-    cash_price = Column(Float)
-    insurance_bill = Column(Boolean, default=False)
-    status = Column(String)
-
-    patient = relationship("Patient", back_populates="orders")
-    provider = relationship("Provider", back_populates="orders")
-    clinic = relationship("Clinic", back_populates="order")
-    assay = relationship("OrderAssay", back_populates="orders")
 
 
 class OrderAssay(Base):

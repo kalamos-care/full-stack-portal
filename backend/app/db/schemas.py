@@ -211,7 +211,7 @@ class ProviderEdit(ProviderBase):
     npi: Optional[int]
     medicaid_id: Optional[str]
     state_licenses: Optional[dict]
-    mtl_provider_id: Optional][str]
+    mtl_provider_id: Optional[str]
     is_public: Optional[bool]
     is_accepting_patients: Optional[bool]
     # patients: list = []
@@ -222,7 +222,7 @@ class Provider(ProviderBase):
     id: int
 
     class Config:
-        orm_mode: true
+        orm_mode: True
 
 
 
@@ -268,7 +268,7 @@ class ClinicCreate(ClinicBase):
     is_accepting_patients: Optional[bool]
 
 
-# class ClinicEdit(ClinicBase):
+class ClinicEdit(ClinicBase):
     legal_name: Optional[str]
     # legal_address: Address
 
@@ -285,20 +285,20 @@ class ClinicCreate(ClinicBase):
     is_accepting_patients: Optional[bool]
 
 
-class Provider(ClinicBase):
+class Clinic(ClinicBase):
     id: int
 
     class Config:
-        orm_mode: true
+        orm_mode: True
 
 
 
 # Assay
-class AssayBase(BaseMoel):
+class AssayBase(BaseModel):
     long_name: str
     short_name: Optional[str]
 
-    loinc_code: optional[str]
+    loinc_code: Optional[str]
     cpt_code: Optional[str]
 
     #device_id: Integer, ForeignKey("devices.id"))
@@ -335,7 +335,7 @@ class Assay(AssayBase):
     id: int
 
     class Config:
-        orm_mode: true
+        orm_mode: True
 
 
 
@@ -368,7 +368,7 @@ class Assay(AssayBase):
 #     id: int
 
 #     class Config:
-#         orm_mode: true
+#         orm_mode: True
 
 
 
@@ -397,4 +397,4 @@ class Assay(AssayBase):
 #     id: int
 
 #     class Config:
-#         orm_mode: true
+#         orm_mode: True
