@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
 
+from collections import defaultdict
 import boto3
 import os.path
 import subprocess
+import time
 
 DOCKER_PRUNE_CMD = "docker system prune -f"
 DEFAULT_REGISTRY = "339302979805.dkr.ecr.us-east-2.amazonaws.com"
 DEFAULT_AWS_REGION = "us-east-2"
+DEFAULT_ENVIRONMENT = "staging"  # unused
 SSM_CLIENT = boto3.client('ssm')
 
 
@@ -28,7 +31,7 @@ def get_docker_pull_cmd(repo, tag):
 def get_update_cmd(compose_fpath="/root/docker-compose.yml", **tags):
     envs = []
     services = []
-    base = f"docker-compose up -f {compose_fpath} -d"
+    base = f"docker-compose -f {compose_fpath} up -d"
 
     for k, v in tags.items():
         envs.append(f"{k.upper()}_TAG={v}")
@@ -65,30 +68,49 @@ def parse_args(args, default_tag=None):
 def update(aws_region=DEFAULT_AWS_REGION, registry=DEFAULT_REGISTRY, **kwargs):
     cmds = [DOCKER_PRUNE_CMD, get_ecr_login_cmd()]
     for k, v in kwargs.items():
-        repo = os.path(registry, k)
+        repo = os.path.join(registry, f"kalamadoo-{k}")
         cmds.append(get_docker_pull_cmd(repo, v))
 
+    logging.info("starting deployment")
     cmds.append(get_update_cmd(**kwargs))
-    SSM_CLIENT.send_command(
+    resp = SSM_CLIENT.send_command(
         Targets=[{
-            "Key": "Name",
-            "Values": ["staging.portal.node"]
+            "Key": "tag:Name",
+            "Values": ["portal"]
         }],
         DocumentName="AWS-RunShellScript",
         MaxConcurrency="25%",
         Parameters={"commands": cmds},
     )
-    raise NotImplementedError
+
+    cmd_id = resp["Command"]["CommandId"]
+    logging.info("monitoring deployment")
+    while True:
+        time.sleep(5)
+        logging.info("deploying...")
+
+        counts = defaultdict(int)
+        invocations = SSM_CLIENT.list_command_invocations(CommandId=cmd_id)
+        for data in invocations['CommandInvocations']:
+            counts[data['Status']] += 1
+
+        if counts.get('Failed'):
+            raise Exception('deployment failed')
+        elif len(counts) == 1:
+            break
+
+    return
 
 
 if __name__ == "__main__":
     import logging
     import sys
 
+    logging.getLogger().setLevel(logging.INFO)
     try:
         rev = git_short_rev()
     except subprocess.CalledProcessError:
-        msg = "unable to get short has of git revision -- are you in the repo?"
+        msg = "Unable to get short hash of git revision, are you in the repo?"
         logging.error(msg)
         sys.exit(1)
 
