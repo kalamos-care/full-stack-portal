@@ -75,7 +75,7 @@ jobs:
           # command: cd frontend && npm run test
           command: echo 'Someone needs to fix the tests.'
 
-  build-app:
+  build-and-deploy:
     docker:
       - image: python:3.8-alpine
     steps:
@@ -84,56 +84,12 @@ jobs:
       - checkout
       - run:
           name: Install system deps.
-          command: apk add docker-cli git
+          command: apk add docker-cli git make
       - run:
           name: Install awscli.
           command: pip install awscli
       - run:
-          name: Login to ECR.
-          command: aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 339302979805.dkr.ecr.us-east-2.amazonaws.com
-      - run:
-          name: Build frontend
-          command: docker build -t 339302979805.dkr.ecr.us-east-2.amazonaws.com/kalamadoo-frontend:$(git rev-parse --short HEAD) -f .docker/frontend.dockerfile frontend/
-      - run:
-          name: Build backend
-          command: docker build -t 339302979805.dkr.ecr.us-east-2.amazonaws.com/kalamadoo-backend:$(git rev-parse --short HEAD) -f .docker/backend.dockerfile backend/
-      - run:
-          name: Push frontend to ECR
-          command: docker push 339302979805.dkr.ecr.us-east-2.amazonaws.com/kalamadoo-frontend:$(git rev-parse --short HEAD)
-      - run:
-          name: Push frontend to ECR
-          command: docker push 339302979805.dkr.ecr.us-east-2.amazonaws.com/kalamadoo-backend:$(git rev-parse --short HEAD)
-
-  deploy:
-    docker:
-      - image: dtzar/helm-kubectl:3.2.4
-    steps:
-      - checkout
-      - run:
-          name: Install system deps.
-          command: apk add python3 py3-pip
-      - run:
-          name: Install awscli
-          command: pip3 install awscli
-      - run:
-          name: Get cluster config.
-          command: aws s3 cp s3://kalamos-k3s/config /root/.kube/ --region us-east-2
-      - run:
-          name: Update Helm deps.
-          command: helm dependency update .helm/
-      - run:
-          name: Deploy
-          command: |
-            helm upgrade \
-            --wait \
-            --timeout 60s \
-            --install \
-            --namespace kalamadoo \
-            --values=.helm/values.staging.yaml \
-            --set "frontend.deployment.container.image.tag=$(git rev-parse --short HEAD)" \
-            --set "backend.deployment.container.image.tag=$(git rev-parse --short HEAD)" \
-            kalamadoo \
-            .helm/
+          name: make deploy
 
 workflows:
   version: 2
@@ -142,17 +98,11 @@ workflows:
       - lint-dockerfiles
       - lint-and-test-backend
       - lint-and-test-frontend
-      - build-app:
+      - build-and-deploy:
           requires:
             - lint-dockerfiles
             - lint-and-test-backend
             - lint-and-test-frontend
-      - deploy:
-          requires:
-            - lint-dockerfiles
-            - lint-and-test-backend
-            - lint-and-test-frontend
-            - build-app
           filters:
             branches:
               only:
