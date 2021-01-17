@@ -37,6 +37,9 @@ export const ContactUs: FC = () => {
         <Typography variant="h3" align="center" color="textPrimary" gutterBottom>
           Contact Us
         </Typography>
+        <Typography variant="body1" align="center" color="textPrimary" gutterBottom>
+          Psst - this doesn't work yet. Just email us at support [at] kalamos [dot] care.
+        </Typography>
       </Grid>
       <Grid item md={6} xs={12}>
         <form className={classes.form} noValidate>

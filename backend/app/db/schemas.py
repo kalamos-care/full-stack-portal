@@ -127,6 +127,7 @@ class PatientBase(BaseModel):
 
 class PatientCreate(PatientBase):
     legal_first_name: str
+    preferred_first_name: Optional[str]
     legal_last_name: str
     date_of_birth: Optional[datetime]
     email: str

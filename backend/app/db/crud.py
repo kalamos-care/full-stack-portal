@@ -6,6 +6,7 @@ from . import models, schemas
 from app.core.security import get_password_hash
 
 
+# USERS
 def get_user(db: Session, user_id: int):
     user = db.query(models.User).filter(models.User.id == user_id).first()
     if not user:
@@ -66,6 +67,8 @@ def edit_user(db: Session, user_id: int, user: schemas.UserEdit) -> schemas.User
     return db_user
 
 
+
+# ADDESSES
 # def get_address(db: Session, address_id: int):
 #     address = db.query(models.Address).filter(models.Address.id == address_id).first()
 #     if not address:
@@ -77,21 +80,25 @@ def edit_user(db: Session, user_id: int, user: schemas.UserEdit) -> schemas.User
 # def delete_address(db: Session, address_id: int):
 
 
+
+# PATIENTS
 def get_patient(db: Session, patient_id: int):
-    patient = db.query(models.Patient).filter(models.Patient.patient_id == patient_id).first()
+    patient = db.query(models.Patient).filter(models.Patient.id == patient_id).first()
     if not patient:
         raise HTTPException(status_code=404, detail="Patient not found")
     return patient
 
 
 # should I include a check to provider__patient or clinic__patient table?
-def get_patients(db: Session, skip: int = 0, limit: int = 100):
+# addded provider_id: int = 0, clinic_id: int = 0, as a way to stop general get. I think I need to use current user
+def get_patients(db: Session, provider_id: int = 0, clinic_id: int = 0, skip: int = 0, limit: int = 100):
     return db.query(models.Patient).offset(skip).limit(limit).all()
 
 
 def create_patient(db: Session, patient: schemas.PatientCreate):
     db_patient = models.Patient(
         legal_first_name=patient.legal_first_name,
+        preferred_first_name=patient.preferred_first_name,
         legal_last_name=patient.legal_last_name,
         date_of_birth=patient.date_of_birth,
         email=patient.email,
@@ -129,11 +136,77 @@ def delete_patient(db: Session, patient_id: int):
     return patient
 
 
-# def get_provider(db: Session, provider_id: int)
-# def get_provider(db: Session, skip: int = 0, limit: int = 100)
-# def create_provider(db: Session, )
-# def edit_provider(db: Session, )
-# def delete_provider(db: Session, )
 
+# PROVIDERS
+def get_provider(db: Session, provider_id: int):
+    provider = db.query(models.Provider).filter(models.Provider.id == provider_id).first()
+    if not provider:
+        raise HTTPException(status_code=404, detail="Provider not found")
+    return provider
+
+
+def get_provider_by_npi(db: Session, npi: int) -> schemas.ProviderBase:
+    return db.query(models.Provider).filter(models.Provider.npi == npi).first()
+
+
+def get_providers(db: Session, skip: int = 0, limit: int = 100):
+    # if from a clinic, return all users for that clinic, else return all providers listed as public?
+    return db.query(models.Provider).offset(skip).limit(limit).all()
+
+
+def create_provider(db: Session, provider: schemas.ProviderCreate):
+    db_provider = models.Provider(
+        first_name=provider.first_name,
+        last_name=provider.last_name,
+        email=provider.email,
+        phone=provider.phone,
+        npi=provider.npi,
+        medicaid_id=provider.medicaid_id,
+        #change this to a dict when join tables work
+        state_licenses=provider.state_licenses,
+        is_public=provider.is_public,
+        is_accepting_patients=provider.is_accepting_patients
+    )
+    db.add(db_provider)
+    db.commit()
+    db.refresh(db_provider)
+    return db_provider
+
+def edit_provider(db: Session, provider_id: int, provider: schemas.ProviderEdit):
+    # do stuff
+    return provider
+
+def delete_provider(db: Session, provider_id: int):
+    provider = get_provider(db, provider_id)
+    if not provider:
+        raise HTTPException(status.HTTP_404_NOT_FOUND, detail="Provider not found")
+    db.delete(provider)
+    db.commit()
+    return provider
+
+
+# CLINICS
 def get_clinic(db: Session, skip: int = 0, limit: int = 100):
     return db.query(models.Clinic).offset(skip).limit(limit).all()
+
+
+
+# ASSAYS
+def get_assay():
+    return false
+
+
+def get_assays():
+    return false
+
+
+def create_assay():
+    return false
+
+
+def edit_assay():
+    return false
+
+
+def delete_assay():
+    return false
