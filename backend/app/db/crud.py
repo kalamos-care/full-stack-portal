@@ -210,3 +210,47 @@ def edit_assay():
 
 def delete_assay():
     return false
+
+
+
+# KITS
+def get_kit():
+    return false
+
+
+def get_kits():
+    return false
+
+
+def create_kit():
+    return false
+
+
+def edit_kit():
+    return false
+
+
+def delete_kit():
+    return false
+
+
+
+# DIAGNOSTIC ORDERS
+def get_diagnostic_order():
+    return false
+
+
+def get_diagnostic_orders():
+    return false
+
+
+def create_diagnostic_order():
+    return false
+
+
+def edit_diagnostic_order():
+    return false
+
+
+def delete_diagnostic_order():
+    return false
