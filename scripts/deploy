@@ -28,10 +28,10 @@ def get_docker_pull_cmd(repo, tag):
     return f"docker pull {repo}:{tag}"
 
 
-def get_update_cmd(compose_fpath="/root/docker-compose.yml", **tags):
+def get_update_cmd(compose_fpath="/root/docker-compose.yml", env_fpath="/root/.env", **tags):
     envs = []
     services = []
-    base = f"docker-compose -f {compose_fpath} up -d"
+    base = f"docker-compose -f {compose_fpath} --env-file {env_fpath} up -d"
 
     for k, v in tags.items():
         envs.append(f"{k.upper()}_TAG={v}")
