@@ -77,7 +77,7 @@ export const ProviderDashboard: FC = () => {
             />
             <Route path="/clinic/patients" component={Patients} />
             <Route path="/clinic/messages/" component={Messages} />
-            <Route exact path="/clinic/settings/" component={UserSettings} />
+            <Route path="/clinic/settings/" component={UserSettings} />
             <Route path="/clinic/orders/" component={Orders} />
           </Switch>
           {/* <InstallPWA /> */}
