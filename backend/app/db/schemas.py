@@ -4,7 +4,7 @@ from pydantic import BaseModel
 from typing import Optional, List
 
 
-# Authentication
+# USERS AND AUTHENTICATION
 class UserBase(BaseModel):
     email: str
     is_active: bool = True
@@ -51,7 +51,7 @@ class TokenData(BaseModel):
 
 
 
-# Addresses
+# ADDRESSES
 # class AddressBase(BaseModel):
 #     title: Optional[str]
 #     street_1: str
@@ -99,7 +99,7 @@ class TokenData(BaseModel):
 
 
 
-# Patient
+# PATIENTS
 class PatientBase(BaseModel):
     legal_first_name: str
     preferred_first_name: Optional[str]
@@ -165,7 +165,6 @@ class PatientEdit(PatientBase):
         orm_mode = True
 
 
-# What does this do?
 class Patient(PatientBase):
     id: int
 
@@ -174,7 +173,7 @@ class Patient(PatientBase):
 
 
 
-# Provider
+# PROVIDERS
 class ProviderBase(BaseModel):
     first_name: str
     last_name: str
@@ -227,7 +226,7 @@ class Provider(ProviderBase):
 
 
 
-# Clinic
+# CLINICS
 class ClinicBase(BaseModel):
     legal_name: str
     # legal_address_id: int #exclude from the schema
@@ -294,7 +293,7 @@ class Clinic(ClinicBase):
 
 
 
-# Assay
+# ASSAYS
 class AssayBase(BaseModel):
     long_name: str
     short_name: Optional[str]

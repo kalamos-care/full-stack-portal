@@ -8,6 +8,7 @@ from app.db.session import get_db
 from app.db.crud import (
     get_providers,
     get_provider,
+    get_provider_by_npi,
     create_provider,
     delete_provider,
     edit_provider,

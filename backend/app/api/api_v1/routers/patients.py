@@ -73,7 +73,7 @@ async def patient_create(
     current_user=Depends(get_current_active_user),
 ):
     """
-    Create a new user
+    Create a new patient
     ** add premissions check **
     """
     return create_patient(db, patient)

@@ -15,7 +15,7 @@ import { Notifications } from './Notifications/Notifications';
 import { Patients } from './Patients/Patients';
 import { Messages } from './Messages/Messages';
 import { UserSettings } from './Settings/UserSettings';
-//import { Orders } from './Orders/Orders';
+import { Orders } from './Orders/Orders';
 
 import Header from './layout/Header';
 import Footer from './layout/Footer';
@@ -76,9 +76,9 @@ export const ProviderDashboard: FC = () => {
               component={Notifications}
             />
             <Route path="/clinic/patients" component={Patients} />
-            <Route exact path="/clinic/messages" component={Messages} />
+            <Route path="/clinic/messages/" component={Messages} />
             <Route exact path="/clinic/settings/" component={UserSettings} />
-            {/* <Route exact path="/clinics/orders/" component={Orders} />*/}
+            <Route path="/clinic/orders/" component={Orders} />
           </Switch>
           {/* <InstallPWA /> */}
         </Container>

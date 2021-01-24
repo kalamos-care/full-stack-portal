@@ -28,7 +28,7 @@ const bottomNavs = [
     url: '/clinic/patients',
   },
   {
-    label: 'Lab Orders',
+    label: 'Orders',
     value: 'orders',
     icon: <LocalHospital />,
     url: '/clinic/orders',
