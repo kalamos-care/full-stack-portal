@@ -1,15 +1,14 @@
 import React, { FC } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
-import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
+
 import AssayForm from './NewLabOrderComponents/AssayForm';
 import AddressForm from './NewLabOrderComponents/AddressForm';
 import PaymentForm from './NewLabOrderComponents/PaymentForm';
@@ -83,16 +82,27 @@ export default function NewLabOrder() {
       <CssBaseline />
       <main className={classes.layout}>
         <Paper className={classes.paper}>
-          <Typography component="h1" variant="h4" align="center">
-            New Diagnostic Lab Order
-          </Typography>
-          <Stepper activeStep={activeStep} className={classes.stepper}>
-            {steps.map((label) => (
-              <Step key={label}>
-                <StepLabel>{label}</StepLabel>
-              </Step>
-            ))}
-          </Stepper>
+          <Grid container>
+            <Grid item xs={12}>
+              <Typography component="h1" variant="h4" align="center">
+                New Diagnostic Lab Order
+            </Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <Stepper activeStep={activeStep} className={classes.stepper}>
+                {steps.map((label) => (
+                  <Step key={label}>
+                    <StepLabel>
+                    {/*
+                      Make this vertical eventually
+                      {label}
+                    */}
+                    </StepLabel>
+                  </Step>
+                ))}
+              </Stepper>
+            </Grid>
+          </Grid>
           <>
             {activeStep === steps.length ? (
               <>
@@ -106,25 +116,25 @@ export default function NewLabOrder() {
                 </Typography>
               </>
             ) : (
-              <>
-                {getStepContent(activeStep)}
-                <div className={classes.buttons}>
-                  {activeStep !== 0 && (
-                    <Button onClick={handleBack} className={classes.button}>
-                      Back
+                <>
+                  {getStepContent(activeStep)}
+                  <div className={classes.buttons}>
+                    {activeStep !== 0 && (
+                      <Button onClick={handleBack} className={classes.button}>
+                        Back
+                      </Button>
+                    )}
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      onClick={handleNext}
+                      className={classes.button}
+                    >
+                      {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
                     </Button>
-                  )}
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={handleNext}
-                    className={classes.button}
-                  >
-                    {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
-                  </Button>
-                </div>
-              </>
-            )}
+                  </div>
+                </>
+              )}
           </>
         </Paper>
       </main>
