@@ -115,7 +115,7 @@ export default function AssayForm() {
                         <ul>
                             {assay.devices.map((device) => (
                                 <Grid item xs={12}>
-                                    <Typography variant="subtitle2">
+                                    <Typography variant="button" display="block">
                                         {device.device_name}
                                     </Typography>
                                     <Grid>
