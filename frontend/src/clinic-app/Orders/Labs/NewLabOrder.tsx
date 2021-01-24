@@ -10,6 +10,7 @@ import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
+import AssayForm from './NewLabOrderComponents/AssayForm';
 import AddressForm from './NewLabOrderComponents/AddressForm';
 import PaymentForm from './NewLabOrderComponents/PaymentForm';
 import Review from './NewLabOrderComponents/Review';
@@ -48,15 +49,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const steps = ['Shipping address', 'Payment details', 'Review your order'];
+const steps = ['Patient Info', 'Select Assays', 'Payment Details', 'Review Order'];
 
 function getStepContent(step: number) {
   switch (step) {
     case 0:
       return <AddressForm />;
     case 1:
-      return <PaymentForm />;
+      return <AssayForm />;
     case 2:
+      return <PaymentForm />;
+    case 3:
       return <Review />;
     default:
       throw new Error('Unknown step');
@@ -81,7 +84,7 @@ export default function NewLabOrder() {
       <main className={classes.layout}>
         <Paper className={classes.paper}>
           <Typography component="h1" variant="h4" align="center">
-            Checkout
+            New Diagnostic Lab Order
           </Typography>
           <Stepper activeStep={activeStep} className={classes.stepper}>
             {steps.map((label) => (

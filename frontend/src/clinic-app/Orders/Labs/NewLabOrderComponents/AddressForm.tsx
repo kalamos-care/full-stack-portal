@@ -9,7 +9,10 @@ export default function AddressForm() {
   return (
     <>
       <Typography variant="h6" gutterBottom>
-        Shipping address
+        Patient Information
+      </Typography>
+      <Typography variant="body1" gutterBottom>
+        These details will be used for any required state reporting.
       </Typography>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>

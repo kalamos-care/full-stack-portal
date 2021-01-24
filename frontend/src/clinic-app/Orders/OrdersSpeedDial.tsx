@@ -26,7 +26,7 @@ const actions = [
         <NewOrderIcon />
       </RouterLink>
     ),
-    name: 'New Lab Order',
+    name: 'New Diagnostic Order',
   },
   {
     icon: (
@@ -34,7 +34,7 @@ const actions = [
         <NewKitIcon />
       </RouterLink>
     ),
-    name: 'New Diagnostic Order',
+    name: 'New Kit Order',
   },
 ];
 
