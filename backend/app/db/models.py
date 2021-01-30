@@ -167,7 +167,7 @@ class DiagnosticOrder(Base):
     __tablename__ = "diagnostic_orders"
 
     id = Column(Integer, primary_key=True, index=True)
-    diagnostic_order_number = Column(Integer)
+    diagnostic_order_number = Column(String)
 
     patient_id = Column(Integer, ForeignKey("patients.id"))
     provider_id = Column(Integer, ForeignKey("providers.id"))

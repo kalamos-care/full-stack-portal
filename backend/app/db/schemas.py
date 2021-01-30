@@ -339,20 +339,21 @@ class Assay(AssayBase):
 
 
 
-# Diagnostic Order
-# class DiagnosticOrderBase(BaseModel):
-    # diagnostic_order_number: Integer)
+Diagnostic Order
+class DiagnosticOrderBase(BaseModel):
+    diagnostic_order_number: str
 
-    # patient_id: Integer, ForeignKey("patients.id"))
-    # provider_id: Integer, ForeignKey("providers.id"))
+    patient_id: int
+    provider_id: int
     # clinic_id: Integer, ForeignKey("clinics.id"))
     # assay_id: Integer, ForeignKey("assays.id"))
+    assays: List
 
-    # collection_date: Date)
-    # replacement: Boolean)
-    # cash_price: Float)
-    # insurance_bill: Boolean, default=False)
-    # status: String)
+    collection_date: Optional[date]
+    replacement: bool = False
+    cash_price: float
+    insurance_bill: bool = False
+    status: Optional[str]
 
     # #patient = relationship("Patient", back_populates="orders")
     # #provider = relationship("Provider", back_populates="orders")
@@ -360,22 +361,41 @@ class Assay(AssayBase):
     # #assay = relationship("OrderAssay", back_populates="orders")
 
 
-# class DiagnosticOrderCreate(DiagnosticOrderBase):
+class DiagnosticOrderCreate(DiagnosticOrderBase):
+    diagnostic_order_number: str
 
-# class DiagnosticOrderEdit(DiagnosticOrderBase):
+    patient_id: int
+    provider_id: int
+    # clinic_id: Integer, ForeignKey("clinics.id"))
+    # assay_id: Integer, ForeignKey("assays.id"))
+    assays: List
 
-# class DiagnosticOrder(DiagnosticOrderBase):
-#     id: int
+class DiagnosticOrderEdit(DiagnosticOrderBase):
+    diagnostic_order_number: str
 
-#     class Config:
-#         orm_mode: True
+    # patient_id: int
+    # provider_id: int
+    # clinic_id: Integer, ForeignKey("clinics.id"))
+    # assay_id: Integer, ForeignKey("assays.id"))
+    assays: List
+
+    collection_date: Optional[date]
+    replacement: bool = False
+    status: Optional[str]
+
+
+class DiagnosticOrder(DiagnosticOrderBase):
+    id: int
+
+    class Config:
+        orm_mode: True
 
 
 
 
 # Kit
 # class KitBase(BaseModel):
-    # kit_name: String)
+    # kit_name: String
     # kit_sku: String)
 
     # #devices = relationship("Kit__Device", back_populates="device")
@@ -393,8 +413,8 @@ class Assay(AssayBase):
 
 # class KitEdit(KitBase):
 
-# class Kit(Kitase):
-#     id: int
+class Kit(KitBase):
+    id: int
 
-#     class Config:
-#         orm_mode: True
+    class Config:
+        orm_mode: True

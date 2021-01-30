@@ -92,6 +92,7 @@ export default function AddressForm() {
             autoComplete="shipping country"
           />
         </Grid>
+        {/*
         <Grid item xs={12}>
           <FormControlLabel
             control={
@@ -100,6 +101,7 @@ export default function AddressForm() {
             label="Use this address for payment details"
           />
         </Grid>
+          */}
       </Grid>
     </>
   );
