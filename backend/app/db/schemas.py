@@ -339,7 +339,7 @@ class Assay(AssayBase):
 
 
 
-Diagnostic Order
+# Diagnostic Order
 class DiagnosticOrderBase(BaseModel):
     diagnostic_order_number: str
 
@@ -413,8 +413,8 @@ class DiagnosticOrder(DiagnosticOrderBase):
 
 # class KitEdit(KitBase):
 
-class Kit(KitBase):
-    id: int
+# class Kit(KitBase):
+#     id: int
 
-    class Config:
-        orm_mode: True
+#     class Config:
+#         orm_mode: True
