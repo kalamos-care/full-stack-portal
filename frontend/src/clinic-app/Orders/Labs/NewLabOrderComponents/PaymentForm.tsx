@@ -11,6 +11,9 @@ export default function PaymentForm() {
       <Typography variant="h6" gutterBottom>
         Payment method
       </Typography>
+      <Typography variant="body1" gutterBottom>
+          Please enter your payment details. Note: we won't charge your card until samples are returned to the lab.
+      </Typography>
       <Grid container spacing={3}>
         <Grid item xs={12} md={6}>
           <TextField

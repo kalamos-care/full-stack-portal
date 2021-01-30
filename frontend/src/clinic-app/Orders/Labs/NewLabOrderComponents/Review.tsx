@@ -47,6 +47,9 @@ export default function Review() {
       <Typography variant="h6" gutterBottom>
         Order summary
       </Typography>
+      <Typography variant="body1" gutterBottom>
+        Please confirm details before submitting your diagnostic order.
+      </Typography>
       <List disablePadding>
         {products.map((product) => (
           <ListItem className={classes.listItem} key={product.name}>
