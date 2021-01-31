@@ -40,6 +40,9 @@ services:
 
   frontend:
     image: 339302979805.dkr.ecr.us-east-2.amazonaws.com/kalamadoo-frontend:${FRONTEND_TAG}
+    environment:
+      BASE_URL: https://app.kala.care
+      BACKEND_URL: https://api.kala.care/api/v1
     networks:
       - internal
       - web
